@@ -1,0 +1,12 @@
+#root {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+div a {
+  text-decoration: none;
+  color: #fff;
+}
+li {
+  list-style: none;
+}
