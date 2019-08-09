@@ -24,7 +24,7 @@ export default function CenteredTabs() {
   }
 
   return (
-    <Paper className="root">
+    <Paper className="tabs-root">
       <Tabs
         className="tabs"
         value={value}
