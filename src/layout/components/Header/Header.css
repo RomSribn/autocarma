@@ -1,0 +1,11 @@
+body .root {
+  flex-grow: 1;
+  background-color: #efefef;
+}
+.tabs {
+  background-color: white;
+}
+
+.logo-bold .MuiTab-wrapper {
+  font-weight: 700;
+}
