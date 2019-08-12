@@ -1,5 +1,5 @@
-import { connect } from "react-redux";
-import Form from "./Profile";
+import { connect } from 'react-redux';
+import Form from './Profile';
 
 // const mapStateToProps = state => ({
 
@@ -11,5 +11,5 @@ import Form from "./Profile";
 
 export default connect(
   null,
-  null
+  null,
 )(Form);

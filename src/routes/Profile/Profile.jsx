@@ -1,11 +1,10 @@
-import React from "react";
-import PropTypes from "prop-types";
-import Typography from "@material-ui/core/Typography";
-import { Link } from "react-router-dom";
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import Form from "./components/Form";
 
-import "./Profile.css";
+import Form from './components/Form';
+
+import './Profile.css';
 
 const CreateIdea = ({ postIdeaCard, user }) => (
   <div className="profile-form">
@@ -19,11 +18,11 @@ CreateIdea.propTypes = {
   postIdeaCard: PropTypes.shape({
     title: PropTypes.string,
     description: PropTypes.string,
-    author: PropTypes.string
+    author: PropTypes.string,
   }).isRequired,
   user: PropTypes.shape({
     id: PropTypes.number.isRequired,
     login: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired
-  }).isRequired
+    name: PropTypes.string.isRequired,
+  }).isRequired,
 };

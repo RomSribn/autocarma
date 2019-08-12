@@ -1,28 +1,28 @@
-import { handleActions } from "redux-actions";
+import { handleActions } from 'redux-actions';
 import {
   fetchSuccess,
-  fetchFailed,
-  postSuccess,
-  postFailed,
-  deleteSuccess,
-  getIdSuccess,
-  logoutSucces,
-  putSuccess,
-  getValueSuccess
-} from "./actions";
+  // fetchFailed,
+  // postSuccess,
+  // postFailed,
+  // deleteSuccess,
+  // getIdSuccess,
+  // logoutSucces,
+  // putSuccess,
+  // getValueSuccess,
+} from './actions';
 
 const initialState = {
-  accidents: []
+  accidents: [],
 };
 
 const accidents = handleActions(
   {
     [fetchSuccess]: (state, action) => ({
       ...state,
-      accidents: action.payload.accident
-    })
+      accidents: action.payload.accident,
+    }),
   },
-  initialState
+  initialState,
 );
 
 export default accidents;

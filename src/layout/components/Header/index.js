@@ -1,9 +1,9 @@
-import { connect } from "react-redux";
-import Header from "./Header";
+import { connect } from 'react-redux';
+import Header from './Header';
 
-const mapStateToProps = state => ({
-  accidents: state.accidents.accidents
-});
+// const mapStateToProps = state => ({
+//   accidents: state.accidents.accidents,
+// });
 
 // const mapDispatchToProps = {
 //   logout
@@ -11,5 +11,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   null,
-  null
+  null,
 )(Header);
