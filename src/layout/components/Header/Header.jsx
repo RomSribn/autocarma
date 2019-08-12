@@ -1,18 +1,18 @@
-import React from "react";
-import history from "../../../utils/history";
-import Paper from "@material-ui/core/Paper";
-import Tabs from "@material-ui/core/Tabs";
-import Tab from "@material-ui/core/Tab";
-import "./Header.css";
+import React from 'react';
+import Paper from '@material-ui/core/Paper';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import history from '../../../utils/history';
+import './Header.css';
 
 const routes = [
-  "/",
-  "/accidents",
-  "/createAccident",
-  "/myAccidents",
-  "/about",
-  "/profile",
-  "/logout"
+  '/',
+  '/accidents',
+  '/createAccident',
+  '/myAccidents',
+  '/about',
+  '/profile',
+  '/logout',
 ];
 
 export default function CenteredTabs() {
