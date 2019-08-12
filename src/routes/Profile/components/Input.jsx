@@ -8,8 +8,7 @@ const CustomField = ({
 }) => (
   <>
     <div className="label">
-      <i className="filled" />
-      <i className="cross" />
+
       <label htmlFor={label}>{label}</label>
       <br />
       <input
@@ -19,6 +18,8 @@ const CustomField = ({
         {...field}
         {...props}
       />
+      <i className="filled" />
+      <i className="cross" />
     </div>
     {touched[field.name] && errors[field.name] && (
       <div className="error">{errors[field.name]}</div>
