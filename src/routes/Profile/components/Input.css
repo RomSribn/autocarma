@@ -1,0 +1,41 @@
+.profile-input {
+  border: 1px solid #dfdfdf;
+  color: rgba(0, 0, 0, 0.54);
+  width: 100%;
+  height: 50px;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+input.profile-input:focus {
+  outline: none;
+  border: 1px solid #2399f1;
+}
+
+.label {
+  position: relative;
+  text-align: left;
+  width: 524px;
+}
+
+.filled::after {
+  content: "✓";
+  /* background-image: url("../media/check-solid.svg"); */
+  color: #2399f1;
+  position: absolute;
+  font-size: 21px;
+  top: 35%;
+  left: 90%;
+}
+
+.cross:after {
+  content: "×";
+  color: rgba(0, 0, 0, 0.54);
+  position: absolute;
+  font-size: 21px;
+  top: 33%;
+  left: 95%;
+}

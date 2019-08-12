@@ -5,10 +5,12 @@ import history from '../../../utils/history';
 
 import validate from '../../../utils/validate';
 import CustomField from './CustomField';
+import Input from './Input';
+import './Form.css';
 
 const Form = ({ postIdeaCard }) => (
   <div className="form">
-    <h1>Personal Information</h1>
+    <div><h1>Personal Information</h1></div>
     <Formik
       initialValues={{
         username: '',
@@ -25,73 +27,75 @@ const Form = ({ postIdeaCard }) => (
       {({
         values, handleChange, handleBlur, handleSubmit, isSubmitting,
       }) => (
-        <form onSubmit={handleSubmit}>
-          <div className="input-wrapper">
-            <Field
-              component={CustomField}
-              type="text"
-              name="username"
-              label="Username"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.username}
-            />
-          </div>
-          <div className="input-wrapper">
-            <Field
-              component={CustomField}
-              type="email"
-              name="email"
-              label="Email"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.email}
-            />
-          </div>
+        <form onSubmit={handleSubmit} className="profile-form">
+          <div className="inputs-profile">
+            <div className="input-wrapper">
+              <Field
+                component={Input}
+                type="text"
+                name="username"
+                label="Username"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.username}
+              />
+            </div>
+            <div className="input-wrapper">
+              <Field
+                component={Input}
+                type="email"
+                name="email"
+                label="Email"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.email}
+              />
+            </div>
 
-          <div className="input-wrapper">
-            <Field
-              component={CustomField}
-              type="password"
-              name="oldPassword"
-              label="Old Password"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.oldPassword}
-            />
-          </div>
+            <div className="input-wrapper">
+              <Field
+                component={Input}
+                type="password"
+                name="oldPassword"
+                label="Old Password"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.oldPassword}
+              />
+            </div>
 
-          <div className="input-wrapper">
-            <Field
-              component={CustomField}
-              type="password"
-              name="newPassword"
-              label="New Password"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.newPassword}
-            />
-          </div>
+            <div className="input-wrapper">
+              <Field
+                component={Input}
+                type="password"
+                name="newPassword"
+                label="New Password"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.newPassword}
+              />
+            </div>
 
-          <div className="input-wrapper">
-            <Field
-              component={CustomField}
-              type="password"
-              name="confirmPassword"
-              label="Confirm New Password"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.confirm}
-            />
-          </div>
+            <div className="input-wrapper">
+              <Field
+                component={Input}
+                type="password"
+                name="confirmPassword"
+                label="Confirm New Password"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.confirmPassword}
+              />
+            </div>
 
-          <button
-            className="save-profile"
-            type="submit"
-            disabled={isSubmitting}
-          >
+            <button
+              className="save-profile"
+              type="submit"
+              disabled={isSubmitting}
+            >
             Save
-          </button>
+            </button>
+          </div>
         </form>
       )}
     </Formik>
