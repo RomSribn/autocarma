@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import history from '../../../utils/history';
 
 import validate from '../../../utils/validate';
-import CustomField from './CustomField';
 import Input from './Input';
 import './Form.css';
 

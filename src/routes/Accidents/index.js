@@ -1,5 +1,5 @@
-import { connect } from "react-redux";
-import Accidents from "./Accidents";
+import { connect } from 'react-redux';
+import Accidents from './Accidents';
 
 // const mapStateToProps = state => ({
 
@@ -11,5 +11,5 @@ import Accidents from "./Accidents";
 
 export default connect(
   null,
-  null
+  null,
 )(Accidents);
