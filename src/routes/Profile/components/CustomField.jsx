@@ -1,7 +1,7 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import TextField from "@material-ui/core/TextField";
+import TextField from '@material-ui/core/TextField';
 
 const CustomField = ({ field, form: { touched, errors }, ...props }) => (
   <>
@@ -25,10 +25,10 @@ CustomField.propTypes = {
     name: PropTypes.string.isRequired,
     value: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,
-    onBlur: PropTypes.func.isRequired
+    onBlur: PropTypes.func.isRequired,
   }).isRequired,
   form: PropTypes.shape({
     touched: PropTypes.object,
-    errors: PropTypes.object
-  }).isRequired
+    errors: PropTypes.object,
+  }).isRequired,
 };

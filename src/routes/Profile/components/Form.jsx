@@ -1,28 +1,30 @@
-import React from "react";
-import { Formik, Field } from "formik";
-import PropTypes from "prop-types";
-import history from "../../../utils/history";
+import React from 'react';
+import { Formik, Field } from 'formik';
+import PropTypes from 'prop-types';
+import history from '../../../utils/history';
 
-import validate from "../../../utils/validate";
-import CustomField from "./CustomField";
+import validate from '../../../utils/validate';
+import CustomField from './CustomField';
 
-const Form = ({ postIdeaCard, author }) => (
+const Form = ({ postIdeaCard }) => (
   <div className="form">
     <h1>Personal Information</h1>
     <Formik
       initialValues={{
-        username: "",
-        email: "",
-        oldPassword: "",
-        newPassword: "",
-        confirm: ""
+        username: '',
+        email: '',
+        oldPassword: '',
+        newPassword: '',
+        confirm: '',
       }}
       validationSchema={validate}
-      onSubmit={values => {
-        postIdeaCard(values).then(() => history.push("/"));
+      onSubmit={(values) => {
+        postIdeaCard(values).then(() => history.push('/'));
       }}
     >
-      {({ values, handleChange, handleBlur, handleSubmit, isSubmitting }) => (
+      {({
+        values, handleChange, handleBlur, handleSubmit, isSubmitting,
+      }) => (
         <form onSubmit={handleSubmit}>
           <div className="input-wrapper">
             <Field
@@ -103,6 +105,6 @@ Form.propTypes = {
   author: PropTypes.shape({
     id: PropTypes.number,
     login: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired
-  }).isRequired
+    name: PropTypes.string.isRequired,
+  }).isRequired,
 };
