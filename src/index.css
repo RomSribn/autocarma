@@ -1,9 +1,14 @@
+body {
+  color: #393d48 !important;
+}
+
 #root {
   display: flex;
   flex-direction: column;
   height: 100vh;
-  background-color: #efefef;
+  background-color: #eff3f6;
 }
+
 div a {
   text-decoration: none;
   color: #fff;

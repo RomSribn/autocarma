@@ -8,6 +8,8 @@
     "@material-ui/icons": "^4.2.0",
     "eslint-plugin-react": "^7.14.2",
     "eslint-plugin-react-hooks": "^1.6.1",
+    "firebase": "^6.3.5",
+    "firebaseui": "^4.1.0",
     "formik": "^1.5.7",
     "husky": "^2.4.1",
     "json-server": "^0.15.0",
