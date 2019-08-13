@@ -1,40 +1,47 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
 
+import AccidentRow from './components/TableRow';
 
 import './Accidents.scss';
 
-const Accidents = () => (
-  <>
-    <h2 id="caption">Star Wars Trilogy Data</h2>
 
-    <div role="table" aria-labelledby="caption">
-      <div role="rowgroup">
-        <div role="row">
-          <div role="columnheader">Title</div>
-          <div role="columnheader">Director</div>
-          <div role="columnheader">Release Date</div>
-        </div>
-      </div>
-      <div role="rowgroup">
-        <div role="row">
-          <div role="rowheader">Star Wars: Episode IV - A New Hope</div>
-          <div role="cell">George Lucas</div>
-          <div role="cell">May 25th, 1977</div>
-        </div>
-        <div role="row">
-          <div role="rowheader">Star Wars: Episode V - The Empire Strikes Back</div>
-          <div role="cell">Irvin Kershner</div>
-          <div role="cell">May 21st, 1980</div>
-        </div>
-        <div role="row">
-          <div role="rowheader">Star Wars: Episode VI - Return of the Jedi</div>
-          <div role="cell">Richard Marquand</div>
-          <div role="cell">May 25th, 1983</div>
-        </div>
-      </div>
-    </div>
-
-  </>
+const SimpleTable = ({ data }) => (
+  <Paper className="table-accidents">
+    <Table className="table">
+      <TableHead>
+        <TableRow>
+          <TableCell>ID</TableCell>
+          <TableCell align="left">Type</TableCell>
+          <TableCell align="left">License plate</TableCell>
+          <TableCell align="left">Time</TableCell>
+          <TableCell align="left">Rating</TableCell>
+          <TableCell align="left">Actions</TableCell>
+        </TableRow>
+      </TableHead>
+      <TableBody>
+        {
+              data.map(accident => (<AccidentRow {...accident} />))
+            }
+      </TableBody>
+    </Table>
+  </Paper>
 );
 
-export default Accidents;
+export default SimpleTable;
+
+SimpleTable.propTypes = {
+  data: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    type: PropTypes.string.isRequired,
+    license: PropTypes.string.isRequired,
+    time: PropTypes.string.isRequired,
+    rating: PropTypes.number.isRequired,
+  }).isRequired,
+};

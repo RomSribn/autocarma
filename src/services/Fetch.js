@@ -1,4 +1,4 @@
-import Error from '../_shared/Error/components/Error';
+import Error from '../_assets/shared/Error/components/Error';
 
 const server = 'http://localhost:3000';
 

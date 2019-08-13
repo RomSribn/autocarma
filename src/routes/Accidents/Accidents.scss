@@ -1,41 +1,12 @@
 @import "../../_assets/scss/abstractions/variables.scss";
 
-h2 {
-  font-size: 2rem;
-  margin: 1.25em 0 0;
-  text-align: center;
-}
-
-[role="table"] {
-  // border: solid 1px $outline;
-  border-collapse: collapse;
-  display: table;
-  margin-top: 40px;
-  margin-right: auto;
+.table-accidents {
+  width: 80%;
+  margin-top: 30px;
+  overflow-x: auto;
   margin-left: auto;
-  border-radius: 5px;
-  background-color: #fff;
+  margin-right: auto;
 }
-
-[role="rowgroup"] {
-  display: table-row-group;
-}
-
-[role="row"] {
-  display: table-row;
-}
-
-[role="columnheader"],
-[role="rowheader"],
-[role="cell"] {
-  border-bottom: solid 1px $outline;
-  display: table-cell;
-  padding: 1em;
-  vertical-align: middle;
-}
-
-[role="columnheader"],
-[role="rowheader"] {
-  font-weight: 700;
-  text-align: left;
+.table {
+  min-width: 100px;
 }

@@ -1,18 +1,25 @@
 import { handleActions } from 'redux-actions';
 import {
   fetchSuccess,
-  // fetchFailed,
-  // postSuccess,
-  // postFailed,
-  // deleteSuccess,
-  // getIdSuccess,
-  // logoutSucces,
-  // putSuccess,
-  // getValueSuccess,
 } from './actions';
 
 const initialState = {
-  accidents: [],
+  data: [
+    {
+      id: 1,
+      type: 'Parking law',
+      license: 'AT37457HJ',
+      time: '22/22/1999',
+      rating: 12,
+    },
+    {
+      id: 2,
+      type: 'Parking law',
+      license: 'AT37457HJ',
+      time: '22/22/1999',
+      rating: 12,
+    },
+  ],
 };
 
 const accidents = handleActions(

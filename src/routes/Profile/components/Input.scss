@@ -33,7 +33,7 @@ input.profile-input:focus {
   left: 90%;
 }
 
-.cross:after {
+.cross::after {
   content: "×";
   color: $gray;
   position: absolute;
