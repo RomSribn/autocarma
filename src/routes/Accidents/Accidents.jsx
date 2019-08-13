@@ -45,11 +45,13 @@ const SimpleTable = ({ data }) => (
 export default SimpleTable;
 
 SimpleTable.propTypes = {
-  data: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    type: PropTypes.string.isRequired,
-    license: PropTypes.string.isRequired,
-    time: PropTypes.string.isRequired,
-    rating: PropTypes.number.isRequired,
-  }).isRequired,
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      type: PropTypes.string.isRequired,
+      license: PropTypes.string.isRequired,
+      time: PropTypes.string.isRequired,
+      rating: PropTypes.number.isRequired,
+    }),
+  ).isRequired,
 };

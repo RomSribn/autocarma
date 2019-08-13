@@ -8,7 +8,9 @@
   color: $gray;
   font-weight: bold;
 }
-
+.MuiButtonBase-root.MuiTab-root.MuiTab-textColorPrimary {
+  font-size: 15px;
+}
 .tabs {
   background-color: white;
 }
