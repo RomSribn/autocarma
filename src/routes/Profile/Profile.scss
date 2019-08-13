@@ -1,9 +1,11 @@
+@import "../../_assets/scss/abstractions/variables.scss";
+
 .profile-form {
   margin-top: 25px;
   text-align: center;
 }
 .MuiFilledInput-root {
-  background-color: #fff !important;
+  background-color: #fff;
 }
 .MuiInputBase-input.MuiFilledInput-input.MuiInputBase-inputMarginDense.MuiFilledInput-inputMarginDense {
   width: 500px;
@@ -14,10 +16,10 @@
   border: none;
   margin-top: 10px;
   padding: 5px;
-  font-size: 20px;
+  font-size: $small;
   width: 100%;
   height: 50px;
   color: #fff;
-  background-color: #2399f1;
+  background-color: $blue;
   border-radius: 5px;
 }

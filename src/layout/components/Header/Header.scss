@@ -1,9 +1,11 @@
+@import "../../../_assets/scss/abstractions/variables.scss";
+
 .MuiTabs-scroller .PrivateTabIndicator-colorPrimary-53 {
-  background-color: #2399f1;
+  background-color: $blue;
 }
 
 .MuiTabs-flexContainer .MuiTab-textColorPrimary.Mui-selected {
-  color: rgba(0, 0, 0, 0.54);
+  color: $gray;
   font-weight: bold;
 }
 

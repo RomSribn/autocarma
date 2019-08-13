@@ -5,7 +5,7 @@ import history from '../../../utils/history';
 
 import validate from '../../../utils/validate';
 import Input from './Input';
-import './Form.css';
+import './Form.scss';
 
 const Form = ({ postIdeaCard }) => (
   <div className="form">

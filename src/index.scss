@@ -1,5 +1,7 @@
+@import "./_assets/scss/abstractions/variables.scss";
+
 body {
-  color: #393d48 !important;
+  color: $black;
 }
 
 #root {

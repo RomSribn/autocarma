@@ -9,7 +9,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import accidentsReducer from './redux/Accidents/reducers';
 
 import App from './App';
-import './index.css';
+import './index.scss';
 
 const middleware = applyMiddleware(thunkMiddleware);
 

@@ -1,19 +1,21 @@
+@import "../../../_assets/scss/abstractions/variables.scss";
+
 .profile-input {
   border: 1px solid #dfdfdf;
-  color: rgba(0, 0, 0, 0.54);
+  color: $gray;
   width: 100%;
   height: 50px;
   padding: 10px;
   padding-right: 60px;
   border-radius: 10px;
-  font-size: 14px;
+  font-size: $small;
   font-weight: bold;
   margin-bottom: 20px;
 }
 
 input.profile-input:focus {
   outline: none;
-  border: 1px solid #2399f1;
+  border: 1px solid $blue;
 }
 
 .label {
@@ -24,19 +26,18 @@ input.profile-input:focus {
 
 .filled::after {
   content: "✓";
-  /* background-image: url("../media/check-solid.svg"); */
-  color: #2399f1;
+  color: $blue;
   position: absolute;
-  font-size: 21px;
+  font-size: $normal;
   top: 35%;
   left: 90%;
 }
 
 .cross:after {
   content: "×";
-  color: rgba(0, 0, 0, 0.54);
+  color: $gray;
   position: absolute;
-  font-size: 21px;
+  font-size: $normal;
   top: 33%;
   left: 95%;
 }

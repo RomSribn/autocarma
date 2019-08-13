@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './Input.css';
+import './Input.scss';
 
 
 const CustomField = ({
@@ -20,8 +20,6 @@ const CustomField = ({
           {...props}
         />
       </label>
-
-
       <i className="filled" />
       <i className="cross" />
     </div>
