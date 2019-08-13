@@ -16,7 +16,6 @@ const routes = [
 ];
 
 export default function CenteredTabs() {
-  // eslint-disable-next-line no-unused-vars
   const [value, setValue] = React.useState(0);
   function handleChange(event, newValue) {
     history.push(routes[newValue]);

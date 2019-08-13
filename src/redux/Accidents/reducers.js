@@ -1,14 +1,6 @@
 import { handleActions } from 'redux-actions';
 import {
   fetchSuccess,
-  // fetchFailed,
-  // postSuccess,
-  // postFailed,
-  // deleteSuccess,
-  // getIdSuccess,
-  // logoutSucces,
-  // putSuccess,
-  // getValueSuccess,
 } from './actions';
 
 const initialState = {
