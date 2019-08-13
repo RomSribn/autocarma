@@ -9,7 +9,7 @@ import './Form.scss';
 
 const Form = ({ postIdeaCard }) => (
   <div className="form">
-    <div><h1>Personal Information</h1></div>
+    <div className="profile-title"><span>Personal Information</span></div>
     <Formik
       initialValues={{
         username: '',
