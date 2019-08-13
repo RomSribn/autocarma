@@ -9,15 +9,19 @@ const CustomField = ({
   <>
     <div className="label">
 
-      <label htmlFor={label}>{label}</label>
-      <br />
-      <input
-        id={label}
-        type={type}
-        className="profile-input"
-        {...field}
-        {...props}
-      />
+      <label htmlFor={label}>
+        {label}
+        <br />
+        <input
+          id={label}
+          type={type}
+          className="profile-input"
+          {...field}
+          {...props}
+        />
+      </label>
+
+
       <i className="filled" />
       <i className="cross" />
     </div>

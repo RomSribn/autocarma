@@ -2,10 +2,8 @@ import React from 'react';
 import Paper from '@material-ui/core/Paper';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-// import firebase from 'firebase';
 import history from '../../../utils/history';
 import './Header.css';
-// import { getMaxListeners } from "cluster";
 
 const routes = [
   '/',
