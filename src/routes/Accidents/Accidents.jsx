@@ -7,31 +7,39 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
+import FilterMenu from './components/FIlterMenu';
 import AccidentRow from './components/TableRow';
 
 import './Accidents.scss';
 
 
 const SimpleTable = ({ data }) => (
-  <Paper className="table-accidents">
-    <Table className="table">
-      <TableHead>
-        <TableRow>
-          <TableCell>ID</TableCell>
-          <TableCell align="left">Type</TableCell>
-          <TableCell align="left">License plate</TableCell>
-          <TableCell align="left">Time</TableCell>
-          <TableCell align="left">Rating</TableCell>
-          <TableCell align="left">Actions</TableCell>
-        </TableRow>
-      </TableHead>
-      <TableBody>
-        {
+  <div className="accidents">
+    <h2 className="accidents-title">Accidents via @admin</h2>
+    <div className="table-accidents">
+      <FilterMenu />
+      <Paper>
+        <Table className="table">
+          <TableHead>
+            <TableRow>
+              <TableCell>ID</TableCell>
+              <TableCell align="left">Type</TableCell>
+              <TableCell align="left">License plate</TableCell>
+              <TableCell align="left">Time</TableCell>
+              <TableCell align="left">Rating</TableCell>
+              <TableCell align="left">Actions</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {
               data.map(accident => (<AccidentRow {...accident} />))
             }
-      </TableBody>
-    </Table>
-  </Paper>
+          </TableBody>
+        </Table>
+      </Paper>
+    </div>
+
+  </div>
 );
 
 export default SimpleTable;
