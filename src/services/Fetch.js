@@ -1,6 +1,6 @@
 import Error from '../_assets/shared/Error/components/Error';
 
-const server = 'http://localhost:3000';
+const server = process.env.SERVER;
 
 const customFetch = (url, options = null) => fetch(`${server}/${url}`, {
   ...options,
