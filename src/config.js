@@ -8,6 +8,6 @@ export default config({
     env: 'REACT_APP_HOST',
     type: 'string',
     required: true,
-    default: 'http://10.10.55.162:9000',
+    default: 'http://localhost:3000',
   },
 });
