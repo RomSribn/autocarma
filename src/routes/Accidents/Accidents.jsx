@@ -7,40 +7,57 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
+import Pagination from 'react-js-pagination';
 import FilterMenu from './components/FIlterMenu';
 import AccidentRow from './components/TableRow';
-
 import './Accidents.scss';
 
+const SimpleTable = ({ data }) => {
+  const [value, setValue] = React.useState(15);
 
-const SimpleTable = ({ data }) => (
-  <div className="accidents">
-    <h2 className="accidents-title">Accidents via @admin</h2>
-    <div className="table-accidents">
-      <FilterMenu />
-      <Paper>
-        <Table className="table">
-          <TableHead>
-            <TableRow>
-              <TableCell>ID</TableCell>
-              <TableCell align="left">Type</TableCell>
-              <TableCell align="left">License plate</TableCell>
-              <TableCell align="left">Time</TableCell>
-              <TableCell align="left">Rating</TableCell>
-              <TableCell align="left">Actions</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {
-              data.map(accident => (<AccidentRow {...accident} />))
-            }
-          </TableBody>
-        </Table>
-      </Paper>
+  const handleChange = (pageNumber) => {
+    console.log(`active page is ${pageNumber}`);
+    setValue(pageNumber);
+  };
+
+  return (
+    <div className="accidents">
+      <h2 className="accidents-title">Accidents via @admin</h2>
+      <div className="table-accidents">
+        <FilterMenu />
+        <Paper>
+          <Table className="table">
+            <TableHead>
+              <TableRow>
+                <TableCell>ID</TableCell>
+                <TableCell align="left">Type</TableCell>
+                <TableCell align="left">License plate</TableCell>
+                <TableCell align="left">Time</TableCell>
+                <TableCell align="left">Rating</TableCell>
+                <TableCell align="left">Actions</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {
+                data.map(accident => (<AccidentRow {...accident} />))
+              }
+            </TableBody>
+          </Table>
+        </Paper>
+        <div className="pag-wrapper">
+          <Pagination
+            activePage={value}
+            itemsCountPerPage={10}
+            totalItemsCount={450}
+            pageRangeDisplayed={5}
+            onChange={handleChange}
+          />
+        </div>
+      </div>
+
     </div>
-
-  </div>
-);
+  );
+};
 
 export default SimpleTable;
 
