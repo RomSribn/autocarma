@@ -1,0 +1,81 @@
+@import "../../../_assets/scss/abstractions/variables.scss";
+
+.filter-menu {
+  display: flex;
+  flex-direction: row;
+  font-size: $small;
+  align-items: center;
+
+  & > * {
+    margin-right: 20px;
+  }
+}
+
+.filter-submit {
+  border: none;
+  padding: 10px;
+  width: 100px;
+  height: 50px;
+  color: #fff;
+  background-color: $blue;
+  border-radius: 5px;
+  font-size: $small;
+  text-align: center;
+}
+.license-button {
+  padding: 10px;
+  width: 200px;
+  height: 50px;
+  color: #fff;
+  background-color: green;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.form-item {
+  &:not(:first-child) {
+    margin-top: 1em;
+  }
+
+  > :not(:first-child) {
+    margin-top: 0.25em;
+  }
+}
+
+.form-item__label {
+  display: block;
+}
+
+.form-item__element {
+  display: inline-block;
+  padding: 0.5em;
+  height: 50px;
+  vertical-align: middle;
+  background: #fff;
+  border-radius: 5px;
+  border: 1px solid $outline;
+  font-size: $small;
+  color: $gray;
+}
+
+.form-item__element--select {
+  appearance: none;
+  padding-right: 2em;
+
+  // Styling for browsers which do support
+  // styling select option elements directly
+  [disabled] {
+    color: gray;
+  }
+}
+
+// Quick and dirty ugly caret replacement.
+.select-wrap {
+  &::after {
+    content: "▼";
+    margin-left: -2em;
+    font-size: 0.75em;
+    pointer-events: none;
+    color: $gray;
+  }
+}
