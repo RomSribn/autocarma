@@ -24,20 +24,17 @@ input.profile-input:focus {
   width: 524px;
 }
 
-.filled::after {
-  content: "✓";
+.MuiSvgIcon-root.filled {
   color: $blue;
   position: absolute;
   font-size: $normal;
-  top: 35%;
+  top: 43%;
   left: 90%;
 }
 
-.cross:after {
-  content: "×";
-  color: $gray;
+.MuiSvgIcon-root.cross {
   position: absolute;
   font-size: $normal;
-  top: 33%;
+  top: 43%;
   left: 95%;
 }

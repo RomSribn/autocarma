@@ -1,11 +1,5 @@
 @import "../../../_assets/scss/abstractions/variables.scss";
 
-.delete::after {
-  content: "×";
-  color: $gray;
-  position: absolute;
-  font-size: $big;
-  font-weight: bold;
-  margin-top: -34px;
-  margin-left: 93px;
+.clear-icon {
+  margin-left: 10px;
 }

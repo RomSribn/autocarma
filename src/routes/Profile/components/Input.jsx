@@ -1,5 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Clear from '@material-ui/icons/Clear';
+import Check from '@material-ui/icons/Check';
+
 import './Input.scss';
 
 
@@ -21,7 +24,8 @@ const CustomField = ({
         />
       </label>
       <i className="filled" />
-      <i className="cross" />
+      <div><Clear className="cross" /></div>
+      <div><Check className="filled" /></div>
     </div>
     {touched[field.name] && errors[field.name] && (
       <div className="error">{errors[field.name]}</div>
