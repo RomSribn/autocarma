@@ -13,10 +13,9 @@ import AccidentRow from './components/TableRow';
 import './Accidents.scss';
 
 const SimpleTable = ({ data }) => {
-  const [value, setValue] = React.useState(15);
+  const [value, setValue] = React.useState(1);
 
   const handleChange = (pageNumber) => {
-    console.log(`active page is ${pageNumber}`);
     setValue(pageNumber);
   };
 
