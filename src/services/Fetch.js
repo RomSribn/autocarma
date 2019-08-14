@@ -1,8 +1,9 @@
 import Error from '../_assets/shared/Error/components/Error';
+import conf from '../config';
 
-const server = 'http://localhost:3000';
+const { apiHost } = conf;
 
-const customFetch = (url, options = null) => fetch(`${server}/${url}`, {
+const customFetch = (url, options = null) => fetch(`${apiHost}/${url}`, {
   ...options,
   headers: {
     'Content-Type': 'application/json',

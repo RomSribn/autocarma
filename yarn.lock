@@ -2,6 +2,11 @@
 # yarn lockfile v1
 
 
+"12factor-config@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/12factor-config/-/12factor-config-2.0.0.tgz#42dc81bb828b8da22f6f61b9b0dcd63c2def220f"
+  integrity sha512-pvtjLdzmBKW1Oj24Js+dgFXyMNIXh0xx6CmQ8Oyvnt3tBQmmk6mWG0mbwfzsd5U2ZGCpiIPfW2q193pOxMnRzg==
+
 "@babel/code-frame@7.5.5", "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.5.5":
   version "7.5.5"
   resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.5.5.tgz#bc0782f6d69f7b7d49531219699b988f669a8f9d"
@@ -3845,6 +3850,11 @@ dotenv@6.2.0:
   version "6.2.0"
   resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-6.2.0.tgz#941c0410535d942c8becf28d3f357dbd9d476064"
   integrity sha512-HygQCKUBSFl8wKQZBSemMywRWcEDNidvNbjGVyZu3nbZ8qq9ubiPoGLMdRDpfSrpkkm9BXYFkpKxxFX38o/76w==
+
+dotenv@^8.0.0:
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-8.0.0.tgz#ed310c165b4e8a97bb745b0a9d99c31bda566440"
+  integrity sha512-30xVGqjLjiUOArT4+M5q9sYdvuR4riM6yK9wMcas9Vbp6zZa+ocC9dp6QoftuhTPhFAiLK/0C5Ni2nou/Bk8lg==
 
 duplexer3@^0.1.4:
   version "0.1.4"

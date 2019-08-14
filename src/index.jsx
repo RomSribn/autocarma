@@ -7,7 +7,6 @@ import thunkMiddleware from 'redux-thunk';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
 import accidentsReducer from './redux/Accidents/reducers';
-
 import App from './App';
 import './index.scss';
 
