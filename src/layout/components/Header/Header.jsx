@@ -16,8 +16,7 @@ const routes = [
 ];
 
 export default function CenteredTabs() {
-  // eslint-disable-next-line no-unused-vars
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = React.useState(routes.indexOf(history.location.pathname));
   function handleChange(event, newValue) {
     history.push(routes[newValue]);
     setValue(newValue);
@@ -27,7 +26,7 @@ export default function CenteredTabs() {
     <Paper className="tabs-root">
       <Tabs
         className="tabs"
-        value={routes.indexOf(history.location.pathname)}
+        value={value}
         onChange={handleChange}
         indicatorColor="primary"
         textColor="primary"
