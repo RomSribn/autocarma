@@ -1,6 +1,7 @@
 import Error from '../_assets/shared/Error/components/Error';
+import conf from '../config';
 
-const server = process.env.SERVER;
+const server = conf.apiHost;
 
 const customFetch = (url, options = null) => fetch(`${server}/${url}`, {
   ...options,
