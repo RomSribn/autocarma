@@ -1,5 +1,12 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
-import './Main.css';
+import PropTypes from 'prop-types';
 
-export default ({ children }) => <div className="main">{children}</div>;
+import './Main.scss';
+
+const Main = ({ children }) => <div className="main">{children}</div>;
+
+export default Main;
+
+Main.propTypes = {
+  children: PropTypes.node.isRequired,
+};

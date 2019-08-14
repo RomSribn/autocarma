@@ -1,0 +1,43 @@
+@import "../../../_assets/scss/abstractions/variables.scss";
+
+.profile-input {
+  border: 1px solid #dfdfdf;
+  color: $gray;
+  width: 100%;
+  height: 50px;
+  padding: 10px;
+  padding-right: 60px;
+  border-radius: 10px;
+  font-size: $small;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+input.profile-input:focus {
+  outline: none;
+  border: 1px solid $blue;
+}
+
+.label {
+  position: relative;
+  text-align: left;
+  width: 524px;
+}
+
+.filled::after {
+  content: "✓";
+  color: $blue;
+  position: absolute;
+  font-size: $normal;
+  top: 35%;
+  left: 90%;
+}
+
+.cross:after {
+  content: "×";
+  color: $gray;
+  position: absolute;
+  font-size: $normal;
+  top: 33%;
+  left: 95%;
+}

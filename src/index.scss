@@ -1,8 +1,16 @@
+@import "./_assets/scss/abstractions/variables.scss";
+
+body {
+  color: $black;
+}
+
 #root {
   display: flex;
   flex-direction: column;
   height: 100vh;
+  background-color: #eff3f6;
 }
+
 div a {
   text-decoration: none;
   color: #fff;

@@ -1,7 +1,6 @@
 import { handleActions } from 'redux-actions';
 import {
   fetchSuccess,
-
 } from './actions';
 
 const initialState = {
