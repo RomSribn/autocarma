@@ -39,28 +39,37 @@ const CenteredTabs = ({ user, signOut, signInWithGoogle }) => {
 
   return (
     <Paper className="tabs-root">
-      <Tabs
-        className="tabs"
-        value={value}
-        onChange={handleChange}
-        indicatorColor="primary"
-        textColor="primary"
-        centered
-      >
-        {user ? (
-          <>
-            <Tab className="logo-bold" label="Autocarma" />
-            <Tab label="Accidents" />
-            <Tab label="Add new accidents" />
-            <Tab label="My accidents" />
-            <Tab label="About" />
-            <Tab label="Profile" />
-            <Tab label="Logout" onClick={signOut} />
-          </>
-        ) : (
-          <Tab label="Sign In with google" onClick={signInWithGoogle} />
-        )}
-      </Tabs>
+      {user ? (
+
+        <Tabs
+          className="tabs"
+          value={value}
+          onChange={handleChange}
+          indicatorColor="primary"
+          textColor="primary"
+          centered
+        >
+          <Tab className="logo-bold" label="Autocarma" />
+          <Tab label="Accidents" />
+          <Tab label="Add new accidents" />
+          <Tab label="My accidents" />
+          <Tab label="About" />
+          <Tab label="Profile" />
+          <Tab label="Logout" onClick={signOut} />
+        </Tabs>
+
+      ) : (
+        <Tabs
+            className="tabs"
+            value={value}
+            onChange={handleChange}
+            indicatorColor="primary"
+            textColor="primary"
+            centered
+          >
+            <Tab label="Sign In with google" onClick={signInWithGoogle} />
+          </Tabs>
+      )}
     </Paper>
   );
 };
