@@ -1,7 +1,8 @@
 import withFirebaseAuth from 'react-with-firebase-auth';
-import { auth, createUserWithEmailAndPassword } from 'firebase/app';
+import { auth } from 'firebase/app';
 import 'firebase/auth';
 import React from 'react';
+import PropTypes from 'prop-types';
 import Paper from '@material-ui/core/Paper';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
@@ -34,7 +35,7 @@ const routesGuest = [
   '/login',
 ];
 
-const CenteredTabs = ({ user, signOut, signInWithGoogle }) => {
+const CenteredTabs = ({ user, signOut }) => {
   const routes = user ? routesUser : routesGuest;
   const [value, setValue] = React.useState(routes.indexOf(history.location.pathname));
 
@@ -59,13 +60,7 @@ const CenteredTabs = ({ user, signOut, signInWithGoogle }) => {
           <Tab label="Accidents" />
           <Tab label="Add new accidents" />
           <Tab label="My accidents" />
-          <Tab
-            label="About"
-            onClick={() => user.updateProfile({
-              displayName: 'Vasya',
-            }).then(res => console.log(res)).catch(er => console.log(er))
-}
-          />
+          <Tab label="About" />
           <Tab label="Profile" />
           <Tab label="Logout" onClick={signOut} />
         </Tabs>
@@ -91,3 +86,17 @@ export default withFirebaseAuth({
   providers,
   firebaseAppAuth,
 })(CenteredTabs);
+
+
+CenteredTabs.defaultProps = {
+  user: null,
+};
+
+CenteredTabs.propTypes = {
+  signOut: PropTypes.func.isRequired,
+  user: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    login: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+  }),
+};

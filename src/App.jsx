@@ -1,21 +1,12 @@
-import withFirebaseAuth from 'react-with-firebase-auth';
-import { auth } from 'firebase/app';
 import React from 'react';
 import { Router } from 'react-router-dom';
-import firebaseConfig from './firebase';
 import Routers from './routes/Router';
 import Layout from './layout/Layout';
 
 import history from './utils/history';
 
 
-const providers = {
-  googleProvider: new auth.GoogleAuthProvider(),
-};
-
-const firebaseAppAuth = firebaseConfig.auth();
-
-const App = ({ user, signOut, signInWithGoogle }) => (
+const App = () => (
   <Router history={history}>
     <Layout>
       <Routers />
@@ -24,7 +15,4 @@ const App = ({ user, signOut, signInWithGoogle }) => (
 );
 
 
-export default withFirebaseAuth({
-  providers,
-  firebaseAppAuth,
-})(App);
+export default App;

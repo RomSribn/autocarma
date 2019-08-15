@@ -1,24 +1,24 @@
 import React from 'react';
 import { Formik, Field } from 'formik';
-import PropTypes from 'prop-types';
+import { auth } from 'firebase/app';
 import history from '../../../utils/history';
+
 
 import validate from '../../../utils/validate';
 import Input from './Input';
 import './Form.scss';
 
-const Form = ({ postIdeaCard }) => (
+
+const Form = () => (
   <div className="form-login">
     <div className="login-title"><h1>Get started!</h1></div>
     <Formik
       initialValues={{
         email: '',
-        passowrd: '',
+        password: '',
       }}
       validationSchema={validate}
-      onSubmit={(values) => {
-        postIdeaCard(values).then(() => history.push('/'));
-      }}
+      onSubmit={values => auth().signInWithEmailAndPassword(values.email, values.password).then(() => history.push('/accidents'))}
     >
       {({
         values, handleChange, handleBlur, handleSubmit, isSubmitting,
@@ -66,12 +66,3 @@ const Form = ({ postIdeaCard }) => (
 );
 
 export default Form;
-
-Form.propTypes = {
-  postIdeaCard: PropTypes.func.isRequired,
-  author: PropTypes.shape({
-    id: PropTypes.number,
-    login: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-  }).isRequired,
-};

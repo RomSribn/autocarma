@@ -1,28 +1,15 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 
 import Form from './components/Form';
 
 import './Login.scss';
 
-const CreateIdea = ({ postIdeaCard, user }) => (
+
+const Login = () => (
   <div className="profile-form">
-    <Form postIdeaCard={postIdeaCard} author={user} />
+    <Form />
   </div>
 );
 
-export default CreateIdea;
-
-CreateIdea.propTypes = {
-  postIdeaCard: PropTypes.shape({
-    title: PropTypes.string,
-    description: PropTypes.string,
-    author: PropTypes.string,
-  }).isRequired,
-  user: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    login: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-  }).isRequired,
-};
+export default Login;
