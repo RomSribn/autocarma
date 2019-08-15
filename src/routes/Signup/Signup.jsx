@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import Form from './components/Form';
 
-import './Login.scss';
+import './Signup.scss';
 
 const CreateIdea = ({ postIdeaCard, user }) => (
   <div className="profile-form">

@@ -1,5 +1,5 @@
 import withFirebaseAuth from 'react-with-firebase-auth';
-import { auth } from 'firebase/app';
+import { auth, createUserWithEmailAndPassword } from 'firebase/app';
 import 'firebase/auth';
 import React from 'react';
 import Paper from '@material-ui/core/Paper';
@@ -16,9 +16,10 @@ const providers = {
   googleProvider: new auth.GoogleAuthProvider(),
 };
 
+
 const firebaseAppAuth = firebaseConfig.auth();
 
-const routes = [
+const routesUser = [
   '/',
   '/accidents',
   '/createAccident',
@@ -26,10 +27,15 @@ const routes = [
   '/about',
   '/profile',
   '/logout',
+];
+
+const routesGuest = [
+  '/signup',
   '/login',
 ];
 
 const CenteredTabs = ({ user, signOut, signInWithGoogle }) => {
+  const routes = user ? routesUser : routesGuest;
   const [value, setValue] = React.useState(routes.indexOf(history.location.pathname));
 
   function handleChange(event, newValue) {
@@ -53,22 +59,29 @@ const CenteredTabs = ({ user, signOut, signInWithGoogle }) => {
           <Tab label="Accidents" />
           <Tab label="Add new accidents" />
           <Tab label="My accidents" />
-          <Tab label="About" />
+          <Tab
+            label="About"
+            onClick={() => user.updateProfile({
+              displayName: 'Vasya',
+            }).then(res => console.log(res)).catch(er => console.log(er))
+}
+          />
           <Tab label="Profile" />
           <Tab label="Logout" onClick={signOut} />
         </Tabs>
 
       ) : (
         <Tabs
-            className="tabs"
-            value={value}
-            onChange={handleChange}
-            indicatorColor="primary"
-            textColor="primary"
-            centered
-          >
-            <Tab label="Sign In with google" onClick={signInWithGoogle} />
-          </Tabs>
+          className="tabs"
+          value={value}
+          onChange={handleChange}
+          indicatorColor="primary"
+          textColor="primary"
+          centered
+        >
+          <Tab label="Create an account" />
+          <Tab label="Get started" />
+        </Tabs>
       )}
     </Paper>
   );

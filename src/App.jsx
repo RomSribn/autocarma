@@ -15,10 +15,10 @@ const providers = {
 
 const firebaseAppAuth = firebaseConfig.auth();
 
-const App = ({ user }) => (
+const App = ({ user, signOut, signInWithGoogle }) => (
   <Router history={history}>
     <Layout>
-      {user ? <Routers /> : null}
+      <Routers />
     </Layout>
   </Router>
 );

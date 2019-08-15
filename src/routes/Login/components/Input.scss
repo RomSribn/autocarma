@@ -1,0 +1,40 @@
+@import "../../../_assets/scss/abstractions/variables.scss";
+
+.login-input {
+  border: 1px solid #dfdfdf;
+  color: $gray;
+  width: 100%;
+  height: 50px;
+  padding: 10px;
+  padding-right: 60px;
+  border-radius: 10px;
+  font-size: $small;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+input.login-input:focus {
+  outline: none;
+  border: 1px solid $blue;
+}
+
+.label {
+  position: relative;
+  text-align: left;
+  width: 524px;
+}
+
+.MuiSvgIcon-root.filled {
+  color: $blue;
+  position: absolute;
+  font-size: $normal;
+  top: 43%;
+  left: 90%;
+}
+
+.MuiSvgIcon-root.cross {
+  position: absolute;
+  font-size: $normal;
+  top: 43%;
+  left: 95%;
+}
