@@ -27,7 +27,6 @@ const AccidentRow = ({
 
 export default AccidentRow;
 
-
 AccidentRow.propTypes = {
   id: PropTypes.number.isRequired,
   type: PropTypes.string.isRequired,

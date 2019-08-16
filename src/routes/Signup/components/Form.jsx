@@ -3,7 +3,6 @@ import { Formik, Field } from 'formik';
 import { auth } from 'firebase/app';
 import history from 'utils/history';
 import { ValidateSignup } from 'utils/validate';
-
 import Input from './Input';
 import './Form.scss';
 
@@ -69,7 +68,6 @@ const Form = () => (
                 value={values.password}
               />
             </div>
-
 
             <div className="input-wrapper">
               <Field
