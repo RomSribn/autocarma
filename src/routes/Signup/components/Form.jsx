@@ -1,31 +1,24 @@
 import React from 'react';
 import { Formik, Field } from 'formik';
-import { auth } from 'firebase/app';
-import history from 'utils/history';
+import PropTypes from 'prop-types';
 import { ValidateSignup } from 'utils/validate';
+import Error from '_assets/shared/Error/components/Error';
 import Input from './Input';
 import './Form.scss';
 
-const register = values => auth().createUserWithEmailAndPassword(values.email, values.password)
-  .then((res) => {
-    res.user.updateProfile({
-      displayName: values.username,
-    });
-    history.push('/');
-  });
-
-const Form = () => (
+const Form = ({ signup, error }) => (
   <div className="form-signup">
+    {error ? (<Error message={error} />) : null}
     <div className="signup-title"><h1>Create an account</h1></div>
     <Formik
       initialValues={{
         username: '',
         email: '',
-        passowrd: '',
+        password: '',
         confirmPassword: '',
       }}
       validationSchema={ValidateSignup}
-      onSubmit={values => register(values)}
+      onSubmit={values => signup(values)}
     >
       {({
         values, handleChange, handleBlur, handleSubmit, isSubmitting,
@@ -96,3 +89,9 @@ const Form = () => (
 );
 
 export default Form;
+
+
+Form.propTypes = {
+  signup: PropTypes.func.isRequired,
+  error: PropTypes.string.isRequired,
+};

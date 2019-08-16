@@ -15,3 +15,9 @@ export const DELETE_SUCCESS = 'DELETE_SUCCESS';
 export const DELETE_FAILED = 'DELETE_FAILED';
 
 export const LOGIN_FAILED = 'LOGIN_FAILED';
+
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+
+export const SIGNUP_FAILED = 'SIGNUP_FAILED';
+
+export const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS';

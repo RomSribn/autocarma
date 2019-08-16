@@ -1,8 +1,6 @@
 import React from 'react';
 import { Formik, Field } from 'formik';
 import PropTypes from 'prop-types';
-import { auth } from 'firebase/app';
-import history from 'utils/history';
 import { ValidateLogin } from 'utils/validate';
 import Error from '_assets/shared/Error/components/Error';
 import Input from './Input';
@@ -11,7 +9,7 @@ import './Form.scss';
 
 const Form = ({ login, error }) => (
   <div className="form-login">
-    {error ? (<Error message={error.message} />) : null}
+    {error ? (<Error message={error} />) : null}
     <div className="login-title"><h1>Get started!</h1></div>
     <Formik
       initialValues={{

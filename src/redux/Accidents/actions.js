@@ -12,6 +12,9 @@ import {
   PUT_SUCCESS,
   PUT_FAILED,
   LOGIN_FAILED,
+  LOGIN_SUCCESS,
+  SIGNUP_FAILED,
+  SIGNUP_SUCCESS,
 } from './action_types';
 
 import {
@@ -28,6 +31,9 @@ export const deleteSuccess = createAction(DELETE_SUCCESS);
 export const deleteFailed = createAction(DELETE_FAILED);
 
 export const loginFailed = createAction(LOGIN_FAILED);
+export const loginSuccess = createAction(LOGIN_SUCCESS);
+export const signupFailed = createAction(SIGNUP_FAILED);
+export const signupSuccess = createAction(SIGNUP_SUCCESS);
 
 export const fetchIdeaCard = () => dispatch => get('accidents')
   .then(data => dispatch(fetchSuccess(data)))
@@ -47,5 +53,20 @@ export const deleteIdeaCard = id => dispatch => del('accidents', id)
 
 export const login = values => dispatch => auth()
   .signInWithEmailAndPassword(values.email, values.password)
-  .then(() => history.push('/'))
-  .catch(error => dispatch(loginFailed(error)));
+  .then((res) => {
+    dispatch(loginSuccess(res.message));
+    history.push('/accidents');
+  })
+  .catch(error => dispatch(loginFailed(error.message)));
+
+export const signup = values => dispatch => auth()
+  .createUserWithEmailAndPassword(values.email, values.password)
+  .then((res) => {
+    res.user.updateProfile({
+      displayName: values.username,
+    });
+    console.log(res);
+    dispatch(signupSuccess(res.message));
+    history.push('/accidents');
+  })
+  .catch(error => dispatch(signupFailed(error.message)));
