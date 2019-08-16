@@ -1,6 +1,7 @@
 import { handleActions } from 'redux-actions';
 import {
   fetchSuccess,
+  loginFailed,
 } from './actions';
 
 const initialState = {
@@ -30,13 +31,18 @@ const initialState = {
       actions: '',
     },
   ],
+  error: '',
 };
 
 const accidents = handleActions(
   {
     [fetchSuccess]: (state, action) => ({
       ...state,
-      accidents: action.payload.accident,
+      accidents: action.payload,
+    }),
+    [loginFailed]: (state, action) => ({
+      ...state,
+      error: action.payload,
     }),
   },
   initialState,

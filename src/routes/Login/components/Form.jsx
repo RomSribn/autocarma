@@ -1,17 +1,17 @@
 import React from 'react';
 import { Formik, Field } from 'formik';
+import PropTypes from 'prop-types';
 import { auth } from 'firebase/app';
 import history from 'utils/history';
-
-
 import { ValidateLogin } from 'utils/validate';
+import Error from '_assets/shared/Error/components/Error';
 import Input from './Input';
 import './Form.scss';
 
-const authFnc = values => auth().signInWithEmailAndPassword(values.email, values.password).then(() => history.push('/accidents'));
 
-const Form = () => (
+const Form = ({ login, error }) => (
   <div className="form-login">
+    {error ? (<Error message={error.message} />) : null}
     <div className="login-title"><h1>Get started!</h1></div>
     <Formik
       initialValues={{
@@ -19,7 +19,7 @@ const Form = () => (
         password: '',
       }}
       validationSchema={ValidateLogin}
-      onSubmit={values => authFnc(values)}
+      onSubmit={values => login(values)}
     >
       {({
         values, handleChange, handleBlur, handleSubmit, isSubmitting,
@@ -65,3 +65,8 @@ const Form = () => (
 );
 
 export default Form;
+
+Form.propTypes = {
+  login: PropTypes.func.isRequired,
+  error: PropTypes.string.isRequired,
+};

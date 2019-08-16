@@ -13,3 +13,5 @@ export const PUT_FAILED = 'PUT_FAILED';
 export const DELETE_SUCCESS = 'DELETE_SUCCESS';
 
 export const DELETE_FAILED = 'DELETE_FAILED';
+
+export const LOGIN_FAILED = 'LOGIN_FAILED';

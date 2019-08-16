@@ -1,4 +1,7 @@
 import { createAction } from 'redux-actions';
+import { auth } from 'firebase/app';
+import history from 'utils/history';
+
 import {
   FETCH_SUCCESS,
   FETCH_FAILED,
@@ -8,6 +11,7 @@ import {
   DELETE_FAILED,
   PUT_SUCCESS,
   PUT_FAILED,
+  LOGIN_FAILED,
 } from './action_types';
 
 import {
@@ -20,9 +24,10 @@ export const postSuccess = createAction(POST_SUCCESS);
 export const postFailed = createAction(POST_FAILED);
 export const putSuccess = createAction(PUT_SUCCESS);
 export const putFailed = createAction(PUT_FAILED);
-
 export const deleteSuccess = createAction(DELETE_SUCCESS);
 export const deleteFailed = createAction(DELETE_FAILED);
+
+export const loginFailed = createAction(LOGIN_FAILED);
 
 export const fetchIdeaCard = () => dispatch => get('accidents')
   .then(data => dispatch(fetchSuccess(data)))
@@ -39,3 +44,8 @@ export const putIdeaCard = (id, data) => dispatch => put('accidents', id, data)
 export const deleteIdeaCard = id => dispatch => del('accidents', id)
   .then(() => dispatch(deleteSuccess(id)))
   .catch(error => dispatch(deleteFailed(error.toString())));
+
+export const login = values => dispatch => auth()
+  .signInWithEmailAndPassword(values.email, values.password)
+  .then(() => history.push('/'))
+  .catch(error => dispatch(loginFailed(error)));
