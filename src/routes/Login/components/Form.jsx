@@ -4,7 +4,7 @@ import { auth } from 'firebase/app';
 import history from '../../../utils/history';
 
 
-import validate from '../../../utils/validate';
+import { ValidateLogin } from '../../../utils/validate';
 import Input from './Input';
 import './Form.scss';
 
@@ -17,7 +17,7 @@ const Form = () => (
         email: '',
         password: '',
       }}
-      validationSchema={validate}
+      validationSchema={ValidateLogin}
       onSubmit={values => auth().signInWithEmailAndPassword(values.email, values.password).then(() => history.push('/accidents'))}
     >
       {({

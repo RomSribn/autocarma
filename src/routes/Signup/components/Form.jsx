@@ -2,7 +2,7 @@ import React from 'react';
 import { Formik, Field } from 'formik';
 import { auth } from 'firebase/app';
 import history from '../../../utils/history';
-import validate from '../../../utils/validate';
+import { ValidateSignup } from '../../../utils/validate';
 
 import Input from './Input';
 import './Form.scss';
@@ -18,7 +18,7 @@ const Form = () => (
         passowrd: '',
         confirmPassword: '',
       }}
-      validationSchema={validate}
+      validationSchema={ValidateSignup}
       onSubmit={(values) => {
         auth().createUserWithEmailAndPassword(values.email, values.password).then((res) => {
           res.user.updateProfile({

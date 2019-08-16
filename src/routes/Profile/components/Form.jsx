@@ -3,7 +3,7 @@ import { Formik, Field } from 'formik';
 import PropTypes from 'prop-types';
 import history from '../../../utils/history';
 
-import validate from '../../../utils/validate';
+import { ValidateProfile } from '../../../utils/validate';
 import Input from './Input';
 import './Form.scss';
 
@@ -16,9 +16,9 @@ const Form = ({ postIdeaCard }) => (
         email: '',
         oldPassword: '',
         newPassword: '',
-        confirm: '',
+        confirmPassword: '',
       }}
-      validationSchema={validate}
+      validationSchema={ValidateProfile}
       onSubmit={(values) => {
         postIdeaCard(values).then(() => history.push('/'));
       }}
