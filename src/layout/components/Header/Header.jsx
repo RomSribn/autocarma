@@ -7,8 +7,8 @@ import Paper from '@material-ui/core/Paper';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 
-import history from '../../../utils/history';
-import firebaseConfig from '../../../firebase';
+import firebaseConfig from 'firebase.js';
+import history from 'utils/history';
 
 
 import './Header.scss';

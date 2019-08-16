@@ -1,12 +1,19 @@
 import React from 'react';
 import { Formik, Field } from 'formik';
 import { auth } from 'firebase/app';
-import history from '../../../utils/history';
-import { ValidateSignup } from '../../../utils/validate';
+import history from 'utils/history';
+import { ValidateSignup } from 'utils/validate';
 
 import Input from './Input';
 import './Form.scss';
 
+const register = values => auth().createUserWithEmailAndPassword(values.email, values.password)
+  .then((res) => {
+    res.user.updateProfile({
+      displayName: values.username,
+    });
+    history.push('/');
+  });
 
 const Form = () => (
   <div className="form-signup">
@@ -19,14 +26,7 @@ const Form = () => (
         confirmPassword: '',
       }}
       validationSchema={ValidateSignup}
-      onSubmit={(values) => {
-        auth().createUserWithEmailAndPassword(values.email, values.password).then((res) => {
-          res.user.updateProfile({
-            displayName: values.username,
-          });
-          history.push('/');
-        });
-      }}
+      onSubmit={values => register(values)}
     >
       {({
         values, handleChange, handleBlur, handleSubmit, isSubmitting,

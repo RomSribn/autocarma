@@ -1,9 +1,9 @@
 import React from 'react';
 import { Formik, Field } from 'formik';
 import PropTypes from 'prop-types';
-import history from '../../../utils/history';
+import history from 'utils/history';
 
-import { ValidateProfile } from '../../../utils/validate';
+import { ValidateProfile } from 'utils/validate';
 import Input from './Input';
 import './Form.scss';
 

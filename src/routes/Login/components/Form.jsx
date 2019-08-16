@@ -1,13 +1,14 @@
 import React from 'react';
 import { Formik, Field } from 'formik';
 import { auth } from 'firebase/app';
-import history from '../../../utils/history';
+import history from 'utils/history';
 
 
-import { ValidateLogin } from '../../../utils/validate';
+import { ValidateLogin } from 'utils/validate';
 import Input from './Input';
 import './Form.scss';
 
+const authFnc = values => auth().signInWithEmailAndPassword(values.email, values.password).then(() => history.push('/accidents'));
 
 const Form = () => (
   <div className="form-login">
@@ -18,7 +19,7 @@ const Form = () => (
         password: '',
       }}
       validationSchema={ValidateLogin}
-      onSubmit={values => auth().signInWithEmailAndPassword(values.email, values.password).then(() => history.push('/accidents'))}
+      onSubmit={values => authFnc(values)}
     >
       {({
         values, handleChange, handleBlur, handleSubmit, isSubmitting,
