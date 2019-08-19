@@ -9,13 +9,14 @@ const CustomField = ({
 }) => (
   <>
     <div className="label">
+
       <label htmlFor={label}>
         {label}
         <br />
         <input
           id={label}
           type={type}
-          className="profile-input"
+          className="login-input"
           {...field}
           {...props}
         />

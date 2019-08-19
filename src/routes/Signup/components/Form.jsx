@@ -1,34 +1,32 @@
 import React from 'react';
 import { Formik, Field } from 'formik';
 import PropTypes from 'prop-types';
-import history from 'utils/history';
-import { ValidateProfile } from 'utils/validate/validate';
+import { ValidateSignup } from 'utils/validate/validate';
+import Error from '_assets/shared/Error/components/Error';
 import Input from './Input';
 import './Form.scss';
 
-const Form = ({ postIdeaCard }) => (
-  <div className="form">
-    <div>
-      <h1>Personal Information</h1>
+const Form = ({ signup, error }) => (
+  <div className="form-signup">
+    {error ? <Error message={error} /> : null}
+    <div className="signup-title">
+      <h1>Create an account</h1>
     </div>
     <Formik
       initialValues={{
         username: '',
         email: '',
-        oldPassword: '',
-        newPassword: '',
+        password: '',
         confirmPassword: '',
       }}
-      validationSchema={ValidateProfile}
-      onSubmit={(values) => {
-        postIdeaCard(values).then(() => history.push('/'));
-      }}
+      validationSchema={ValidateSignup}
+      onSubmit={values => signup(values)}
     >
       {({
         values, handleChange, handleBlur, handleSubmit, isSubmitting,
       }) => (
-        <form onSubmit={handleSubmit} className="profile-form">
-          <div className="inputs-profile">
+        <form onSubmit={handleSubmit} className="signup-form">
+          <div className="inputs-signup">
             <div className="input-wrapper">
               <Field
                 component={Input}
@@ -40,6 +38,7 @@ const Form = ({ postIdeaCard }) => (
                 value={values.username}
               />
             </div>
+
             <div className="input-wrapper">
               <Field
                 component={Input}
@@ -56,23 +55,11 @@ const Form = ({ postIdeaCard }) => (
               <Field
                 component={Input}
                 type="password"
-                name="oldPassword"
-                label="Old Password"
+                name="password"
+                label="Password"
                 onChange={handleChange}
                 onBlur={handleBlur}
-                value={values.oldPassword}
-              />
-            </div>
-
-            <div className="input-wrapper">
-              <Field
-                component={Input}
-                type="password"
-                name="newPassword"
-                label="New Password"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.newPassword}
+                value={values.password}
               />
             </div>
 
@@ -81,15 +68,15 @@ const Form = ({ postIdeaCard }) => (
                 component={Input}
                 type="password"
                 name="confirmPassword"
-                label="Confirm New Password"
+                label="Confirm password"
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.confirmPassword}
               />
             </div>
 
-            <button className="save-profile" type="submit" disabled={isSubmitting}>
-              Save
+            <button className="save-signup" type="submit" disabled={isSubmitting}>
+              Create
             </button>
           </div>
         </form>
@@ -101,10 +88,6 @@ const Form = ({ postIdeaCard }) => (
 export default Form;
 
 Form.propTypes = {
-  postIdeaCard: PropTypes.func.isRequired,
-  author: PropTypes.shape({
-    id: PropTypes.number,
-    login: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-  }).isRequired,
+  signup: PropTypes.func.isRequired,
+  error: PropTypes.string.isRequired,
 };

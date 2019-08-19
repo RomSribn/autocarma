@@ -33,7 +33,7 @@ const SimpleTable = ({ data }) => {
                 <TableCell align="left">License plate</TableCell>
                 <TableCell align="left">Time</TableCell>
                 <TableCell align="left">Rating</TableCell>
-                <TableCell align="left">Actions</TableCell>
+                <TableCell align="center">Actions</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
