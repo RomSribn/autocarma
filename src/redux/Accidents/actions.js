@@ -37,11 +37,6 @@ export const signupFailed = createAction(SIGNUP_FAILED);
 export const signupSuccess = createAction(SIGNUP_SUCCESS);
 export const markeredSuccess = createAction(MARKERED_SUCCESS);
 
-export const loginFailed = createAction(LOGIN_FAILED);
-export const loginSuccess = createAction(LOGIN_SUCCESS);
-export const signupFailed = createAction(SIGNUP_FAILED);
-export const signupSuccess = createAction(SIGNUP_SUCCESS);
-
 export const fetchIdeaCard = () => dispatch => get('accidents')
   .then(data => dispatch(fetchSuccess(data)))
   .catch(error => dispatch(fetchFailed(error)));
