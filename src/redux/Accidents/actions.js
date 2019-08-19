@@ -65,7 +65,6 @@ export const signup = values => dispatch => auth()
     res.user.updateProfile({
       displayName: values.username,
     });
-    console.log(res);
     dispatch(signupSuccess(res.message));
     history.push('/accidents');
   })

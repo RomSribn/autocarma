@@ -1,24 +1,14 @@
 import withFirebaseAuth from 'react-with-firebase-auth';
-import { auth } from 'firebase/app';
 import 'firebase/auth';
 import React from 'react';
 import PropTypes from 'prop-types';
 import Paper from '@material-ui/core/Paper';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-
-import firebaseConfig from 'firebase.js';
+import { providers, firebaseAppAuth } from 'services/Auth';
 import history from 'utils/history';
 
-
 import './Header.scss';
-
-const providers = {
-  googleProvider: new auth.GoogleAuthProvider(),
-};
-
-
-const firebaseAppAuth = firebaseConfig.auth();
 
 const routesUser = [
   '/',
@@ -30,10 +20,7 @@ const routesUser = [
   '/logout',
 ];
 
-const routesGuest = [
-  '/signup',
-  '/login',
-];
+const routesGuest = ['/signup', '/login'];
 
 const CenteredTabs = ({ user, signOut }) => {
   const routes = user ? routesUser : routesGuest;
@@ -47,7 +34,6 @@ const CenteredTabs = ({ user, signOut }) => {
   return (
     <Paper className="tabs-root">
       {user ? (
-
         <Tabs
           className="tabs"
           value={value}
@@ -64,7 +50,6 @@ const CenteredTabs = ({ user, signOut }) => {
           <Tab label="Profile" />
           <Tab label="Logout" onClick={signOut} />
         </Tabs>
-
       ) : (
         <Tabs
           className="tabs"
@@ -86,7 +71,6 @@ export default withFirebaseAuth({
   providers,
   firebaseAppAuth,
 })(CenteredTabs);
-
 
 CenteredTabs.defaultProps = {
   user: null,
