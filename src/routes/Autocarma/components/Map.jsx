@@ -5,9 +5,20 @@ import {
 
 const MyMapComponent = withScriptjs(
   withGoogleMap(props => (
-    <GoogleMap defaultZoom={8} defaultCenter={{ lat: -34.397, lng: 150.644 }}>
+    <GoogleMap
+      onClick={(evt) => {
+        const pnt = evt.latLng;
+        let lat = pnt.lat();
+        lat = lat.toFixed(4);
+        let lng = pnt.lng();
+        lng = lng.toFixed(4);
+        console.log(`Latitude: ${lat}  Longitude: ${lng}`);
+      }}
+      defaultZoom={8}
+      defaultCenter={{ lat: -34.397, lng: 150.644 }}
+    >
       {props.isMarkerShown && (
-        <Marker position={{ lat: -34.397, lng: 150.644 }} onClick={props.onMarkerClick} />
+      <Marker position={{ lat: -34.397, lng: 150.644 }} onClick={props.onMarkerClick} />
       )}
     </GoogleMap>
   )),
