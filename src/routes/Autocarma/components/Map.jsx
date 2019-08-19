@@ -16,7 +16,13 @@ const MyMapComponent = withScriptjs(
         }}
       >
         {props.isMarkerShown
-          && coordinates.map(el => <Marker key={el.id} position={{ lat: el.lat, lng: el.lng }} />)}
+          && coordinates.map(el => (
+            <Marker
+              key={el.id}
+              onDblClick={evt => console.log(`${evt.latLng.lat()} ${evt.latLng.lng()}`)}
+              position={{ lat: el.lat, lng: el.lng }}
+            />
+          ))}
       </GoogleMap>
     );
   }),
