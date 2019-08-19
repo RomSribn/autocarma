@@ -5,6 +5,7 @@ import {
   loginFailed,
   signupSuccess,
   signupFailed,
+  markeredSuccess,
 } from './actions';
 
 const initialState = {
@@ -34,6 +35,13 @@ const initialState = {
       actions: '',
     },
   ],
+  coordinates: [
+    {
+      id: '4n5pxq24kpiob12og9',
+      lat: 50.00008585430338,
+      lng: 36.24283354637146,
+    },
+  ],
   error: '',
 };
 
@@ -58,6 +66,10 @@ const accidents = handleActions(
     [signupFailed]: (state, action) => ({
       ...state,
       error: action.payload,
+    }),
+    [markeredSuccess]: (state, action) => ({
+      ...state,
+      coordinates: [...state.coordinates, action.payload],
     }),
   },
   initialState,
