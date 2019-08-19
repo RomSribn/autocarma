@@ -1,6 +1,6 @@
 @import "_assets/scss/abstractions/variables.scss";
 
-.profile-input {
+.login-input {
   border: 1px solid #dfdfdf;
   color: $gray;
   width: 100%;
@@ -13,7 +13,7 @@
   margin-bottom: 20px;
 }
 
-input.profile-input:focus {
+input.login-input:focus {
   outline: none;
   border: 1px solid $blue;
 }

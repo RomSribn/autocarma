@@ -1,20 +1,21 @@
-@import "./_assets/scss/abstractions/variables.scss";
+@import "_assets/scss/abstractions/variables.scss";
 
-body {
-  color: $black;
+.main {
+  background-color: $background;
 }
 
 #root {
   display: flex;
   flex-direction: column;
   height: 100vh;
-  background-color: #eff3f6;
+  background-color: $background;
 }
 
 div a {
   text-decoration: none;
   color: $outline;
 }
+
 li {
   list-style: none;
 }

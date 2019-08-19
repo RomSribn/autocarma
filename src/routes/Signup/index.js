@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import { login } from 'redux/Accidents/actions';
-import Form from './Login';
+import { signup } from 'redux/Accidents/actions';
+import Form from './Signup';
 
 const mapStateToProps = state => ({
   cards: state.accidents.data,
@@ -8,7 +8,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-  login,
+  signup,
 };
 
 export default connect(

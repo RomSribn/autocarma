@@ -1,19 +1,21 @@
 @import "_assets/scss/abstractions/variables.scss";
 
-.profile-form {
+.login-form {
   margin-top: 25px;
   text-align: center;
   font-size: $small;
 }
+
 .MuiFilledInput-root {
   background-color: #fff;
 }
+
 .MuiInputBase-input.MuiFilledInput-input.MuiInputBase-inputMarginDense.MuiFilledInput-inputMarginDense {
   width: 500px;
   margin-bottom: 10px;
 }
 
-.save-profile {
+.save-login {
   border: none;
   margin-top: 10px;
   padding: 5px;

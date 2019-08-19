@@ -1,19 +1,20 @@
-import Error from '../_assets/shared/Error/components/Error';
-import conf from '../config';
+import { defaultConfig } from 'config';
+import Error from '_assets/shared/Error/components/Error';
 
-const { apiHost } = conf;
+const { apiHost } = defaultConfig;
 
 const customFetch = (url, options = null) => fetch(`${apiHost}/${url}`, {
   ...options,
   headers: {
     'Content-Type': 'application/json',
   },
-}).then((response) => {
-  if (response.ok) {
-    return response.json();
-  }
-  throw new Error(response.statusText);
-});
+})
+  .then((response) => {
+    if (response.ok) {
+      return response.json();
+    }
+    throw new Error(response.statusText);
+  });
 
 export const get = url => customFetch(url);
 
