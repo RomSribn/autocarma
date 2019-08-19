@@ -4,24 +4,22 @@ import {
 } from 'react-google-maps';
 
 const MyMapComponent = withScriptjs(
-  withGoogleMap(props => (
-    <GoogleMap
-      onClick={(evt) => {
-        const pnt = evt.latLng;
-        let lat = pnt.lat();
-        lat = lat.toFixed(4);
-        let lng = pnt.lng();
-        lng = lng.toFixed(4);
-        console.log(`Latitude: ${lat}  Longitude: ${lng}`);
-      }}
-      defaultZoom={8}
-      defaultCenter={{ lat: -34.397, lng: 150.644 }}
-    >
-      {props.isMarkerShown && (
-      <Marker position={{ lat: -34.397, lng: 150.644 }} onClick={props.onMarkerClick} />
-      )}
-    </GoogleMap>
-  )),
+  withGoogleMap((props) => {
+    const { setMarkersCoordinates, coordinates } = props;
+    return (
+      <GoogleMap
+        onClick={evt => setMarkersCoordinates(evt.latLng)}
+        defaultZoom={12}
+        defaultCenter={{
+          lat: 49.988358,
+          lng: 36.232845,
+        }}
+      >
+        {props.isMarkerShown
+          && coordinates.map(el => <Marker key={el.id} position={{ lat: el.lat, lng: el.lng }} />)}
+      </GoogleMap>
+    );
+  }),
 );
 
 export default MyMapComponent;

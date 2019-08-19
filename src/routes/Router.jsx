@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import Autocarma from './Autocarma/Autocarma';
+import Autocarma from './Autocarma/index';
 import Accidents from './Accidents/index';
 import Profile from './Profile/Profile';
 import Signup from './Signup';

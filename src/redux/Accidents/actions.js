@@ -1,5 +1,6 @@
 import { createAction } from 'redux-actions';
 import { auth } from 'firebase/app';
+import uuidv1 from 'uuid/v1';
 import history from 'utils/history';
 
 import {
@@ -15,6 +16,7 @@ import {
   LOGIN_SUCCESS,
   SIGNUP_FAILED,
   SIGNUP_SUCCESS,
+  MARKERED_SUCCESS,
 } from './action_types';
 
 import {
@@ -29,11 +31,11 @@ export const putSuccess = createAction(PUT_SUCCESS);
 export const putFailed = createAction(PUT_FAILED);
 export const deleteSuccess = createAction(DELETE_SUCCESS);
 export const deleteFailed = createAction(DELETE_FAILED);
-
 export const loginFailed = createAction(LOGIN_FAILED);
 export const loginSuccess = createAction(LOGIN_SUCCESS);
 export const signupFailed = createAction(SIGNUP_FAILED);
 export const signupSuccess = createAction(SIGNUP_SUCCESS);
+export const markeredSuccess = createAction(MARKERED_SUCCESS);
 
 export const fetchIdeaCard = () => dispatch => get('accidents')
   .then(data => dispatch(fetchSuccess(data)))
@@ -69,3 +71,12 @@ export const signup = values => dispatch => auth()
     history.push('/accidents');
   })
   .catch(error => dispatch(signupFailed(error.message)));
+
+export const setMarkersCoordinates = pnt => (dispatch) => {
+  const res = {
+    id: uuidv1(),
+    lat: pnt.lat(),
+    lng: pnt.lng(),
+  };
+  dispatch(markeredSuccess(res));
+};
