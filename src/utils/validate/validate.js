@@ -1,14 +1,19 @@
 import * as Yup from 'yup';
+import {
+  requiredMsg,
+  shortMsg,
+  passwordMatchMsg,
+  passwordLowerMsg,
+  passwordUpperMsg,
+  passwordNumericMsg,
+} from './constants';
 
 const passwordCheck = Yup.string()
-  .min(6, 'Too Short!')
-  .matches(/[?=.*[a-z]/, 'The string must contain at least 1 lowercase alphabetical character')
-  .matches(/[?=.*[A-Z]/, 'The string must contain at least 1 uppercase alphabetical character')
-  .matches(/[?=.*[0-9]/, 'The string must contain at least 1 numeric character')
-  .required('Required');
-
-const requiredMsg = 'Sorry, but it`s field is required';
-const passwordMatchMsg = 'Passwords must match ya fool';
+  .min(6, shortMsg)
+  .matches(/[?=.*[a-z]/, passwordLowerMsg)
+  .matches(/[?=.*[A-Z]/, passwordUpperMsg)
+  .matches(/[?=.*[0-9]/, passwordNumericMsg)
+  .required(requiredMsg);
 
 export const ValidateSignup = Yup.object().shape({
   username: Yup.string().required(requiredMsg),

@@ -2,13 +2,15 @@ import React from 'react';
 import { Formik, Field } from 'formik';
 import PropTypes from 'prop-types';
 import history from 'utils/history';
-import { ValidateProfile } from 'utils/validate';
+import { ValidateProfile } from 'utils/validate/validate';
 import Input from './Input';
 import './Form.scss';
 
 const Form = ({ postIdeaCard }) => (
   <div className="form">
-    <div><h1>Personal Information</h1></div>
+    <div>
+      <h1>Personal Information</h1>
+    </div>
     <Formik
       initialValues={{
         username: '',
@@ -86,12 +88,8 @@ const Form = ({ postIdeaCard }) => (
               />
             </div>
 
-            <button
-              className="save-profile"
-              type="submit"
-              disabled={isSubmitting}
-            >
-            Save
+            <button className="save-profile" type="submit" disabled={isSubmitting}>
+              Save
             </button>
           </div>
         </form>

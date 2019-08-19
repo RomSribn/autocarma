@@ -1,15 +1,17 @@
 import React from 'react';
 import { Formik, Field } from 'formik';
 import PropTypes from 'prop-types';
-import { ValidateSignup } from 'utils/validate';
+import { ValidateSignup } from 'utils/validate/validate';
 import Error from '_assets/shared/Error/components/Error';
 import Input from './Input';
 import './Form.scss';
 
 const Form = ({ signup, error }) => (
   <div className="form-signup">
-    {error ? (<Error message={error} />) : null}
-    <div className="signup-title"><h1>Create an account</h1></div>
+    {error ? <Error message={error} /> : null}
+    <div className="signup-title">
+      <h1>Create an account</h1>
+    </div>
     <Formik
       initialValues={{
         username: '',
@@ -25,7 +27,6 @@ const Form = ({ signup, error }) => (
       }) => (
         <form onSubmit={handleSubmit} className="signup-form">
           <div className="inputs-signup">
-
             <div className="input-wrapper">
               <Field
                 component={Input}
@@ -74,12 +75,8 @@ const Form = ({ signup, error }) => (
               />
             </div>
 
-            <button
-              className="save-signup"
-              type="submit"
-              disabled={isSubmitting}
-            >
-            Create
+            <button className="save-signup" type="submit" disabled={isSubmitting}>
+              Create
             </button>
           </div>
         </form>
@@ -89,7 +86,6 @@ const Form = ({ signup, error }) => (
 );
 
 export default Form;
-
 
 Form.propTypes = {
   signup: PropTypes.func.isRequired,
