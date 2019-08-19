@@ -5,8 +5,4 @@ const mapStateToProps = state => ({
   data: state.accidents.data,
 });
 
-
-export default connect(
-  mapStateToProps,
-  null,
-)(Accidents);
+export default connect(mapStateToProps)(Accidents);
