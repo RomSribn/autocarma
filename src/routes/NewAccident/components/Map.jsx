@@ -9,8 +9,9 @@ const MyMapComponent = withScriptjs(
     const { setMarkersCoordinates, coordinates, onChange } = props;
     return (
       <GoogleMap
-        onClick={(evt) => {
-          onChange('coordinates', 345987);
+        onClick={(evt, sd) => {
+          onChange(evt.wa);
+          debugger;
           setMarkersCoordinates(evt.latLng);
         }}
         defaultZoom={12}
@@ -34,24 +35,23 @@ const MyMapComponent = withScriptjs(
 
 const Map = ({
   field,
-  onChange,
   coordinates,
-  handleChange,
+  onChange,
   label,
   type,
   form: { touched, errors },
   ...props
 }) => (
   <MyMapComponent
+    {...field}
+    {...props}
     isMarkerShown
     googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyD65Oc0dbeVFWiWYDd8R5JpeiS0ogQKc0Y"
     loadingElement={<div style={{ height: '70%', margin: '0 0 auto' }} />}
     containerElement={<div style={{ height: '400px', width: '100%' }} />}
     mapElement={<div style={{ height: '100%' }} />}
     coordinates={coordinates}
-    onChange={handleChange}
-    {...field}
-    {...props}
+    onChange={onChange}
   />
 );
 

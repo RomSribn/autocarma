@@ -22,9 +22,7 @@ const Form = ({ setMarkersCoordinates, coordinates }) => (
       // validationSchema={ValidateProfile}
       onSubmit={(values, actions) => {
         // postIdeaCard(values).then(() => history.push('/'));
-        console.log(actions);
-
-        console.log(values);
+        debugger;
       }}
     >
       {({
@@ -100,13 +98,13 @@ const Form = ({ setMarkersCoordinates, coordinates }) => (
             <Field
               component={Map}
               type="textarea"
-              name="description"
+              name="coordinates"
               label="Description"
+              onChange={handleChange}
               onBlur={handleBlur}
               value={values.description}
               setMarkersCoordinates={setMarkersCoordinates}
               coordinates={coordinates}
-              onChange={handleChange}
             />
           </div>
           <button className="save-new-accident" type="submit" disabled={isSubmitting}>
