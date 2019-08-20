@@ -18,7 +18,6 @@ const MyMapComponent = withScriptjs(
           };
           setCurrentMarker(data);
           setFieldValue('coordinates', data);
-          // setMarkersCoordinates(evt.latLng);
         }}
         defaultZoom={12}
         defaultCenter={{
@@ -30,13 +29,13 @@ const MyMapComponent = withScriptjs(
           && markers.map(el => (
             <Marker
               key={el.id}
-              onDblClick={evt => console.log(`${evt.latLng.lat()} ${evt.latLng.lng()}`)}
+              onDblClick={evt => `${evt.latLng.lat()} ${evt.latLng.lng()}`}
               position={el.coordinates}
             />
           ))}
         {currentMarker ? (
           <Marker
-            onDblClick={evt => console.log(`${evt.latLng.lat()} ${evt.latLng.lng()}`)}
+            onDblClick={evt => `${evt.latLng.lat()} ${evt.latLng.lng()}`}
             position={currentMarker}
           />
         ) : null}
@@ -47,13 +46,12 @@ const MyMapComponent = withScriptjs(
 
 const Map = ({
   field,
-  coordinates,
   setFieldValue,
   setCurrentMarker,
   currentMarker,
+  markers,
   label,
   type,
-  form: { touched, errors },
   ...props
 }) => (
   <MyMapComponent
@@ -64,17 +62,18 @@ const Map = ({
     loadingElement={<div style={{ height: '70%', margin: '0 0 auto' }} />}
     containerElement={<div style={{ height: '400px', width: '100%' }} />}
     mapElement={<div style={{ height: '100%' }} />}
-    coordinates={coordinates}
     setFieldValue={setFieldValue}
     setCurrentMarker={setCurrentMarker}
     currentMarker={currentMarker}
+    markers={markers}
   />
 );
 
 export default Map;
 
 const field = {
-  onChange: PropTypes.func.isRequired,
+  setFieldValue: PropTypes.func.isRequired,
+  setCurrentMarker: PropTypes.func.isRequired,
   field: PropTypes.shape({
     name: PropTypes.string.isRequired,
     value: PropTypes.string.isRequired,
@@ -87,6 +86,19 @@ const field = {
   }).isRequired,
   label: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
+  markers: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      type: PropTypes.string.isRequired,
+      license: PropTypes.string.isRequired,
+      time: PropTypes.string.isRequired,
+      rating: PropTypes.number.isRequired,
+    }),
+  ).isRequired,
+  currentMarker: PropTypes.shape({
+    lat: PropTypes.number.isRequired,
+    lng: PropTypes.number.isRequired,
+  }).isRequired,
 };
 
 Map.propTypes = field;

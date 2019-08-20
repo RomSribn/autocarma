@@ -18,7 +18,7 @@ const MyMapComponent = withScriptjs(
           && markers.map(el => (
             <Marker
               key={el.id}
-              onDblClick={evt => console.log(`${evt.latLng.lat()} ${evt.latLng.lng()}`)}
+              onDblClick={evt => `${evt.latLng.lat()} ${evt.latLng.lng()}`}
               position={el.coordinates}
             />
           ))}
