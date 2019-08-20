@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import Accidents from './Accidents';
 
 const mapStateToProps = state => ({
-  data: state.accidents.data,
+  markers: state.accidents.markers,
 });
 
 export default connect(mapStateToProps)(Accidents);

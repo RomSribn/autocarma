@@ -5,7 +5,7 @@ import {
 
 const MyMapComponent = withScriptjs(
   withGoogleMap((props) => {
-    const { coordinates } = props;
+    const { markers } = props;
     return (
       <GoogleMap
         defaultZoom={12}
@@ -15,11 +15,11 @@ const MyMapComponent = withScriptjs(
         }}
       >
         {props.isMarkerShown
-          && coordinates.map(el => (
+          && markers.map(el => (
             <Marker
               key={el.id}
               onDblClick={evt => console.log(`${evt.latLng.lat()} ${evt.latLng.lng()}`)}
-              position={{ lat: el.lat, lng: el.lng }}
+              position={el.coordinates}
             />
           ))}
       </GoogleMap>

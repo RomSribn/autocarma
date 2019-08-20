@@ -6,13 +6,19 @@ import {
 
 const MyMapComponent = withScriptjs(
   withGoogleMap((props) => {
-    const { setMarkersCoordinates, coordinates, onChange } = props;
+    const {
+      markers, setFieldValue, setCurrentMarker, currentMarker,
+    } = props;
     return (
       <GoogleMap
-        onClick={(evt, sd) => {
-          onChange(evt.wa);
-          debugger;
-          setMarkersCoordinates(evt.latLng);
+        onClick={(evt) => {
+          const data = {
+            lat: evt.latLng.lat(),
+            lng: evt.latLng.lng(),
+          };
+          setCurrentMarker(data);
+          setFieldValue('coordinates', data);
+          // setMarkersCoordinates(evt.latLng);
         }}
         defaultZoom={12}
         defaultCenter={{
@@ -21,13 +27,19 @@ const MyMapComponent = withScriptjs(
         }}
       >
         {props.isMarkerShown
-          && coordinates.map(el => (
+          && markers.map(el => (
             <Marker
               key={el.id}
               onDblClick={evt => console.log(`${evt.latLng.lat()} ${evt.latLng.lng()}`)}
-              position={{ lat: el.lat, lng: el.lng }}
+              position={el.coordinates}
             />
           ))}
+        {currentMarker ? (
+          <Marker
+            onDblClick={evt => console.log(`${evt.latLng.lat()} ${evt.latLng.lng()}`)}
+            position={currentMarker}
+          />
+        ) : null}
       </GoogleMap>
     );
   }),
@@ -36,7 +48,9 @@ const MyMapComponent = withScriptjs(
 const Map = ({
   field,
   coordinates,
-  onChange,
+  setFieldValue,
+  setCurrentMarker,
+  currentMarker,
   label,
   type,
   form: { touched, errors },
@@ -51,7 +65,9 @@ const Map = ({
     containerElement={<div style={{ height: '400px', width: '100%' }} />}
     mapElement={<div style={{ height: '100%' }} />}
     coordinates={coordinates}
-    onChange={onChange}
+    setFieldValue={setFieldValue}
+    setCurrentMarker={setCurrentMarker}
+    currentMarker={currentMarker}
   />
 );
 

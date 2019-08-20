@@ -1,13 +1,15 @@
 import { connect } from 'react-redux';
-import { setMarkersCoordinates } from 'redux/Accidents/actions';
+import { setSubmitData, setCurrentMarker } from 'redux/Accidents/actions';
 import NewAccident from './NewAccident';
 
 const mapStateToProps = state => ({
-  coordinates: state.accidents.coordinates,
+  markers: state.accidents.markers,
+  currentMarker: state.accidents.currentMarker,
 });
 
 const mapDispatchToProps = {
-  setMarkersCoordinates,
+  setSubmitData,
+  setCurrentMarker,
 };
 
 export default connect(

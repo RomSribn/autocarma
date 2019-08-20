@@ -1,17 +1,22 @@
 import React from 'react';
 import { Formik, Field } from 'formik';
 import PropTypes from 'prop-types';
+import uuidv1 from 'uuid/v1';
+import history from 'utils/history';
 import { CustomField, CustomFieldTextArea, SimpleSelect } from './Input';
 import Map from './Map';
 import './Form.scss';
 
-const Form = ({ setMarkersCoordinates, coordinates }) => (
+const Form = ({
+  setSubmitData, setCurrentMarker, markers, currentMarker,
+}) => (
   <div className="form-new-accident-wrapper">
     <div className="form-new-accident-title">
       <h1>New Accident</h1>
     </div>
     <Formik
       initialValues={{
+        id: uuidv1(),
         type: '',
         license: '',
         model: '',
@@ -19,10 +24,9 @@ const Form = ({ setMarkersCoordinates, coordinates }) => (
         time: '',
         coordinates: '',
       }}
-      // validationSchema={ValidateProfile}
-      onSubmit={(values, actions) => {
-        // postIdeaCard(values).then(() => history.push('/'));
-        debugger;
+      onSubmit={(values) => {
+        setSubmitData(values);
+        history.push('/accidents');
       }}
     >
       {({
@@ -100,11 +104,13 @@ const Form = ({ setMarkersCoordinates, coordinates }) => (
               type="textarea"
               name="coordinates"
               label="Description"
-              onChange={handleChange}
+              setFieldValue={setFieldValue}
               onBlur={handleBlur}
               value={values.description}
-              setMarkersCoordinates={setMarkersCoordinates}
-              coordinates={coordinates}
+              setSubmitData={setSubmitData}
+              setCurrentMarker={setCurrentMarker}
+              currentMarker={currentMarker}
+              markers={markers}
             />
           </div>
           <button className="save-new-accident" type="submit" disabled={isSubmitting}>
@@ -119,9 +125,19 @@ const Form = ({ setMarkersCoordinates, coordinates }) => (
 export default Form;
 
 Form.propTypes = {
-  setMarkersCoordinates: PropTypes.func.isRequired,
-  coordinates: PropTypes.shape({
+  setCurrentMarker: PropTypes.func.isRequired,
+  setSubmitData: PropTypes.func.isRequired,
+  currentMarker: PropTypes.shape({
     lat: PropTypes.number.isRequired,
     lng: PropTypes.number.isRequired,
   }).isRequired,
+  markers: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      type: PropTypes.string.isRequired,
+      license: PropTypes.string.isRequired,
+      time: PropTypes.string.isRequired,
+      rating: PropTypes.number.isRequired,
+    }),
+  ).isRequired,
 };

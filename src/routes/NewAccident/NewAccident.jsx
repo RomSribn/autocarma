@@ -3,17 +3,25 @@ import PropTypes from 'prop-types';
 import Form from './components/Form';
 import './NewAccident.scss';
 
-const NewAccident = ({ setMarkersCoordinates, coordinates }) => (
+const NewAccident = ({
+  setSubmitData, setCurrentMarker, markers, currentMarker,
+}) => (
   <div className="create-accident-form">
-    <Form setMarkersCoordinates={setMarkersCoordinates} coordinates={coordinates} />
+    <Form
+      setSubmitData={setSubmitData}
+      markers={markers}
+      setCurrentMarker={setCurrentMarker}
+      currentMarker={currentMarker}
+    />
   </div>
 );
 
 export default NewAccident;
 
 NewAccident.propTypes = {
-  setMarkersCoordinates: PropTypes.func.isRequired,
-  coordinates: PropTypes.shape({
+  setSubmitData: PropTypes.func.isRequired,
+  setCurrentMarker: PropTypes.func.isRequired,
+  markers: PropTypes.shape({
     id: PropTypes.string.isRequired,
     lat: PropTypes.number.isRequired,
     lng: PropTypes.number.isRequired,
