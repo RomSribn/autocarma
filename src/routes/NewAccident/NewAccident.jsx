@@ -3,16 +3,18 @@ import PropTypes from 'prop-types';
 import Form from './components/Form';
 import './NewAccident.scss';
 
-const Autocarma = () => (
+const NewAccident = ({ setMarkersCoordinates, coordinates }) => (
   <div className="create-accident-form">
-    <Form />
+    <Form setMarkersCoordinates={setMarkersCoordinates} coordinates={coordinates} />
   </div>
 );
 
-export default Autocarma;
+export default NewAccident;
 
-Autocarma.propTypes = {
+NewAccident.propTypes = {
+  setMarkersCoordinates: PropTypes.func.isRequired,
   coordinates: PropTypes.shape({
+    id: PropTypes.string.isRequired,
     lat: PropTypes.number.isRequired,
     lng: PropTypes.number.isRequired,
   }).isRequired,

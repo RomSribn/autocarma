@@ -5,7 +5,7 @@ import withFirebaseAuth from 'react-with-firebase-auth';
 import { providers, firebaseAppAuth } from 'services/Auth';
 import Autocarma from './Autocarma';
 import Accidents from './Accidents';
-import NewAccident from './NewAccident/NewAccident';
+import NewAccident from './NewAccident';
 import Profile from './Profile/Profile';
 import Signup from './Signup';
 import Login from './Login';

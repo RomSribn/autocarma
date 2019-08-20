@@ -2,9 +2,10 @@ import React from 'react';
 import { Formik, Field } from 'formik';
 import PropTypes from 'prop-types';
 import { CustomField, CustomFieldTextArea, SimpleSelect } from './Input';
+import Map from './Map';
 import './Form.scss';
 
-const Form = () => (
+const Form = ({ setMarkersCoordinates, coordinates }) => (
   <div className="form-new-accident-wrapper">
     <div className="form-new-accident-title">
       <h1>New Accident</h1>
@@ -16,15 +17,18 @@ const Form = () => (
         model: '',
         description: '',
         time: '',
+        coordinates: '',
       }}
       // validationSchema={ValidateProfile}
-      onSubmit={(values) => {
+      onSubmit={(values, actions) => {
         // postIdeaCard(values).then(() => history.push('/'));
+        console.log(actions);
+
         console.log(values);
       }}
     >
       {({
-        values, handleChange, handleBlur, handleSubmit, isSubmitting,
+        values, handleChange, handleBlur, handleSubmit, isSubmitting, setFieldValue,
       }) => (
         <form onSubmit={handleSubmit} className="new-accident-form">
           <div className="new-accident-inputs">
@@ -91,6 +95,20 @@ const Form = () => (
               />
             </div>
           </div>
+
+          <div className="input-wrapper">
+            <Field
+              component={Map}
+              type="textarea"
+              name="description"
+              label="Description"
+              onBlur={handleBlur}
+              value={values.description}
+              setMarkersCoordinates={setMarkersCoordinates}
+              coordinates={coordinates}
+              onChange={handleChange}
+            />
+          </div>
           <button className="save-new-accident" type="submit" disabled={isSubmitting}>
             Save
           </button>
@@ -103,9 +121,9 @@ const Form = () => (
 export default Form;
 
 Form.propTypes = {
-  author: PropTypes.shape({
-    id: PropTypes.number,
-    login: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
+  setMarkersCoordinates: PropTypes.func.isRequired,
+  coordinates: PropTypes.shape({
+    lat: PropTypes.number.isRequired,
+    lng: PropTypes.number.isRequired,
   }).isRequired,
 };

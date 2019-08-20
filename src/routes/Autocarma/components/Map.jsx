@@ -5,10 +5,9 @@ import {
 
 const MyMapComponent = withScriptjs(
   withGoogleMap((props) => {
-    const { setMarkersCoordinates, coordinates } = props;
+    const { coordinates } = props;
     return (
       <GoogleMap
-        onClick={evt => setMarkersCoordinates(evt.latLng)}
         defaultZoom={12}
         defaultCenter={{
           lat: 49.988358,
