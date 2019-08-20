@@ -56,11 +56,6 @@
   border: 1px solid $outline;
   font-size: $small;
   color: $gray;
-  width: 100%;
-  &.select {
-    margin-bottom: 20px;
-    border-radius: 10px;
-  }
 }
 
 .form-item__element--select {

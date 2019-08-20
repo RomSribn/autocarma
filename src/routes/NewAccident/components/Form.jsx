@@ -1,27 +1,26 @@
 import React from 'react';
 import { Formik, Field } from 'formik';
 import PropTypes from 'prop-types';
-import history from 'utils/history';
-import { ValidateProfile } from 'utils/validate/validate';
-import Input from './Input';
+import { CustomField, CustomFieldTextArea, SimpleSelect } from './Input';
 import './Form.scss';
 
-const Form = ({ postIdeaCard }) => (
+const Form = () => (
   <div className="form-new-accident-wrapper">
     <div className="form-new-accident-title">
       <h1>New Accident</h1>
     </div>
     <Formik
       initialValues={{
-        username: '',
-        email: '',
-        oldPassword: '',
-        newPassword: '',
-        confirmPassword: '',
+        type: '',
+        license: '',
+        model: '',
+        description: '',
+        time: '',
       }}
-      validationSchema={ValidateProfile}
+      // validationSchema={ValidateProfile}
       onSubmit={(values) => {
-        postIdeaCard(values).then(() => history.push('/'));
+        // postIdeaCard(values).then(() => history.push('/'));
+        console.log(values);
       }}
     >
       {({
@@ -30,26 +29,26 @@ const Form = ({ postIdeaCard }) => (
         <form onSubmit={handleSubmit} className="new-accident-form">
           <div className="new-accident-inputs">
             <div className="inputs-col">
-              <div className="input-wrapper">
+              <div className="input-wrapper left">
                 <Field
-                  component={Input}
+                  component={SimpleSelect}
                   type="text"
-                  name="username"
-                  label="Username"
+                  name="type"
+                  label="Type"
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  value={values.username}
+                  value={values.type}
                 />
               </div>
               <div className="input-wrapper">
                 <Field
-                  component={Input}
-                  type="email"
-                  name="email"
-                  label="Email"
+                  component={CustomField}
+                  type="text"
+                  name="license"
+                  label="License plate"
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  value={values.email}
+                  value={values.license}
                 />
               </div>
             </div>
@@ -57,26 +56,39 @@ const Form = ({ postIdeaCard }) => (
             <div className="inputs-col">
               <div className="input-wrapper">
                 <Field
-                  component={Input}
-                  type="password"
-                  name="oldPassword"
-                  label="Old Password"
+                  component={CustomField}
+                  type="text"
+                  name="model"
+                  label="Car model"
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  value={values.oldPassword}
+                  value={values.model}
                 />
               </div>
               <div className="input-wrapper">
                 <Field
-                  component={Input}
-                  type="password"
-                  name="newPassword"
-                  label="New Password"
+                  component={CustomField}
+                  type="date"
+                  name="time"
+                  label="Happened at"
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  value={values.newPassword}
+                  value={values.time}
                 />
               </div>
+            </div>
+          </div>
+          <div className="inputs-col left">
+            <div className="input-wrapper">
+              <Field
+                component={CustomFieldTextArea}
+                type="textarea"
+                name="description"
+                label="Description"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.description}
+              />
             </div>
           </div>
           <button className="save-new-accident" type="submit" disabled={isSubmitting}>
@@ -91,7 +103,6 @@ const Form = ({ postIdeaCard }) => (
 export default Form;
 
 Form.propTypes = {
-  postIdeaCard: PropTypes.func.isRequired,
   author: PropTypes.shape({
     id: PropTypes.number,
     login: PropTypes.string.isRequired,

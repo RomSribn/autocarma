@@ -12,12 +12,37 @@
   flex-direction: column;
   text-align: center;
   justify-content: center;
+  padding-left: 60px;
+  padding-right: 60px;
 }
 
 .new-accident-inputs {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   flex-wrap: wrap;
+}
+
+.inputs-textarea {
+  width: 100%;
+  border: 1px solid #dfdfdf;
+  color: rgba(0, 0, 0, 0.54);
+  width: 100%;
+  height: 50px;
+  padding: 10px;
+  padding-right: 60px;
+  border-radius: 10px;
+  font-size: 14pt;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.left {
+  text-align: left;
+}
+
+.inputs-textarea:focus {
+  outline: none;
+  border: 1px solid $blue;
 }
 
 .save-new-accident {
