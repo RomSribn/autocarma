@@ -39,8 +39,6 @@ const CenteredTabs = ({
   };
 
   const [value, setValue] = React.useState(initialPage());
-  console.log(value);
-  console.log(`${history.location.pathname} ${routes.indexOf(history.location.pathname)}`);
   function handleChange(event, newValue) {
     history.push(routes[newValue]);
     setValue(newValue);

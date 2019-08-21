@@ -3,20 +3,13 @@ import { Formik, Field } from 'formik';
 import PropTypes from 'prop-types';
 import uuidv1 from 'uuid/v1';
 import history from 'utils/history';
-<<<<<<< HEAD
-=======
 import { ref } from 'services/FirebaseDB';
->>>>>>> db-setup
 import { CustomField, CustomFieldTextArea, SimpleSelect } from './Input';
 import Map from './Map';
 import './Form.scss';
 
 const Form = ({
-<<<<<<< HEAD
-  setSubmitData, setCurrentMarker, markers, currentMarker,
-=======
   setSubmitData, setCurrentMarker, markers, currentMarker, user,
->>>>>>> db-setup
 }) => (
   <div className="form-new-accident-wrapper">
     <div className="form-new-accident-title">
@@ -31,17 +24,11 @@ const Form = ({
         description: '',
         time: '',
         coordinates: '',
-<<<<<<< HEAD
-      }}
-      onSubmit={(values) => {
-        setSubmitData(values);
-=======
         author: user,
       }}
       onSubmit={(values) => {
         setSubmitData(values);
         ref.push(values);
->>>>>>> db-setup
         history.push('/accidents');
       }}
     >
@@ -156,8 +143,5 @@ Form.propTypes = {
       rating: PropTypes.number.isRequired,
     }),
   ).isRequired,
-<<<<<<< HEAD
-=======
   user: PropTypes.string.isRequired,
->>>>>>> db-setup
 };

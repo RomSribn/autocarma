@@ -4,11 +4,7 @@ import Form from './components/Form';
 import './NewAccident.scss';
 
 const NewAccident = ({
-<<<<<<< HEAD
-  setSubmitData, setCurrentMarker, markers, currentMarker,
-=======
   setSubmitData, setCurrentMarker, markers, currentMarker, user,
->>>>>>> db-setup
 }) => (
   <div className="create-accident-form">
     <Form
@@ -16,10 +12,7 @@ const NewAccident = ({
       markers={markers}
       setCurrentMarker={setCurrentMarker}
       currentMarker={currentMarker}
-<<<<<<< HEAD
-=======
       user={user}
->>>>>>> db-setup
     />
   </div>
 );
@@ -42,8 +35,5 @@ NewAccident.propTypes = {
       rating: PropTypes.number.isRequired,
     }),
   ).isRequired,
-<<<<<<< HEAD
-=======
-  author: PropTypes.string.isRequired,
->>>>>>> db-setup
+  user: PropTypes.string.isRequired,
 };

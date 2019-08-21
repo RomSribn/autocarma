@@ -15,28 +15,11 @@ import {
   SET_CURRENT_MARKER_SUCCESS,
 } from './action_types';
 
-<<<<<<< HEAD
-import {
-  get, post, put, del,
-} from '../../services/Fetch';
-
-export const fetchSuccess = createAction(FETCH_SUCCESS);
-export const fetchFailed = createAction(FETCH_FAILED);
-export const postSuccess = createAction(POST_SUCCESS);
-export const postFailed = createAction(POST_FAILED);
-export const putSuccess = createAction(PUT_SUCCESS);
-export const putFailed = createAction(PUT_FAILED);
-export const deleteSuccess = createAction(DELETE_SUCCESS);
-export const deleteFailed = createAction(DELETE_FAILED);
-export const loginFailed = createAction(LOGIN_FAILED);
-export const loginSuccess = createAction(LOGIN_SUCCESS);
-=======
 export const fetchAccidentsSuccess = createAction(FETCH_ACCIDENTS_SUCCESS);
 export const loginCheckSuccess = createAction(LOGIN_CHECK);
 export const loginFailed = createAction(LOGIN_FAILED);
 export const loginSuccess = createAction(LOGIN_SUCCESS);
 export const logoutSuccess = createAction(LOGOUT_SUCCESS);
->>>>>>> db-setup
 export const signupFailed = createAction(SIGNUP_FAILED);
 export const signupSuccess = createAction(SIGNUP_SUCCESS);
 export const submitSuccess = createAction(SUBMIT_SUCCESS);

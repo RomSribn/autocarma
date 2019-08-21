@@ -4,11 +4,6 @@ import { defaultConfig } from 'config';
 import Map from './components/Map';
 import './Autocarma.scss';
 
-<<<<<<< HEAD
-=======
-console.log(`https://maps.googleapis.com/maps/api/js?key=${defaultConfig.googleApiKey}`);
-debugger;
->>>>>>> db-setup
 const Autocarma = ({ markers }) => (
   <div className="autocarma-content">
     <Map
