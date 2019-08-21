@@ -2,23 +2,20 @@ import { createAction } from 'redux-actions';
 import { auth } from 'firebase/app';
 import history from 'utils/history';
 
+import { showLastItems } from 'services/FirebaseDB';
 import {
-  FETCH_SUCCESS,
-  FETCH_FAILED,
-  POST_SUCCESS,
-  POST_FAILED,
-  DELETE_SUCCESS,
-  DELETE_FAILED,
-  PUT_SUCCESS,
-  PUT_FAILED,
+  FETCH_ACCIDENTS_SUCCESS,
+  LOGIN_CHECK,
   LOGIN_FAILED,
   LOGIN_SUCCESS,
+  LOGOUT_SUCCESS,
   SIGNUP_FAILED,
   SIGNUP_SUCCESS,
   SUBMIT_SUCCESS,
   SET_CURRENT_MARKER_SUCCESS,
 } from './action_types';
 
+<<<<<<< HEAD
 import {
   get, post, put, del,
 } from '../../services/Fetch';
@@ -33,34 +30,40 @@ export const deleteSuccess = createAction(DELETE_SUCCESS);
 export const deleteFailed = createAction(DELETE_FAILED);
 export const loginFailed = createAction(LOGIN_FAILED);
 export const loginSuccess = createAction(LOGIN_SUCCESS);
+=======
+export const fetchAccidentsSuccess = createAction(FETCH_ACCIDENTS_SUCCESS);
+export const loginCheckSuccess = createAction(LOGIN_CHECK);
+export const loginFailed = createAction(LOGIN_FAILED);
+export const loginSuccess = createAction(LOGIN_SUCCESS);
+export const logoutSuccess = createAction(LOGOUT_SUCCESS);
+>>>>>>> db-setup
 export const signupFailed = createAction(SIGNUP_FAILED);
 export const signupSuccess = createAction(SIGNUP_SUCCESS);
 export const submitSuccess = createAction(SUBMIT_SUCCESS);
 export const setCurrentMarkerSuccess = createAction(SET_CURRENT_MARKER_SUCCESS);
 
-export const fetchIdeaCard = () => dispatch => get('accidents')
-  .then(data => dispatch(fetchSuccess(data)))
-  .catch(error => dispatch(fetchFailed(error)));
+export const fetchAccidents = () => dispatch => showLastItems().then((response) => {
+  response.on('value', (snap) => {
+    dispatch(fetchAccidentsSuccess(Object.values(snap.val())));
+  });
+});
 
-export const postIdeaCard = accident => dispatch => post('accidents', accident)
-  .then(data => dispatch(postSuccess(data)))
-  .catch(error => dispatch(postFailed(error.toString())));
-
-export const putIdeaCard = (id, data) => dispatch => put('accidents', id, data)
-  .then(response => dispatch(putSuccess(response)))
-  .catch(error => dispatch(putFailed(error.toString())));
-
-export const deleteIdeaCard = id => dispatch => del('accidents', id)
-  .then(() => dispatch(deleteSuccess(id)))
-  .catch(error => dispatch(deleteFailed(error.toString())));
+export const loginCheck = user => (dispatch) => {
+  if (user) {
+    return dispatch(loginCheckSuccess(user.uid));
+  }
+  return null;
+};
 
 export const login = values => dispatch => auth()
   .signInWithEmailAndPassword(values.email, values.password)
   .then((res) => {
-    dispatch(loginSuccess(res.message));
+    dispatch(loginSuccess(res.user.uid));
     history.push('/accidents');
   })
   .catch(error => dispatch(loginFailed(error.message)));
+
+export const logout = () => dispatch => dispatch(logoutSuccess());
 
 export const signup = values => dispatch => auth()
   .createUserWithEmailAndPassword(values.email, values.password)
@@ -68,7 +71,7 @@ export const signup = values => dispatch => auth()
     res.user.updateProfile({
       displayName: values.username,
     });
-    dispatch(signupSuccess(res.message));
+    dispatch(signupSuccess(res.user.uid));
     history.push('/accidents');
   })
   .catch(error => dispatch(signupFailed(error.message)));

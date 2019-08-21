@@ -2,6 +2,7 @@ import React from 'react';
 import {
   withScriptjs, withGoogleMap, GoogleMap, Marker,
 } from 'react-google-maps';
+import { showLastItems } from 'services/FirebaseDB';
 
 const MyMapComponent = withScriptjs(
   withGoogleMap((props) => {
@@ -18,7 +19,13 @@ const MyMapComponent = withScriptjs(
           && markers.map(el => (
             <Marker
               key={el.id}
+<<<<<<< HEAD
               onDblClick={evt => `${evt.latLng.lat()} ${evt.latLng.lng()}`}
+=======
+              onDblClick={(evt) => {
+                const pos = `${evt.latLng.lat()} ${evt.latLng.lng()}`;
+              }}
+>>>>>>> db-setup
               position={el.coordinates}
             />
           ))}

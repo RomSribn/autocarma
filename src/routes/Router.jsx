@@ -31,6 +31,7 @@ const Router = ({ user }) => (
     <Route component={() => <div>Not found</div>} />
   </Switch>
 );
+
 export default withFirebaseAuth({
   providers,
   firebaseAppAuth,

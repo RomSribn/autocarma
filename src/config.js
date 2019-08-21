@@ -10,6 +10,12 @@ export const defaultConfig = config({
     required: true,
     default: 'http://localhost:3000',
   },
+  googleApiKey: {
+    env: 'REACT_APP_GOOGLE_API_KEY',
+    type: 'string',
+    required: true,
+    default: 'http://localhost:3000',
+  },
 });
 
 export const firebaseConfig = config({

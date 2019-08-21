@@ -5,6 +5,10 @@ import NewAccident from './NewAccident';
 const mapStateToProps = state => ({
   markers: state.accidents.markers,
   currentMarker: state.accidents.currentMarker,
+<<<<<<< HEAD
+=======
+  user: state.accidents.user,
+>>>>>>> db-setup
 });
 
 const mapDispatchToProps = {
