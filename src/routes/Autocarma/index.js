@@ -1,16 +1,8 @@
 import { connect } from 'react-redux';
-import { setMarkersCoordinates } from 'redux/Accidents/actions';
 import Autocarma from './Autocarma';
 
 const mapStateToProps = state => ({
-  coordinates: state.accidents.coordinates,
+  markers: state.accidents.markers,
 });
 
-const mapDispatchToProps = {
-  setMarkersCoordinates,
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(Autocarma);
+export default connect(mapStateToProps)(Autocarma);

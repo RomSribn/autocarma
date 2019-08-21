@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Map from './components/Map';
 import './Autocarma.scss';
 
-const Autocarma = ({ setMarkersCoordinates, coordinates }) => (
+const Autocarma = ({ markers }) => (
   <div className="autocarma-content">
     <Map
       isMarkerShown
@@ -11,8 +11,7 @@ const Autocarma = ({ setMarkersCoordinates, coordinates }) => (
       loadingElement={<div style={{ height: '70%', margin: '0 0 auto' }} />}
       containerElement={<div style={{ height: '400px', width: '70%' }} />}
       mapElement={<div style={{ height: '100%' }} />}
-      setMarkersCoordinates={setMarkersCoordinates}
-      coordinates={coordinates}
+      markers={markers}
     />
   </div>
 );
@@ -20,9 +19,8 @@ const Autocarma = ({ setMarkersCoordinates, coordinates }) => (
 export default Autocarma;
 
 Autocarma.propTypes = {
-  coordinates: PropTypes.shape({
+  markers: PropTypes.shape({
     lat: PropTypes.number.isRequired,
     lng: PropTypes.number.isRequired,
   }).isRequired,
-  setMarkersCoordinates: PropTypes.func.isRequired,
 };
