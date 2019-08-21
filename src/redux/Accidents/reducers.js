@@ -5,7 +5,8 @@ import {
   loginFailed,
   signupSuccess,
   signupFailed,
-  markeredSuccess,
+  submitSuccess,
+  setCurrentMarkerSuccess,
 } from './actions';
 
 const initialState = {
@@ -35,13 +36,20 @@ const initialState = {
       actions: '',
     },
   ],
-  coordinates: [
+  markers: [
     {
       id: '4n5pxq24kpiob12og9',
-      lat: 50.00008585430338,
-      lng: 36.24283354637146,
+      coordinates: {
+        lat: 50.00008585430338,
+        lng: 36.24283354637146,
+      },
+      type: 'Parking law',
+      license: 'AXB8979JV',
+      model: 'Tesla model X',
+      description: 'lorem ipsum doloooororosjl',
     },
   ],
+  currenMarker: {},
   error: '',
 };
 
@@ -67,9 +75,13 @@ const accidents = handleActions(
       ...state,
       error: action.payload,
     }),
-    [markeredSuccess]: (state, action) => ({
+    [submitSuccess]: (state, action) => ({
       ...state,
-      coordinates: [...state.coordinates, action.payload],
+      markers: [...state.markers, action.payload],
+    }),
+    [setCurrentMarkerSuccess]: (state, action) => ({
+      ...state,
+      currentMarker: action.payload,
     }),
   },
   initialState,

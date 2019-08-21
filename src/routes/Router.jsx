@@ -5,6 +5,7 @@ import withFirebaseAuth from 'react-with-firebase-auth';
 import { providers, firebaseAppAuth } from 'services/Auth';
 import Autocarma from './Autocarma';
 import Accidents from './Accidents';
+import NewAccident from './NewAccident';
 import Profile from './Profile/Profile';
 import Signup from './Signup';
 import Login from './Login';
@@ -15,7 +16,7 @@ const Router = ({ user }) => (
       <>
         <Route exact path="/" component={Autocarma} />
         <Route exact path="/accidents" component={Accidents} />
-        <Route exact path="/createAccident" component={() => <div />} />
+        <Route exact path="/createAccident" component={NewAccident} />
         <Route exact path="/myAccidents" component={() => <div />} />
         <Route exact path="/about" component={() => <div />} />
         <Route exact path="/profile" component={Profile} />

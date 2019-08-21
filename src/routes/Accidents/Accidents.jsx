@@ -12,7 +12,7 @@ import FilterMenu from './components/FIlterMenu';
 import AccidentRow from './components/TableRow';
 import './Accidents.scss';
 
-const SimpleTable = ({ data }) => {
+const SimpleTable = ({ markers }) => {
   const [value, setValue] = React.useState(1);
 
   const handleChange = (pageNumber) => {
@@ -37,9 +37,9 @@ const SimpleTable = ({ data }) => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {
-                data.map(accident => (<AccidentRow {...accident} />))
-              }
+              {markers.map(el => (
+                <AccidentRow key={el.id} {...el} id={markers.indexOf(el) + 1} />
+              ))}
             </TableBody>
           </Table>
         </Paper>
@@ -53,7 +53,6 @@ const SimpleTable = ({ data }) => {
           />
         </div>
       </div>
-
     </div>
   );
 };
@@ -61,7 +60,7 @@ const SimpleTable = ({ data }) => {
 export default SimpleTable;
 
 SimpleTable.propTypes = {
-  data: PropTypes.arrayOf(
+  markers: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
       type: PropTypes.string.isRequired,

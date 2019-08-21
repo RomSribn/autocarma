@@ -21,5 +21,11 @@ module.exports = {
     'import/no-extraneous-dependencies': 0,
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
+    'jsx-a11y/label-has-for': [
+      2,
+      {
+        required: { every: ['id'] },
+      },
+    ],
   },
 };
