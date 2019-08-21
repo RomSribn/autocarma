@@ -4,7 +4,8 @@ import PropTypes from 'prop-types';
 import uuidv1 from 'uuid/v1';
 import history from 'utils/history';
 import { ref } from 'services/FirebaseDB';
-import { CustomField, CustomFieldTextArea, SimpleSelect } from './Input';
+import { CustomField, CustomFieldTextArea, SimpleSelect, CustomFileInput } from './Input';
+import Thumb from './Thumb';
 import Map from './Map';
 import './Form.scss';
 
@@ -25,6 +26,7 @@ const Form = ({
         time: '',
         coordinates: '',
         author: user,
+        img: '',
       }}
       onSubmit={(values) => {
         setSubmitData(values);
@@ -116,6 +118,15 @@ const Form = ({
               markers={markers}
             />
           </div>
+          <Field
+          component={CustomFileInput}
+            type="file"
+            onBlur={handleBlur}
+            value={values.img}
+            onChange={event => setFieldValue("file", event.currentTarget.files[0])}
+            currentMarker={currentMarker}
+          />
+          <Thumb file={values.file} />
           <button className="save-new-accident" type="submit" disabled={isSubmitting}>
             Save
           </button>
