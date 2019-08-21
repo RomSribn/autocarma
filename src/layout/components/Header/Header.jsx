@@ -22,10 +22,25 @@ const routesUser = [
 
 const routesGuest = ['/signup', '/login'];
 
-const CenteredTabs = ({ user, signOut }) => {
-  const routes = user ? routesUser : routesGuest;
-  const [value, setValue] = React.useState(routes.indexOf(history.location.pathname));
+const CenteredTabs = ({
+  user, signOut, logout, loginCheck, fetchAccidents,
+}) => {
+  let routes;
+  if (user) {
+    routes = routesUser;
+    fetchAccidents();
+    loginCheck(user);
+  } else {
+    routes = routesGuest;
+  }
+  const initialPage = async () => {
+    const result = await history.location.pathname;
+    return routes.indexOf(result);
+  };
 
+  const [value, setValue] = React.useState(initialPage());
+  console.log(value);
+  console.log(`${history.location.pathname} ${routes.indexOf(history.location.pathname)}`);
   function handleChange(event, newValue) {
     history.push(routes[newValue]);
     setValue(newValue);
@@ -48,7 +63,14 @@ const CenteredTabs = ({ user, signOut }) => {
           <Tab label="My accidents" />
           <Tab label="About" />
           <Tab label="Profile" />
-          <Tab label="Logout" onClick={signOut} />
+          <Tab
+            label="Logout"
+            onClick={() => {
+              logout();
+              setValue(1);
+              signOut().then(() => history.push('/login'));
+            }}
+          />
         </Tabs>
       ) : (
         <Tabs
@@ -77,7 +99,10 @@ CenteredTabs.defaultProps = {
 };
 
 CenteredTabs.propTypes = {
+  fetchAccidents: PropTypes.func.isRequired,
   signOut: PropTypes.func.isRequired,
+  logout: PropTypes.func.isRequired,
+  loginCheck: PropTypes.func.isRequired,
   user: PropTypes.shape({
     id: PropTypes.number.isRequired,
     login: PropTypes.string.isRequired,

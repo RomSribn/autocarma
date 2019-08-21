@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { defaultConfig } from 'config';
 import {
   withScriptjs, withGoogleMap, GoogleMap, Marker,
 } from 'react-google-maps';
@@ -58,7 +59,7 @@ const Map = ({
     {...field}
     {...props}
     isMarkerShown
-    googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyD65Oc0dbeVFWiWYDd8R5JpeiS0ogQKc0Y"
+    googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${defaultConfig.googleApiKey}`}
     loadingElement={<div style={{ height: '70%', margin: '0 0 auto' }} />}
     containerElement={<div style={{ height: '400px', width: '100%' }} />}
     mapElement={<div style={{ height: '100%' }} />}

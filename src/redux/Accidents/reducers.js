@@ -1,8 +1,10 @@
 import { handleActions } from 'redux-actions';
 import {
-  fetchSuccess,
+  fetchAccidentsSuccess,
+  loginCheckSuccess,
   loginSuccess,
   loginFailed,
+  logoutSuccess,
   signupSuccess,
   signupFailed,
   submitSuccess,
@@ -10,32 +12,6 @@ import {
 } from './actions';
 
 const initialState = {
-  data: [
-    {
-      id: 1,
-      type: 'Parking law',
-      license: 'AX87678YU',
-      time: '11/11/2019',
-      rating: 12,
-      actions: '',
-    },
-    {
-      id: 2,
-      type: 'Parking law',
-      license: 'AX87678YU',
-      time: '11/11/2019',
-      rating: 12,
-      actions: '',
-    },
-    {
-      id: 3,
-      type: 'Parking law',
-      license: 'AX87678YU',
-      time: '11/11/2019',
-      rating: 12,
-      actions: '',
-    },
-  ],
   markers: [
     {
       id: '4n5pxq24kpiob12og9',
@@ -51,24 +27,35 @@ const initialState = {
   ],
   currenMarker: {},
   error: '',
+  user: '',
 };
 
 const accidents = handleActions(
   {
-    [fetchSuccess]: (state, action) => ({
+    [fetchAccidentsSuccess]: (state, action) => ({
       ...state,
-      accidents: action.payload,
+      markers: action.payload,
     }),
-    [loginSuccess]: state => ({
+    [loginCheckSuccess]: (state, action) => ({
       ...state,
+      user: action.payload,
+    }),
+    [loginSuccess]: (state, action) => ({
+      ...state,
+      user: action.payload,
       error: '',
     }),
     [loginFailed]: (state, action) => ({
       ...state,
       error: action.payload,
     }),
-    [signupSuccess]: state => ({
+    [logoutSuccess]: state => ({
       ...state,
+      user: '',
+    }),
+    [signupSuccess]: (state, action) => ({
+      ...state,
+      user: action.payload,
       error: '',
     }),
     [signupFailed]: (state, action) => ({
