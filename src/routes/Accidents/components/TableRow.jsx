@@ -7,9 +7,9 @@ import Eye from '@material-ui/icons/RemoveRedEye';
 import './TableRow.scss';
 
 const AccidentRow = ({
-  id, type, license, time, rating,
+  id, type, license, time, rating, uid,
 }) => (
-  <TableRow className="accident-row">
+  <TableRow className={uid}>
     <TableCell component="th" scope="row">
       {id}
     </TableCell>
@@ -22,7 +22,6 @@ const AccidentRow = ({
       <Clear className="clear-icon" fontSize="large" color="disabled" />
     </TableCell>
   </TableRow>
-
 );
 
 export default AccidentRow;
@@ -33,4 +32,5 @@ AccidentRow.propTypes = {
   license: PropTypes.string.isRequired,
   time: PropTypes.string.isRequired,
   rating: PropTypes.number.isRequired,
+  uid: PropTypes.string.isRequired,
 };

@@ -37,7 +37,7 @@ const SimpleTable = ({ markers }) => {
             </TableHead>
             <TableBody>
               {markers.map(el => (
-                <AccidentRow key={el.id} {...el} id={markers.indexOf(el) + 1} />
+                <AccidentRow uid={el.id} key={el.id} {...el} id={markers.indexOf(el) + 1} />
               ))}
             </TableBody>
           </Table>
