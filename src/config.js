@@ -10,7 +10,7 @@ export const defaultConfig = config({
     required: true,
     default: 'http://localhost:3000',
   },
-  googleApiKey: {
+  googleApiUrl: {
     env: 'REACT_APP_GOOGLE_API_KEY',
     type: 'string',
     required: true,

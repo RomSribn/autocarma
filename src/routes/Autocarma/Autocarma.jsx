@@ -8,7 +8,7 @@ const Autocarma = ({ markers }) => (
   <div className="autocarma-content">
     <Map
       isMarkerShown
-      googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${defaultConfig.googleApiKey}`}
+      googleMapURL={defaultConfig.googleApiKey}
       loadingElement={<div style={{ height: '70%', margin: '0 0 auto' }} />}
       containerElement={<div style={{ height: '400px', width: '70%' }} />}
       mapElement={<div style={{ height: '100%' }} />}

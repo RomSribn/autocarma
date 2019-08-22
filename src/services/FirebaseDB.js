@@ -5,5 +5,6 @@ export const ref = database().ref();
 export const showLastItems = async () => {
   const connectDb = await database();
   const reference = await connectDb.ref();
-  return reference;
+  const limit = await reference.limitToLast(10);
+  return limit;
 };

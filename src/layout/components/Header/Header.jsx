@@ -7,25 +7,15 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import { providers, firebaseAppAuth } from 'services/Auth';
 import history from 'utils/history';
+import { routesGuest, routesUser, login } from 'routes/variables';
 
 import './Header.scss';
-
-const routesUser = [
-  '/',
-  '/accidents',
-  '/createAccident',
-  '/myAccidents',
-  '/about',
-  '/profile',
-  '/logout',
-];
-
-const routesGuest = ['/signup', '/login'];
 
 const CenteredTabs = ({
   user, signOut, logout, loginCheck, fetchAccidents,
 }) => {
   let routes;
+
   if (user) {
     routes = routesUser;
     fetchAccidents();
@@ -33,16 +23,18 @@ const CenteredTabs = ({
   } else {
     routes = routesGuest;
   }
-  const initialPage = async () => {
-    const result = await history.location.pathname;
-    return routes.indexOf(result);
-  };
 
-  const [value, setValue] = React.useState(initialPage());
+  const [value, setValue] = React.useState(routes.indexOf(history.location.pathname));
   function handleChange(event, newValue) {
     history.push(routes[newValue]);
     setValue(newValue);
   }
+
+  const onLogout = () => {
+    logout();
+    setValue(routesGuest.indexOf(login));
+    signOut().then(() => history.push(login));
+  };
 
   return (
     <Paper className="tabs-root">
@@ -61,14 +53,7 @@ const CenteredTabs = ({
           <Tab label="My accidents" />
           <Tab label="About" />
           <Tab label="Profile" />
-          <Tab
-            label="Logout"
-            onClick={() => {
-              logout();
-              setValue(1);
-              signOut().then(() => history.push('/login'));
-            }}
-          />
+          <Tab label="Logout" onClick={onLogout} />
         </Tabs>
       ) : (
         <Tabs
