@@ -75,6 +75,17 @@ export const SimpleSelect = ({
   </div>
 );
 
+export const CustomFileInput = ({
+  field, type, form: { touched, errors }, ...props
+}) => (
+  <>
+    <div className="label input-file">
+      <input type={type} className="custom-file-input" {...field} {...props} />
+    </div>
+    {touched[field.name] && errors[field.name] && <div className="error">{errors[field.name]}</div>}
+  </>
+);
+
 const field = {
   field: PropTypes.shape({
     name: PropTypes.string.isRequired,
@@ -93,3 +104,4 @@ const field = {
 CustomField.propTypes = field;
 CustomFieldTextArea.propTypes = field;
 SimpleSelect.propTypes = field;
+CustomFileInput.propTypes = field;

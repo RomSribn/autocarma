@@ -1,7 +1,7 @@
 import React from 'react';
 import { Router } from 'react-router-dom';
 import Routers from 'routes/Router';
-import Layout from 'layout/Layout';
+import Layout from 'layout';
 import history from 'utils/history';
 
 const App = () => (

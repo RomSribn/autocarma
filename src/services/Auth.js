@@ -1,4 +1,4 @@
-import { auth } from 'firebase/app';
+import { auth } from 'firebase';
 import firebaseApp from 'firebase.js';
 
 export const providers = {
