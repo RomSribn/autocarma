@@ -45,10 +45,6 @@ const Form = ({
           handleSubmit,
           isSubmitting,
           setFieldValue,
-          isDragActive,
-          isDragReject,
-          acceptedFiles,
-          rejectedFiles,
         }) => (
           <form onSubmit={handleSubmit} className="new-accident-form">
             <div className="new-accident-inputs">
@@ -142,12 +138,7 @@ const Form = ({
                 values={values}
               />
             </div>
-            <button
-              onClick={() => console.log(values)}
-              className="save-new-accident"
-              type="submit"
-              disabled={isSubmitting}
-            >
+            <button className="save-new-accident" type="submit" disabled={isSubmitting}>
               Save
             </button>
           </form>
