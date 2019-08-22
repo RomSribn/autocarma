@@ -19,7 +19,7 @@ const Form = ({
   const onSubmit = (values) => {
     setSubmitData(values);
     refDB.push(values);
-    values.images.map((el) => refStorage(values.id, el));
+    values.images.map(el => refStorage(values.id, el));
     history.push(accidents);
   };
   return (

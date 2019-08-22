@@ -1,5 +1,4 @@
 import { storage } from 'firebase';
-import { array } from 'prop-types';
 
 const reference = storage().ref();
 
