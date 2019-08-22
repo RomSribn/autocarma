@@ -1,5 +1,8 @@
 @import "_assets/scss/abstractions/variables.scss";
 
+.input-wrapper.dropzone-wrapper {
+  padding: 30px;
+}
 .new-accident-input {
   border: 1px solid #dfdfdf;
   color: $gray;
@@ -44,32 +47,17 @@ input.new-accident-input:focus {
   left: 95%;
 }
 
-.custom-file-input {
-  color: transparent;
-}
-.custom-file-input::-webkit-file-upload-button {
-  visibility: hidden;
-}
-.custom-file-input {
-  color: transparent;
-}
-.custom-file-input::-webkit-file-upload-button {
-  visibility: hidden;
-}
-.custom-file-input::after {
-  content: "Select some files";
+.dropzone {
   display: inline-block;
-  background: green;
-  border-radius: 9px;
-  padding: 8px 18px;
-  outline: none;
-  white-space: nowrap;
-  -webkit-user-select: none;
-  cursor: pointer;
-  text-shadow: 1px 1px #fff;
-  font-size: $small;
+  border-radius: 10px;
+  padding: 20px;
+  background-color: green;
+  color: white;
+  font-size: 15pt;
+  margin-bottom: 30px;
 }
 
-.custom-file-input:active {
-  outline: 0;
+.dropzone-images > * {
+  margin: 10px;
+  border-radius: 5px;
 }

@@ -78,14 +78,7 @@ export const SimpleSelect = ({
 );
 
 export const CustomFileInput = ({
-  field,
-  type,
-  setFieldValue,
-  isDragActive,
-  isDragReject,
-  values,
-  form: { touched, errors },
-  ...props
+  field, setFieldValue, values, form: { touched, errors },
 }) => (
   <>
     <Dropzone
@@ -95,30 +88,23 @@ export const CustomFileInput = ({
         if (acceptedFiles.length === 0) {
           return;
         }
-
-        // on drop we add to the existing files
-        setFieldValue('files', values.images.concat(acceptedFiles));
+        setFieldValue('images', values.images.concat(acceptedFiles));
       }}
-      {...field}
-      {...props}
     >
-      {() => {
-        if (isDragActive) {
-          return 'This file is authorized';
-        }
-
-        if (isDragReject) {
-          return 'This file is not authorized';
-        }
-
-        if (values.images.length === 0) {
-          return <p>Try dragging a file here!</p>;
-        }
-
-        return values.images.map((image, i) => (
-          <Thumb key={i.toString() + image.name} file={image} />
-        ));
-      }}
+      {({ getRootProps, getInputProps, isDragActive }) => (
+        <>
+          <div className="dropzone" {...getRootProps()}>
+            <input {...getInputProps()} />
+            {isDragActive ? "Drop it like it's hot!" : 'Click me or drag a file to upload!'}
+          </div>
+          <br />
+          <div className="dropzone-images">
+            {values.images.length
+              ? values.images.map(file => <Thumb key={values.id} file={file} />)
+              : null}
+          </div>
+        </>
+      )}
     </Dropzone>
     {touched[field.name] && errors[field.name] && <div className="error">{errors[field.name]}</div>}
   </>

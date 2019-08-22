@@ -131,17 +131,23 @@ const Form = ({
                 markers={markers}
               />
             </div>
-            <div className="input-wrapper">
+            <div className="input-wrapper dropzone-wrapper">
               <Field
                 component={CustomFileInput}
                 name="description"
                 label="Description"
                 onChange={handleChange}
+                setFieldValue={setFieldValue}
                 onBlur={handleBlur}
                 values={values}
               />
             </div>
-            <button className="save-new-accident" type="submit" disabled={isSubmitting}>
+            <button
+              onClick={() => console.log(values)}
+              className="save-new-accident"
+              type="submit"
+              disabled={isSubmitting}
+            >
               Save
             </button>
           </form>
