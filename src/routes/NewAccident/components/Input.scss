@@ -22,6 +22,11 @@ input.new-accident-input:focus {
   position: relative;
   text-align: left;
   width: 524px;
+  &.input-file {
+    width: 100%;
+    text-align: right;
+    padding: 20px;
+  }
 }
 
 .MuiSvgIcon-root.filled {
@@ -37,4 +42,34 @@ input.new-accident-input:focus {
   font-size: $normal;
   top: 43%;
   left: 95%;
+}
+
+.custom-file-input {
+  color: transparent;
+}
+.custom-file-input::-webkit-file-upload-button {
+  visibility: hidden;
+}
+.custom-file-input {
+  color: transparent;
+}
+.custom-file-input::-webkit-file-upload-button {
+  visibility: hidden;
+}
+.custom-file-input::after {
+  content: "Select some files";
+  display: inline-block;
+  background: green;
+  border-radius: 9px;
+  padding: 8px 18px;
+  outline: none;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  cursor: pointer;
+  text-shadow: 1px 1px #fff;
+  font-size: $small;
+}
+
+.custom-file-input:active {
+  outline: 0;
 }
