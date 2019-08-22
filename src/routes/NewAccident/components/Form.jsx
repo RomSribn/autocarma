@@ -5,7 +5,9 @@ import uuidv1 from 'uuid/v1';
 import history from 'utils/history';
 import { ref } from 'services/FirebaseDB';
 import { accidents } from 'routes/variables';
-import { CustomField, CustomFieldTextArea, SimpleSelect } from './Input';
+import {
+  CustomField, CustomFieldTextArea, SimpleSelect, CustomFileInput,
+} from './Input';
 import Map from './Map';
 import './Form.scss';
 
@@ -32,12 +34,21 @@ const Form = ({
           time: '',
           coordinates: '',
           author: user,
-          img: '',
+          images: [],
         }}
         onSubmit={onSubmit}
       >
         {({
-          values, handleChange, handleBlur, handleSubmit, isSubmitting, setFieldValue,
+          values,
+          handleChange,
+          handleBlur,
+          handleSubmit,
+          isSubmitting,
+          setFieldValue,
+          isDragActive,
+          isDragReject,
+          acceptedFiles,
+          rejectedFiles,
         }) => (
           <form onSubmit={handleSubmit} className="new-accident-form">
             <div className="new-accident-inputs">
@@ -118,6 +129,16 @@ const Form = ({
                 setCurrentMarker={setCurrentMarker}
                 currentMarker={currentMarker}
                 markers={markers}
+              />
+            </div>
+            <div className="input-wrapper">
+              <Field
+                component={CustomFileInput}
+                name="description"
+                label="Description"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                values={values}
               />
             </div>
             <button className="save-new-accident" type="submit" disabled={isSubmitting}>

@@ -2,7 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Clear from '@material-ui/icons/Clear';
 import Check from '@material-ui/icons/Check';
+import Dropzone from 'react-dropzone';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
+import Thumb from './Thumb';
 import './Input.scss';
 
 export const CustomField = ({
@@ -76,12 +78,48 @@ export const SimpleSelect = ({
 );
 
 export const CustomFileInput = ({
-  field, type, form: { touched, errors }, ...props
+  field,
+  type,
+  setFieldValue,
+  isDragActive,
+  isDragReject,
+  values,
+  form: { touched, errors },
+  ...props
 }) => (
   <>
-    <div className="label input-file">
-      <input type={type} className="custom-file-input" {...field} {...props} />
-    </div>
+    <Dropzone
+      accept="image/*"
+      onDrop={(acceptedFiles) => {
+        // do nothing if no files
+        if (acceptedFiles.length === 0) {
+          return;
+        }
+
+        // on drop we add to the existing files
+        setFieldValue('files', values.images.concat(acceptedFiles));
+      }}
+      {...field}
+      {...props}
+    >
+      {() => {
+        if (isDragActive) {
+          return 'This file is authorized';
+        }
+
+        if (isDragReject) {
+          return 'This file is not authorized';
+        }
+
+        if (values.images.length === 0) {
+          return <p>Try dragging a file here!</p>;
+        }
+
+        return values.images.map((image, i) => (
+          <Thumb key={i.toString() + image.name} file={image} />
+        ));
+      }}
+    </Dropzone>
     {touched[field.name] && errors[field.name] && <div className="error">{errors[field.name]}</div>}
   </>
 );
@@ -104,4 +142,7 @@ const field = {
 CustomField.propTypes = field;
 CustomFieldTextArea.propTypes = field;
 SimpleSelect.propTypes = field;
-CustomFileInput.propTypes = field;
+CustomFileInput.propTypes = {
+  ...field,
+  setFieldValue: PropTypes.func.isRequired,
+};
