@@ -18,7 +18,13 @@ const AccidentRow = ({
     <TableCell align="left">{time}</TableCell>
     <TableCell align="left">{rating}</TableCell>
     <TableCell align="center">
-      <Eye fontSize="large" color="disabled" />
+      <Eye
+        fontSize="large"
+        color="disabled"
+        onClick={(evt) => {
+          console.log(evt.target.parentElement.parentElement);
+        }}
+      />
       <Clear className="clear-icon" fontSize="large" color="disabled" />
     </TableCell>
   </TableRow>
