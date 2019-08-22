@@ -3,7 +3,8 @@ import { Formik, Field } from 'formik';
 import PropTypes from 'prop-types';
 import uuidv1 from 'uuid/v1';
 import history from 'utils/history';
-import { ref } from 'services/FirebaseDB';
+import { refDB } from 'services/FirebaseDB';
+import { refStorage } from 'services/FirebaseStorage';
 import { accidents } from 'routes/variables';
 import {
   CustomField, CustomFieldTextArea, SimpleSelect, CustomFileInput,
@@ -11,12 +12,14 @@ import {
 import Map from './Map';
 import './Form.scss';
 
+
 const Form = ({
   setSubmitData, setCurrentMarker, markers, currentMarker, user,
 }) => {
   const onSubmit = (values) => {
     setSubmitData(values);
-    ref.push(values);
+    refDB.push(values);
+    values.images.map((el) => refStorage(values.id, el));
     history.push(accidents);
   };
   return (
