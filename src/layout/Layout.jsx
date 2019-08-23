@@ -24,4 +24,5 @@ Layout.propTypes = {
   fetchAccidents: PropTypes.func.isRequired,
   logout: PropTypes.func.isRequired,
   loginCheck: PropTypes.func.isRequired,
+  fetchUsers: PropTypes.func.isRequired,
 };

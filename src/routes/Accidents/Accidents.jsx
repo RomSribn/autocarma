@@ -36,20 +36,16 @@ const SimpleTable = ({ markers, gettingId, fetchUsers }) => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {markers.map((el) => {
-                debugger;
-
-                return (
-                  <AccidentRow
-                    gettingId={gettingId}
-                    fetchUsers={fetchUsers}
-                    currentId={el[0]}
-                    key={el[0]}
-                    {...el[1]}
-                    id={markers.indexOf(el) + 1}
-                  />
-                );
-              })}
+              {markers.map(el => (
+                <AccidentRow
+                  gettingId={gettingId}
+                  fetchUsers={fetchUsers}
+                  currentId={el[0]}
+                  key={el[0]}
+                  {...el[1]}
+                  id={markers.indexOf(el) + 1}
+                />
+              ))}
             </TableBody>
           </Table>
         </Paper>
