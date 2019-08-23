@@ -2,7 +2,7 @@ import { createAction } from 'redux-actions';
 import { auth } from 'firebase/app';
 import history from 'utils/history';
 
-import { showLastItems, showUsers } from 'services/FirebaseDB';
+import { showLastItems, showUserPost } from 'services/FirebaseDB';
 import {
   FETCH_USERS_SUCCESS,
   FETCH_ACCIDENTS_SUCCESS,
@@ -42,16 +42,16 @@ export const fetchAccidents = () => dispatch => showLastItems().then((response) 
   });
 });
 
-export const fetchUsers = () => dispatch => showUsers().then((response) => {
+export const fetchUsers = user => dispatch => showUserPost(user).then((response) => {
   response.on('value', (snap) => {
     const value = snap.val();
     let result;
     if (value) {
-      result = Object.entries(value);
+      const rawResult = Object.values(value);
+      result = rawResult;
     } else {
       result = null;
     }
-    debugger;
     dispatch(fetchUsersSuccess(result));
   });
 });

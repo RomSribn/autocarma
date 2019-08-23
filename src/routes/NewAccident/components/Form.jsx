@@ -18,7 +18,7 @@ const Form = ({
   const onSubmit = (values) => {
     const postId = refPostsDB.push(values).key;
     setSubmitData([postId, values]);
-    refUsersDB(user).push({ postId });
+    refUsersDB(user).push({ ...values, id: postId });
     values.images.map(el => refStorage(postId, el));
     history.push(accidents);
   };
