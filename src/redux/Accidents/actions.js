@@ -13,6 +13,7 @@ import {
   SIGNUP_SUCCESS,
   SUBMIT_SUCCESS,
   SET_CURRENT_MARKER_SUCCESS,
+  GET_ID_SUCCESS,
 } from './action_types';
 
 export const fetchAccidentsSuccess = createAction(FETCH_ACCIDENTS_SUCCESS);
@@ -24,10 +25,18 @@ export const signupFailed = createAction(SIGNUP_FAILED);
 export const signupSuccess = createAction(SIGNUP_SUCCESS);
 export const submitSuccess = createAction(SUBMIT_SUCCESS);
 export const setCurrentMarkerSuccess = createAction(SET_CURRENT_MARKER_SUCCESS);
+export const getIdSuccess = createAction(GET_ID_SUCCESS);
 
 export const fetchAccidents = () => dispatch => showLastItems().then((response) => {
   response.on('value', (snap) => {
-    dispatch(fetchAccidentsSuccess(Object.values(snap.val())));
+    const value = snap.val();
+    let result;
+    if (value) {
+      result = Object.entries(value);
+    } else {
+      result = null;
+    }
+    dispatch(fetchAccidentsSuccess(result));
   });
 });
 
@@ -62,3 +71,5 @@ export const signup = values => dispatch => auth()
 export const setSubmitData = res => dispatch => dispatch(submitSuccess(res));
 
 export const setCurrentMarker = res => dispatch => dispatch(setCurrentMarkerSuccess(res));
+
+export const gettingId = res => dispatch => dispatch(getIdSuccess(res));

@@ -1,7 +1,6 @@
 import React from 'react';
 import { Formik, Field } from 'formik';
 import PropTypes from 'prop-types';
-import uuidv1 from 'uuid/v1';
 import history from 'utils/history';
 import { refDB } from 'services/FirebaseDB';
 import { refStorage } from 'services/FirebaseStorage';
@@ -18,8 +17,8 @@ const Form = ({
 }) => {
   const onSubmit = (values) => {
     setSubmitData(values);
-    refDB.push(values);
-    values.images.map(el => refStorage(values.id, el));
+    const postId = refDB.push(values).key;
+    values.images.map(el => refStorage(postId, el));
     history.push(accidents);
   };
   return (
@@ -29,7 +28,6 @@ const Form = ({
       </div>
       <Formik
         initialValues={{
-          id: uuidv1(),
           type: '',
           license: '',
           model: '',

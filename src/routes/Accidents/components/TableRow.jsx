@@ -7,9 +7,9 @@ import Eye from '@material-ui/icons/RemoveRedEye';
 import './TableRow.scss';
 
 const AccidentRow = ({
-  id, type, license, time, rating, uid,
+  id, type, license, time, rating, currentId, gettingId,
 }) => (
-  <TableRow className={uid}>
+  <TableRow>
     <TableCell component="th" scope="row">
       {id}
     </TableCell>
@@ -21,8 +21,8 @@ const AccidentRow = ({
       <Eye
         fontSize="large"
         color="disabled"
-        onClick={(evt) => {
-          console.log(evt.target.parentElement.parentElement);
+        onClick={() => {
+          gettingId(currentId);
         }}
       />
       <Clear className="clear-icon" fontSize="large" color="disabled" />
@@ -38,5 +38,6 @@ AccidentRow.propTypes = {
   license: PropTypes.string.isRequired,
   time: PropTypes.string.isRequired,
   rating: PropTypes.number.isRequired,
-  uid: PropTypes.string.isRequired,
+  currentId: PropTypes.string.isRequired,
+  gettingId: PropTypes.func.isRequired,
 };
