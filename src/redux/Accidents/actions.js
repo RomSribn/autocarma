@@ -2,8 +2,9 @@ import { createAction } from 'redux-actions';
 import { auth } from 'firebase/app';
 import history from 'utils/history';
 
-import { showLastItems } from 'services/FirebaseDB';
+import { showLastItems, showUsers } from 'services/FirebaseDB';
 import {
+  FETCH_USERS_SUCCESS,
   FETCH_ACCIDENTS_SUCCESS,
   LOGIN_CHECK,
   LOGIN_FAILED,
@@ -16,6 +17,7 @@ import {
   GET_ID_SUCCESS,
 } from './action_types';
 
+export const fetchUsersSuccess = createAction(FETCH_USERS_SUCCESS);
 export const fetchAccidentsSuccess = createAction(FETCH_ACCIDENTS_SUCCESS);
 export const loginCheckSuccess = createAction(LOGIN_CHECK);
 export const loginFailed = createAction(LOGIN_FAILED);
@@ -37,6 +39,20 @@ export const fetchAccidents = () => dispatch => showLastItems().then((response) 
       result = null;
     }
     dispatch(fetchAccidentsSuccess(result));
+  });
+});
+
+export const fetchUsers = () => dispatch => showUsers().then((response) => {
+  response.on('value', (snap) => {
+    const value = snap.val();
+    let result;
+    if (value) {
+      result = Object.entries(value);
+    } else {
+      result = null;
+    }
+    debugger;
+    dispatch(fetchUsersSuccess(result));
   });
 });
 
@@ -69,7 +85,6 @@ export const signup = values => dispatch => auth()
   .catch(error => dispatch(signupFailed(error.message)));
 
 export const setSubmitData = res => (dispatch) => {
-  debugger;
   dispatch(submitSuccess(res));
 };
 

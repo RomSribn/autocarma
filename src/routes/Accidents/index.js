@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { gettingId } from 'redux/Accidents/actions';
+import { gettingId, fetchUsers } from 'redux/Accidents/actions';
 import Accidents from './Accidents';
 
 const mapStateToProps = state => ({
@@ -8,6 +8,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
   gettingId,
+  fetchUsers,
 };
 
 export default connect(

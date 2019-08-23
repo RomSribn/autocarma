@@ -7,7 +7,7 @@ import Eye from '@material-ui/icons/RemoveRedEye';
 import './TableRow.scss';
 
 const AccidentRow = ({
-  id, type, license, time, rating, currentId, gettingId,
+  id, type, license, time, rating, currentId, gettingId, fetchUsers,
 }) => (
   <TableRow>
     <TableCell component="th" scope="row">
@@ -23,6 +23,7 @@ const AccidentRow = ({
         color="disabled"
         onClick={() => {
           gettingId(currentId);
+          fetchUsers();
         }}
       />
       <Clear className="clear-icon" fontSize="large" color="disabled" />
