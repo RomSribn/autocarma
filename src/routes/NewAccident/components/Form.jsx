@@ -2,7 +2,7 @@ import React from 'react';
 import { Formik, Field } from 'formik';
 import PropTypes from 'prop-types';
 import history from 'utils/history';
-import { refDB } from 'services/FirebaseDB';
+import { refPostsDB, refUsersDB } from 'services/FirebaseDB';
 import { refStorage } from 'services/FirebaseStorage';
 import { accidents } from 'routes/variables';
 import {
@@ -16,8 +16,9 @@ const Form = ({
   setSubmitData, setCurrentMarker, markers, currentMarker, user,
 }) => {
   const onSubmit = (values) => {
-    setSubmitData(values);
-    const postId = refDB.push(values).key;
+    const postId = refPostsDB.push(values).key;
+    setSubmitData([postId, values]);
+    refUsersDB(user).push({ postId });
     values.images.map(el => refStorage(postId, el));
     history.push(accidents);
   };

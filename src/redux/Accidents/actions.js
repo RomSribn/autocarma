@@ -68,7 +68,10 @@ export const signup = values => dispatch => auth()
   })
   .catch(error => dispatch(signupFailed(error.message)));
 
-export const setSubmitData = res => dispatch => dispatch(submitSuccess(res));
+export const setSubmitData = res => (dispatch) => {
+  debugger;
+  dispatch(submitSuccess(res));
+};
 
 export const setCurrentMarker = res => dispatch => dispatch(setCurrentMarkerSuccess(res));
 

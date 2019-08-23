@@ -1,6 +1,8 @@
 import { database } from 'firebase';
 
-export const refDB = database().ref();
+export const refPostsDB = database().ref('posts/');
+
+export const refUsersDB = user => database().ref(`users/${user}/`);
 
 export const showLastItems = async () => {
   const connectDb = await database();
