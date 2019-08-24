@@ -16,6 +16,12 @@ export const defaultConfig = config({
     required: true,
     default: 'http://localhost:3000',
   },
+  admin: {
+    env: 'REACT_APP_ADMIN',
+    type: 'string',
+    required: true,
+    default: 'http://localhost:3000',
+  },
 });
 
 export const firebaseConfig = config({

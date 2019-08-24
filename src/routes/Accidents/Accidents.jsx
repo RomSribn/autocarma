@@ -11,7 +11,9 @@ import FilterMenu from './components/FIlterMenu';
 import AccidentRow from './components/TableRow';
 import './Accidents.scss';
 
-const SimpleTable = ({ markers, gettingId, fetchUsers }) => {
+const SimpleTable = ({
+  markers, gettingId, fetchUsers, user,
+}) => {
   const [value, setValue] = React.useState(1);
 
   const handleChange = (pageNumber) => {
@@ -39,7 +41,6 @@ const SimpleTable = ({ markers, gettingId, fetchUsers }) => {
               {markers.map(el => (
                 <AccidentRow
                   gettingId={gettingId}
-                  fetchUsers={fetchUsers}
                   currentId={el[0]}
                   key={el[0]}
                   {...el[1]}

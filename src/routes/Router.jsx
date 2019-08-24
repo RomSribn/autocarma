@@ -50,7 +50,6 @@ export default withFirebaseAuth({
 
 Router.propTypes = {
   user: PropTypes.shape({
-    id: PropTypes.number.isRequired,
     login: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
   }).isRequired,

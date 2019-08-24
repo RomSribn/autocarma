@@ -3,6 +3,7 @@ import { auth } from 'firebase/app';
 import history from 'utils/history';
 
 import { showLastItems, showUserPost } from 'services/FirebaseDB';
+import { getAccidentImages } from 'services/FirebaseStorage';
 import {
   FETCH_USERS_SUCCESS,
   FETCH_ACCIDENTS_SUCCESS,
@@ -90,4 +91,7 @@ export const setSubmitData = res => (dispatch) => {
 
 export const setCurrentMarker = res => dispatch => dispatch(setCurrentMarkerSuccess(res));
 
-export const gettingId = res => dispatch => dispatch(getIdSuccess(res));
+export const gettingId = res => (dispatch) => {
+  getAccidentImages(res).then(resp => console.log(resp));
+  dispatch(getIdSuccess(res));
+};

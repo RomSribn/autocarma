@@ -4,6 +4,7 @@ import Accidents from './Accidents';
 
 const mapStateToProps = state => ({
   markers: state.accidents.markers,
+  users: state.accidents.users,
 });
 
 const mapDispatchToProps = {
