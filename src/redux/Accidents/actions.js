@@ -92,6 +92,6 @@ export const setSubmitData = res => (dispatch) => {
 export const setCurrentMarker = res => dispatch => dispatch(setCurrentMarkerSuccess(res));
 
 export const gettingId = res => (dispatch) => {
-  getAccidentImages(res).then(resp => console.log(resp));
+  getAccidentImages(res);
   dispatch(getIdSuccess(res));
 };

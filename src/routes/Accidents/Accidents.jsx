@@ -11,9 +11,7 @@ import FilterMenu from './components/FIlterMenu';
 import AccidentRow from './components/TableRow';
 import './Accidents.scss';
 
-const SimpleTable = ({
-  markers, gettingId, fetchUsers, user,
-}) => {
+const SimpleTable = ({ markers, gettingId }) => {
   const [value, setValue] = React.useState(1);
 
   const handleChange = (pageNumber) => {
@@ -77,5 +75,4 @@ SimpleTable.propTypes = {
     }),
   ).isRequired,
   gettingId: PropTypes.func.isRequired,
-  fetchUsers: PropTypes.func.isRequired,
 };
