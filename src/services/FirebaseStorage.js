@@ -12,21 +12,6 @@ export const getAccidentImages = async (id) => {
   const postFolder = await reference.child(`${id}/`);
   const response = await postFolder.listAll();
   const arrayLinks = [];
-  response.items.map(async (item) => {
-    const url = await item.getDownloadURL();
-    arrayLinks.push(url);
-  });
+  await response.items.map(item => arrayLinks.push(item.getDownloadURL()));
   return arrayLinks;
 };
-
-// reference
-//   .child(id)
-//   .listAll()
-//   .then((response) => {
-//     const arrayLinks = [];
-//     response.items.map(async (item) => {
-//       const url = await item.getDownloadURL();
-//       arrayLinks.push(url);
-//     });
-//     return arrayLinks;
-//   });

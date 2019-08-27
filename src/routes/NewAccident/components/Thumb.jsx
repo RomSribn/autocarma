@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 const Thumb = ({ file }) => {
   const [loading, setLoading] = React.useState(false);
+
   const [thumb, setThumb] = React.useState(undefined);
 
   const reader = new FileReader();

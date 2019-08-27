@@ -7,6 +7,11 @@ import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import Thumb from './Thumb';
 import './Input.scss';
 
+const drugndropMsg = {
+  active: "Drop it like it's hot!",
+  not: 'Click me or drag a file to upload!',
+};
+
 export const CustomField = ({
   field, label, type, form: { touched, errors }, ...props
 }) => (
@@ -84,7 +89,7 @@ export const CustomFileInput = ({
     <Dropzone
       accept="image/*"
       onDrop={(acceptedFiles) => {
-        // do nothing if no files
+        // do nothing if no files was uplouded
         if (acceptedFiles.length === 0) {
           return;
         }
@@ -95,7 +100,7 @@ export const CustomFileInput = ({
         <>
           <div className="dropzone" {...getRootProps()}>
             <input {...getInputProps()} />
-            {isDragActive ? "Drop it like it's hot!" : 'Click me or drag a file to upload!'}
+            {isDragActive ? drugndropMsg.active : drugndropMsg.not}
           </div>
           <br />
           <div className="dropzone-images">

@@ -11,6 +11,7 @@ const MyMapComponent = withScriptjs(
     const {
       markers, setFieldValue, setCurrentMarker, currentMarker,
     } = props;
+
     return (
       <GoogleMap
         onClick={(evt) => {
@@ -18,6 +19,7 @@ const MyMapComponent = withScriptjs(
             lat: evt.latLng.lat(),
             lng: evt.latLng.lng(),
           };
+
           setCurrentMarker(data);
           setFieldValue('coordinates', data);
         }}
