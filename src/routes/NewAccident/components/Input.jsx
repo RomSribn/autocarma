@@ -84,8 +84,7 @@ export const CustomFileInput = ({
     <Dropzone
       accept="image/*"
       onDrop={(acceptedFiles) => {
-        // do nothing if no files
-        if (acceptedFiles.length === 0) {
+        if (!acceptedFiles.length) {
           return;
         }
         setFieldValue('images', values.images.concat(acceptedFiles));
