@@ -15,7 +15,6 @@ const CenteredTabs = ({
   user, signOut, logout, loginCheck, fetchAccidents,
 }) => {
   let routes;
-
   if (user) {
     routes = routesUser;
   } else {

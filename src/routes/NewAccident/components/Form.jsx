@@ -25,7 +25,7 @@ const Form = ({
   return (
     <div className="form-new-accident-wrapper">
       <div className="form-new-accident-title">
-        <h1>New Accident</h1>
+        <span className="new-accident-title">New Accident</span>
       </div>
       <Formik
         initialValues={{

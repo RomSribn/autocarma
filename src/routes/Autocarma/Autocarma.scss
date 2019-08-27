@@ -1,0 +1,26 @@
+@import "_assets/scss/abstractions/variables.scss";
+
+.autocarma-content {
+  text-align: center;
+  text-align: -webkit-center;
+}
+
+.autocarma-map {
+  .map-title {
+    display: block;
+    font-size: $big;
+    font-weight: bold;
+    padding: 30px;
+    padding-top: 50px;
+  }
+}
+
+.autocarma-carousel {
+  .carousel-title {
+    display: block;
+    font-size: $big;
+    font-weight: bold;
+    padding: 30px;
+    padding-top: 50px;
+  }
+}

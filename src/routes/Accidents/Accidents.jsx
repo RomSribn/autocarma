@@ -20,7 +20,7 @@ const SimpleTable = ({ markers, gettingId }) => {
 
   return (
     <div className="accidents">
-      <h2 className="accidents-title">Accidents via @admin</h2>
+      <span className="accidents-title">Accidents via @admin</span>
       <div className="table-accidents">
         <FilterMenu />
         <Paper>

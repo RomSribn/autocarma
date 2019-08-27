@@ -61,7 +61,7 @@ export const fetchUsers = user => dispatch => showUserPost(user).then((response)
 
 export const loginCheck = user => (dispatch) => {
   if (user) {
-    return dispatch(loginCheckSuccess(user.uid));
+    return dispatch(loginCheckSuccess(user.displayName));
   }
   return null;
 };
