@@ -11,6 +11,7 @@ import {
   submitSuccess,
   setCurrentMarkerSuccess,
   getIdSuccess,
+  getImgSuccess,
 } from './actions';
 
 const initialState = {
@@ -35,6 +36,7 @@ const initialState = {
   user: '',
   currentId: '',
   users: [],
+  images: [],
 };
 
 const accidents = handleActions(
@@ -84,6 +86,10 @@ const accidents = handleActions(
     [getIdSuccess]: (state, action) => ({
       ...state,
       currentId: action.payload,
+    }),
+    [getImgSuccess]: (state, action) => ({
+      ...state,
+      images: action.payload,
     }),
   },
   initialState,

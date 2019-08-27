@@ -7,9 +7,9 @@ export const refStorage = (folder, file) => {
   refAccident.put(file);
 };
 
-export const getAccidentImages = async () => {
+export const getAccidentImages = async (id) => {
   const reference = await storage().ref();
-  const postFolder = await reference.child('-LmybV1VeDUL057dxl-6/');
+  const postFolder = await reference.child(`${id}/`);
   const response = await postFolder.listAll();
   const arrayLinks = [];
   response.items.map(async (item) => {
