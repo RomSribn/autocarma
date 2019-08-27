@@ -1,0 +1,20 @@
+@import "_assets/scss/abstractions/variables.scss";
+
+.viewpage-table {
+  background-color: #fff;
+  padding: 10px;
+  border: 1px solid $outline;
+  border-radius: 5px;
+  font-size: $small;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+  padding: 5px;
+  font-weight: 500;
+  .key {
+    color: $gray;
+  }
+}
