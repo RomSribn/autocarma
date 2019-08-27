@@ -14,6 +14,5 @@ export const showLastItems = async () => {
 export const showUserPost = async (user) => {
   const connectDb = await database();
   const reference = await connectDb.ref(`users/${user}`);
-  // const users = await reference.listAll();
   return reference;
 };

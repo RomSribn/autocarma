@@ -15,6 +15,7 @@ const CenteredTabs = ({
   user, signOut, logout, loginCheck, fetchAccidents,
 }) => {
   let routes;
+
   if (user) {
     routes = routesUser;
   } else {
@@ -22,6 +23,7 @@ const CenteredTabs = ({
   }
 
   const [value, setValue] = React.useState(0);
+
   React.useEffect(() => {
     if (history.location.pathname) {
       setValue(routes.indexOf(history.location.pathname));

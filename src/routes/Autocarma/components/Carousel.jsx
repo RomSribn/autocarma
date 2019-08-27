@@ -6,6 +6,7 @@ import './Carousel.scss';
 
 const Carousel = ({ markers }) => {
   const [activeItemIndex, setState] = React.useState(0);
+
   return (
     <div style={{ padding: '0 60px', maxWidth: '80%', margin: '0 auto' }}>
       <ItemsCarousel
