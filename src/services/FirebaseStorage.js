@@ -11,7 +11,6 @@ export const getAccidentImages = async (id) => {
   const reference = await storage().ref();
   const postFolder = await reference.child(`${id}/`);
   const response = await postFolder.listAll();
-  const arrayLinks = [];
-  await response.items.map(item => arrayLinks.push(item.getDownloadURL()));
-  return arrayLinks;
+
+  return Promise.all(response.items.map(item => item.getDownloadURL()));
 };
