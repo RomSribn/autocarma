@@ -35,12 +35,9 @@ export const getImgSuccess = createAction(GET_IMG_SUCCESS);
 export const fetchAccidents = () => dispatch => showLastItems().then((response) => {
   response.on('value', (snap) => {
     const value = snap.val();
-    let result;
-    if (value) {
-      result = Object.entries(value);
-    } else {
-      result = null;
-    }
+
+    const result = value ? Object.entries(value) : null;
+
     dispatch(fetchAccidentsSuccess(result));
   });
 });
@@ -48,13 +45,9 @@ export const fetchAccidents = () => dispatch => showLastItems().then((response) 
 export const fetchUsers = user => dispatch => showUserPost(user).then((response) => {
   response.on('value', (snap) => {
     const value = snap.val();
-    let result;
-    if (value) {
-      const rawResult = Object.values(value);
-      result = rawResult;
-    } else {
-      result = null;
-    }
+
+    const result = value ? Object.entries(value) : null;
+
     dispatch(fetchUsersSuccess(result));
   });
 });
