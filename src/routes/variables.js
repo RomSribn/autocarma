@@ -5,6 +5,7 @@ export const myAccidents = '/myAccidents';
 export const about = '/about';
 export const profile = '/profile';
 export const logout = '/logout';
+export const viewpage = '/viewpage';
 
 export const signup = '/signup';
 export const login = '/login';

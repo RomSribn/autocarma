@@ -4,6 +4,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
 import Clear from '@material-ui/icons/Clear';
 import Eye from '@material-ui/icons/RemoveRedEye';
+import history from 'utils/history';
 import './TableRow.scss';
 
 const AccidentRow = ({
@@ -23,6 +24,7 @@ const AccidentRow = ({
         color="disabled"
         onClick={() => {
           gettingId(currentId);
+          history.push('/viewpage');
         }}
       />
       <Clear className="clear-icon" fontSize="large" color="disabled" />

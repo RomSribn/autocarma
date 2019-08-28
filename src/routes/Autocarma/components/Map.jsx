@@ -6,7 +6,6 @@ import {
 const MyMapComponent = withScriptjs(
   withGoogleMap((props) => {
     const { markers } = props;
-
     return (
       <GoogleMap
         defaultZoom={12}

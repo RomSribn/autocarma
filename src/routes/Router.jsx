@@ -13,6 +13,7 @@ import {
   logout,
   signup,
   login,
+  viewpage,
 } from './variables';
 import Autocarma from './Autocarma';
 import Accidents from './Accidents';
@@ -20,6 +21,7 @@ import NewAccident from './NewAccident';
 import Profile from './Profile/Profile';
 import Signup from './Signup';
 import Login from './Login';
+import ViewPage from './ViewPage';
 
 const Router = ({ user }) => (
   <Switch>
@@ -32,6 +34,7 @@ const Router = ({ user }) => (
         <Route exact path={about} component={() => <div />} />
         <Route exact path={profile} component={Profile} />
         <Route exact path={logout} component={() => <div />} />
+        <Route exact path={viewpage} component={ViewPage} />
       </>
     ) : (
       <>

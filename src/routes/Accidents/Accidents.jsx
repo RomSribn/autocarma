@@ -1,19 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Table from './components/Table';
-import ViewPage from './components/ViewPage';
+import ViewPage from '../ViewPage/ViewPage';
 
 import './Accidents.scss';
 
 const SimpleTable = ({
-  markers, gettingId, currentId, images,
+  markers, gettingId, currentId, images, dumpingId,
 }) => (
   <div className="accidents">
-    {!currentId ? (
-      <Table markers={markers} gettingId={gettingId} />
-    ) : (
-      <ViewPage markers={markers.filter(el => el[0] === currentId)} images={images} />
-    )}
+    <Table markers={markers} gettingId={gettingId} />
   </div>
 );
 
@@ -30,6 +26,7 @@ SimpleTable.propTypes = {
     }),
   ).isRequired,
   gettingId: PropTypes.func.isRequired,
+  dumpingId: PropTypes.func.isRequired,
   currentId: PropTypes.string.isRequired,
   images: PropTypes.shape([]).isRequired,
 };
