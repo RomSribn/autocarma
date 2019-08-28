@@ -18,13 +18,19 @@ const CenteredTabs = ({
 
   if (user) {
     routes = routesUser;
-    fetchAccidents();
-    loginCheck(user);
   } else {
     routes = routesGuest;
   }
 
-  const [value, setValue] = React.useState(routes.indexOf(history.location.pathname));
+  const [value, setValue] = React.useState(0);
+  React.useEffect(() => {
+    if (history.location.pathname) {
+      setValue(routes.indexOf(history.location.pathname));
+    }
+    fetchAccidents();
+    loginCheck(user);
+  }, [fetchAccidents, loginCheck, routes, user]);
+
   function handleChange(event, newValue) {
     history.push(routes[newValue]);
     setValue(newValue);
@@ -86,9 +92,5 @@ CenteredTabs.propTypes = {
   signOut: PropTypes.func.isRequired,
   logout: PropTypes.func.isRequired,
   loginCheck: PropTypes.func.isRequired,
-  user: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    login: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-  }),
+  user: PropTypes.shape({}),
 };

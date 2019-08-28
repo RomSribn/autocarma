@@ -1,14 +1,14 @@
 @import "_assets/scss/abstractions/variables.scss";
 
 .main {
-  background-color: $background;
+  background-color: transparent;
 }
 
 #root {
   display: flex;
   flex-direction: column;
-  height: 100vh;
   background-color: $background;
+  background-size: cover;
 }
 
 div a {
