@@ -2,8 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Clear from '@material-ui/icons/Clear';
 import Check from '@material-ui/icons/Check';
+import Dropzone from 'react-dropzone';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
+import Thumb from './Thumb';
 import './Input.scss';
+
+const drugndropMsg = {
+  active: "Drop it like it's hot!",
+  not: 'Click me or drag a file to upload!',
+};
 
 export const CustomField = ({
   field, label, type, form: { touched, errors }, ...props
@@ -76,12 +83,34 @@ export const SimpleSelect = ({
 );
 
 export const CustomFileInput = ({
-  field, type, form: { touched, errors }, ...props
+  field, setFieldValue, values, form: { touched, errors },
 }) => (
   <>
-    <div className="label input-file">
-      <input type={type} className="custom-file-input" {...field} {...props} />
-    </div>
+    <Dropzone
+      accept="image/*"
+      onDrop={(acceptedFiles) => {
+        // do nothing if no files was uplouded
+        if (acceptedFiles.length === 0) {
+          return;
+        }
+        setFieldValue('images', values.images.concat(acceptedFiles));
+      }}
+    >
+      {({ getRootProps, getInputProps, isDragActive }) => (
+        <>
+          <div className="dropzone" {...getRootProps()}>
+            <input {...getInputProps()} />
+            {isDragActive ? drugndropMsg.active : drugndropMsg.not}
+          </div>
+          <br />
+          <div className="dropzone-images">
+            {values.images.length
+              ? values.images.map(file => <Thumb key={values.id} file={file} />)
+              : null}
+          </div>
+        </>
+      )}
+    </Dropzone>
     {touched[field.name] && errors[field.name] && <div className="error">{errors[field.name]}</div>}
   </>
 );
@@ -104,4 +133,7 @@ const field = {
 CustomField.propTypes = field;
 CustomFieldTextArea.propTypes = field;
 SimpleSelect.propTypes = field;
-CustomFileInput.propTypes = field;
+CustomFileInput.propTypes = {
+  ...field,
+  setFieldValue: PropTypes.func.isRequired,
+};

@@ -1,20 +1,25 @@
 import React from 'react';
 import { Formik, Field } from 'formik';
 import PropTypes from 'prop-types';
-import uuidv1 from 'uuid/v1';
 import history from 'utils/history';
-import { ref } from 'services/FirebaseDB';
+import { refPostsDB, refUsersDB } from 'services/FirebaseDB';
+import { refStorage } from 'services/FirebaseStorage';
 import { accidents } from 'routes/variables';
-import { CustomField, CustomFieldTextArea, SimpleSelect } from './Input';
+import {
+  CustomField, CustomFieldTextArea, SimpleSelect, CustomFileInput,
+} from './Input';
 import Map from './Map';
 import './Form.scss';
+
 
 const Form = ({
   setSubmitData, setCurrentMarker, markers, currentMarker, user,
 }) => {
   const onSubmit = (values) => {
-    setSubmitData(values);
-    ref.push(values);
+    const postId = refPostsDB.push(values).key;
+    setSubmitData([postId, values]);
+    refUsersDB(user).push({ ...values, id: postId });
+    values.images.map(el => refStorage(postId, el));
     history.push(accidents);
   };
   return (
@@ -24,7 +29,6 @@ const Form = ({
       </div>
       <Formik
         initialValues={{
-          id: uuidv1(),
           type: '',
           license: '',
           model: '',
@@ -32,12 +36,17 @@ const Form = ({
           time: '',
           coordinates: '',
           author: user,
-          img: '',
+          images: [],
         }}
         onSubmit={onSubmit}
       >
         {({
-          values, handleChange, handleBlur, handleSubmit, isSubmitting, setFieldValue,
+          values,
+          handleChange,
+          handleBlur,
+          handleSubmit,
+          isSubmitting,
+          setFieldValue,
         }) => (
           <form onSubmit={handleSubmit} className="new-accident-form">
             <div className="new-accident-inputs">
@@ -118,6 +127,17 @@ const Form = ({
                 setCurrentMarker={setCurrentMarker}
                 currentMarker={currentMarker}
                 markers={markers}
+              />
+            </div>
+            <div className="input-wrapper dropzone-wrapper">
+              <Field
+                component={CustomFileInput}
+                name="description"
+                label="Description"
+                onChange={handleChange}
+                setFieldValue={setFieldValue}
+                onBlur={handleBlur}
+                values={values}
               />
             </div>
             <button className="save-new-accident" type="submit" disabled={isSubmitting}>
