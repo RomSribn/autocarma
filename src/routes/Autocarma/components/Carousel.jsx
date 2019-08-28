@@ -27,7 +27,7 @@ const Carousel = ({ markers }) => {
         rightChevron={'>'}
         leftChevron={'<'}
       >
-        {markers ? markers.map(el => <CarouselItem {...el[1]} />) : null}
+        {markers ? markers.map(el => <CarouselItem key={el[0]} {...el[1]} />) : null}
       </ItemsCarousel>
     </div>
   );

@@ -11,16 +11,19 @@ const MyMapComponent = withScriptjs(
     const {
       markers, setFieldValue, setCurrentMarker, currentMarker,
     } = props;
+
+    const onCLick = (evt) => {
+      const data = {
+        lat: evt.latLng.lat(),
+        lng: evt.latLng.lng(),
+      };
+      setCurrentMarker(data);
+      setFieldValue('coordinates', data);
+    };
+
     return (
       <GoogleMap
-        onClick={(evt) => {
-          const data = {
-            lat: evt.latLng.lat(),
-            lng: evt.latLng.lng(),
-          };
-          setCurrentMarker(data);
-          setFieldValue('coordinates', data);
-        }}
+        onClick={onCLick}
         defaultZoom={12}
         defaultCenter={{
           lat: 49.988358,

@@ -7,6 +7,11 @@ import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import Thumb from './Thumb';
 import './Input.scss';
 
+const drugndropMsg = {
+  active: "Drop it like it's hot!",
+  not: 'Click me or drag a file to upload!',
+};
+
 export const CustomField = ({
   field, label, type, form: { touched, errors }, ...props
 }) => (
@@ -79,35 +84,36 @@ export const SimpleSelect = ({
 
 export const CustomFileInput = ({
   field, setFieldValue, values, form: { touched, errors },
-}) => (
-  <>
-    <Dropzone
-      accept="image/*"
-      onDrop={(acceptedFiles) => {
-        if (!acceptedFiles.length) {
-          return;
-        }
-        setFieldValue('images', values.images.concat(acceptedFiles));
-      }}
-    >
-      {({ getRootProps, getInputProps, isDragActive }) => (
-        <>
-          <div className="dropzone" {...getRootProps()}>
-            <input {...getInputProps()} />
-            {isDragActive ? "Drop it like it's hot!" : 'Click me or drag a file to upload!'}
-          </div>
-          <br />
-          <div className="dropzone-images">
-            {values.images.length
-              ? values.images.map(file => <Thumb key={values.id} file={file} />)
-              : null}
-          </div>
-        </>
+}) => {
+  const onDrop = (acceptedFiles) => {
+    if (acceptedFiles.length) {
+      setFieldValue('images', values.images.concat(acceptedFiles));
+    }
+  };
+
+  return (
+    <>
+      <Dropzone accept="image/*" onDrop={acceptedFiles => onDrop(acceptedFiles)}>
+        {({ getRootProps, getInputProps, isDragActive }) => (
+          <>
+            <div className="dropzone" {...getRootProps()}>
+              <input {...getInputProps()} />
+              {isDragActive ? drugndropMsg.active : drugndropMsg.not}
+            </div>
+            <br />
+            <div className="dropzone-images">
+              {values.images.length
+                && values.images.map(file => <Thumb key={values.id} file={file} />)}
+            </div>
+          </>
+        )}
+      </Dropzone>
+      {touched[field.name] && errors[field.name] && (
+        <div className="error">{errors[field.name]}</div>
       )}
-    </Dropzone>
-    {touched[field.name] && errors[field.name] && <div className="error">{errors[field.name]}</div>}
-  </>
-);
+    </>
+  );
+};
 
 const field = {
   field: PropTypes.shape({

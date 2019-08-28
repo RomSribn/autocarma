@@ -9,28 +9,28 @@ import './TableRow.scss';
 
 const AccidentRow = ({
   id, type, license, time, currentId, gettingId,
-}) => (
-  <TableRow>
-    <TableCell component="th" scope="row">
-      {id}
-    </TableCell>
-    <TableCell align="left">{type}</TableCell>
-    <TableCell align="left">{license}</TableCell>
-    <TableCell align="left">{time}</TableCell>
-    <TableCell align="left">0</TableCell>
-    <TableCell align="center">
-      <Eye
-        fontSize="large"
-        color="disabled"
-        onClick={() => {
-          gettingId(currentId);
-          history.push('/viewpage');
-        }}
-      />
-      <Clear className="clear-icon" fontSize="large" color="disabled" />
-    </TableCell>
-  </TableRow>
-);
+}) => {
+  const onClick = () => {
+    gettingId(currentId);
+    history.push('/viewpage');
+  };
+
+  return (
+    <TableRow>
+      <TableCell component="th" scope="row">
+        {id}
+      </TableCell>
+      <TableCell align="left">{type}</TableCell>
+      <TableCell align="left">{license}</TableCell>
+      <TableCell align="left">{time}</TableCell>
+      <TableCell align="left">0</TableCell>
+      <TableCell align="center">
+        <Eye fontSize="large" color="disabled" onClick={onClick} />
+        <Clear className="clear-icon" fontSize="large" color="disabled" />
+      </TableCell>
+    </TableRow>
+  );
+};
 
 export default AccidentRow;
 

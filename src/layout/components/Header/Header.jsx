@@ -14,13 +14,7 @@ import './Header.scss';
 const CenteredTabs = ({
   user, signOut, logout, loginCheck, fetchAccidents,
 }) => {
-  let routes;
-
-  if (user) {
-    routes = routesUser;
-  } else {
-    routes = routesGuest;
-  }
+  const routes = user ? routesUser : routesGuest;
 
   const [value, setValue] = React.useState(0);
 
