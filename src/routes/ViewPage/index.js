@@ -1,5 +1,4 @@
 import { connect } from 'react-redux';
-import { dumpingId } from 'redux/Accidents/actions';
 import ViewPage from './ViewPage';
 
 const mapStateToProps = state => ({
@@ -8,11 +7,7 @@ const mapStateToProps = state => ({
   images: state.accidents.images,
 });
 
-const mapDispatchToProps = {
-  dumpingId,
-};
-
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
+  null,
 )(ViewPage);

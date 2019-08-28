@@ -17,7 +17,7 @@ import {
   SET_CURRENT_MARKER_SUCCESS,
   GET_ID_SUCCESS,
   GET_IMG_SUCCESS,
-  DUMP_ID_SUCCESS,
+  DUMP_ACCIDENT_SUCCESS,
 } from './action_types';
 
 export const fetchUsersSuccess = createAction(FETCH_USERS_SUCCESS);
@@ -32,7 +32,7 @@ export const submitSuccess = createAction(SUBMIT_SUCCESS);
 export const setCurrentMarkerSuccess = createAction(SET_CURRENT_MARKER_SUCCESS);
 export const getIdSuccess = createAction(GET_ID_SUCCESS);
 export const getImgSuccess = createAction(GET_IMG_SUCCESS);
-export const dumpIdSuccess = createAction(DUMP_ID_SUCCESS);
+export const dumpingAccidentSuccess = createAction(DUMP_ACCIDENT_SUCCESS);
 
 export const fetchAccidents = () => dispatch => showLastItems().then((response) => {
   response.on('value', (snap) => {
@@ -93,4 +93,4 @@ export const gettingId = id => (dispatch) => {
   dispatch(getIdSuccess(id));
 };
 
-export const dumpingId = () => dispatch => dispatch(dumpIdSuccess());
+export const dumpingAccident = id => dispatch => dispatch(dumpingAccidentSuccess(id));

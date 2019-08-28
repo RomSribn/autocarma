@@ -4,9 +4,9 @@ import Table from './components/Table';
 
 import './Accidents.scss';
 
-const SimpleTable = ({ markers, gettingId }) => (
+const SimpleTable = ({ markers, gettingId, dumpingAccident }) => (
   <div className="accidents">
-    <Table markers={markers} gettingId={gettingId} />
+    <Table markers={markers} gettingId={gettingId} dumpingAccident={dumpingAccident} />
   </div>
 );
 
@@ -23,4 +23,5 @@ SimpleTable.propTypes = {
     }),
   ).isRequired,
   gettingId: PropTypes.func.isRequired,
+  dumpingAccident: PropTypes.func.isRequired,
 };

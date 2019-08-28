@@ -8,11 +8,15 @@ import history from 'utils/history';
 import './TableRow.scss';
 
 const AccidentRow = ({
-  id, type, license, time, currentId, gettingId,
+  id, type, license, time, currentId, gettingId, dumpingAccident,
 }) => {
-  const onClick = () => {
+  const onEyeClick = () => {
     gettingId(currentId);
     history.push('/viewpage');
+  };
+
+  const onCrossClick = () => {
+    dumpingAccident(currentId);
   };
 
   return (
@@ -25,8 +29,8 @@ const AccidentRow = ({
       <TableCell align="left">{time}</TableCell>
       <TableCell align="left">0</TableCell>
       <TableCell align="center">
-        <Eye fontSize="large" color="disabled" onClick={onClick} />
-        <Clear className="clear-icon" fontSize="large" color="disabled" />
+        <Eye fontSize="large" color="disabled" onClick={onEyeClick} />
+        <Clear className="clear-icon" fontSize="large" color="disabled" onClick={onCrossClick} />
       </TableCell>
     </TableRow>
   );
@@ -41,4 +45,5 @@ AccidentRow.propTypes = {
   time: PropTypes.string.isRequired,
   currentId: PropTypes.string.isRequired,
   gettingId: PropTypes.func.isRequired,
+  dumpingAccident: PropTypes.func.isRequired,
 };

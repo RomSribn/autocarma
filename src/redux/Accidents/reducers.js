@@ -12,7 +12,7 @@ import {
   setCurrentMarkerSuccess,
   getIdSuccess,
   getImgSuccess,
-  dumpIdSuccess,
+  dumpingAccidentSuccess,
 } from './actions';
 
 const initialState = {
@@ -92,9 +92,9 @@ const accidents = handleActions(
       ...state,
       images: action.payload,
     }),
-    [dumpIdSuccess]: state => ({
+    [dumpingAccidentSuccess]: (state, action) => ({
       ...state,
-      currentId: '',
+      markers: state.markers.filter(marker => marker[0] !== action.payload),
     }),
   },
   initialState,
