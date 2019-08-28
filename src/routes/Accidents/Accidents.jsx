@@ -5,12 +5,14 @@ import ViewPage from './components/ViewPage';
 
 import './Accidents.scss';
 
-const SimpleTable = ({ markers, gettingId, currentId }) => (
+const SimpleTable = ({
+  markers, gettingId, currentId, images,
+}) => (
   <div className="accidents">
     {!currentId ? (
       <Table markers={markers} gettingId={gettingId} />
     ) : (
-      <ViewPage markers={markers.filter(el => el[0] === currentId)} />
+      <ViewPage markers={markers.filter(el => el[0] === currentId)} images={images} />
     )}
   </div>
 );
@@ -29,4 +31,5 @@ SimpleTable.propTypes = {
   ).isRequired,
   gettingId: PropTypes.func.isRequired,
   currentId: PropTypes.string.isRequired,
+  images: PropTypes.shape([]).isRequired,
 };

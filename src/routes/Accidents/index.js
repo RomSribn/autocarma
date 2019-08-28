@@ -6,6 +6,7 @@ const mapStateToProps = state => ({
   markers: state.accidents.markers,
   users: state.accidents.users,
   currentId: state.accidents.currentId,
+  images: state.accidents.images,
 });
 
 const mapDispatchToProps = {

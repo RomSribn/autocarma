@@ -1,11 +1,15 @@
 @import "_assets/scss/abstractions/variables.scss";
 
 .viewpage-table {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   background-color: #fff;
   padding: 10px;
-  border: 1px solid $outline;
+  border: 1px solid #dfdfdf;
   border-radius: 5px;
-  font-size: $small;
+  font-size: 14pt;
+  width: 30%;
 }
 
 .item {

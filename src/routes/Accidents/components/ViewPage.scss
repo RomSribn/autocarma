@@ -1,0 +1,30 @@
+@import "_assets/scss/abstractions/variables.scss";
+
+.viewpage {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 200px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.viewpage-title {
+  display: block;
+  font-size: $big;
+  font-weight: bold;
+  padding: 30px;
+  padding-top: 50px;
+  text-align: center;
+}
+
+.viewpage-media {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  .media-item {
+    width: 100%;
+  }
+}
