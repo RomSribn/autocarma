@@ -1,13 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Table from './components/Table';
-import ViewPage from '../ViewPage/ViewPage';
 
 import './Accidents.scss';
 
-const SimpleTable = ({
-  markers, gettingId, currentId, images, dumpingId,
-}) => (
+const SimpleTable = ({ markers, gettingId }) => (
   <div className="accidents">
     <Table markers={markers} gettingId={gettingId} />
   </div>
@@ -26,7 +23,4 @@ SimpleTable.propTypes = {
     }),
   ).isRequired,
   gettingId: PropTypes.func.isRequired,
-  dumpingId: PropTypes.func.isRequired,
-  currentId: PropTypes.string.isRequired,
-  images: PropTypes.shape([]).isRequired,
 };
