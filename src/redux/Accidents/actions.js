@@ -56,7 +56,11 @@ export const fetchUsers = user => dispatch => showUserPost(user).then((response)
 
 export const loginCheck = user => (dispatch) => {
   if (user) {
-    return dispatch(loginCheckSuccess(user.displayName));
+    const result = {
+      id: user.uid,
+      name: user.displayName,
+    };
+    return dispatch(loginCheckSuccess(result));
   }
   return null;
 };

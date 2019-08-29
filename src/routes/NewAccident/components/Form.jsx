@@ -18,7 +18,7 @@ const Form = ({
   const onSubmit = (values) => {
     const postId = refPostsDB.push(values).key;
     setSubmitData([postId, values]);
-    refUsersDB(user).push({ ...values, id: postId });
+    refUsersDB(user.id).push({ ...values, id: postId });
     values.images.map(el => refStorage(postId, el));
     history.push(accidents);
   };
@@ -35,7 +35,7 @@ const Form = ({
           description: '',
           time: '',
           coordinates: '',
-          author: user,
+          author: user.name,
           images: [],
         }}
         onSubmit={onSubmit}

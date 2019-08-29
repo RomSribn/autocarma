@@ -34,7 +34,10 @@ const initialState = {
   ],
   currenMarker: {},
   error: '',
-  user: '',
+  user: {
+    id: '',
+    name: '',
+  },
   currentId: '',
   users: [],
   images: [],
