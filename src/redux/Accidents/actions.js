@@ -37,7 +37,7 @@ export const dumpingAccidentSuccess = createAction(DUMP_ACCIDENT_SUCCESS);
 export const fetchAccidents = () => dispatch => showLastItems().then((response) => {
   response.on('value', (snap) => {
     const value = snap.val();
-
+    debugger;
     const result = value ? Object.entries(value) : null;
 
     dispatch(fetchAccidentsSuccess(result));
@@ -47,9 +47,10 @@ export const fetchAccidents = () => dispatch => showLastItems().then((response) 
 export const fetchUsers = user => dispatch => showUserPost(user).then((response) => {
   response.on('value', (snap) => {
     const value = snap.val();
-
     const result = value ? Object.values(value) : null;
-
+    const newArray = [];
+    result.forEach(el => newArray.push(el));
+    console.log(newArray);
     dispatch(fetchUsersSuccess(result));
   });
 });

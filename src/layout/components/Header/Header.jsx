@@ -12,7 +12,7 @@ import { routesGuest, routesUser, login } from 'routes/variables';
 import './Header.scss';
 
 const CenteredTabs = ({
-  user, signOut, logout, loginCheck, fetchAccidents,
+  user, signOut, logout, loginCheck, fetchAccidents, fetchUsers,
 }) => {
   const routes = user ? routesUser : routesGuest;
 
@@ -22,9 +22,12 @@ const CenteredTabs = ({
     if (history.location.pathname) {
       setValue(routes.indexOf(history.location.pathname));
     }
-    fetchAccidents();
     loginCheck(user);
-  }, [fetchAccidents, loginCheck, routes, user]);
+    if (user) {
+      if (user.uid === '8mOY0CflD6QXjebbE7ibObU1Shw1') fetchAccidents();
+      fetchUsers(user.uid);
+    }
+  }, [fetchAccidents, fetchUsers, loginCheck, routes, user]);
 
   function handleChange(event, newValue) {
     history.push(routes[newValue]);
@@ -87,5 +90,6 @@ CenteredTabs.propTypes = {
   signOut: PropTypes.func.isRequired,
   logout: PropTypes.func.isRequired,
   loginCheck: PropTypes.func.isRequired,
+  fetchUsers: PropTypes.func.isRequired,
   user: PropTypes.shape({}),
 };
