@@ -91,5 +91,7 @@ CenteredTabs.propTypes = {
   logout: PropTypes.func.isRequired,
   loginCheck: PropTypes.func.isRequired,
   fetchUsers: PropTypes.func.isRequired,
-  user: PropTypes.shape({}),
+  user: PropTypes.shape({
+    uid: PropTypes.string.isRequired,
+  }),
 };
