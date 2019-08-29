@@ -14,3 +14,9 @@ export const showUserPost = async (user) => {
   const connectDb = await database();
   return connectDb.ref(`users/${user}`);
 };
+
+export const deletePost = async (id) => {
+  const connectDb = await database();
+  const reference = await connectDb.ref(`posts/${id}`);
+  return reference.remove();
+};

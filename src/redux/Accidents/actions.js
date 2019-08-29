@@ -2,7 +2,7 @@ import { createAction } from 'redux-actions';
 import { auth } from 'firebase/app';
 import history from 'utils/history';
 
-import { showLastItems, showUserPost } from 'services/FirebaseDB';
+import { showLastItems, showUserPost, deletePost } from 'services/FirebaseDB';
 import { getAccidentImages } from 'services/FirebaseStorage';
 import {
   FETCH_USERS_SUCCESS,
@@ -93,4 +93,7 @@ export const gettingId = id => (dispatch) => {
   dispatch(getIdSuccess(id));
 };
 
-export const dumpingAccident = id => dispatch => dispatch(dumpingAccidentSuccess(id));
+export const dumpingAccident = id => (dispatch) => {
+  deletePost(id);
+  dispatch(dumpingAccidentSuccess(id));
+};
