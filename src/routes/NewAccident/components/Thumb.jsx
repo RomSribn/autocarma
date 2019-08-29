@@ -2,15 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Thumb = ({ file }) => {
-  const [loading, setLoading] = React.useState(false);
-  const [thumb, setThumb] = React.useState(undefined);
+  let loading;
+  let thumb;
 
   const reader = new FileReader();
 
-  reader.onloadend = () => {
-    setLoading(false);
-    setThumb(reader.result);
-  };
+  React.useEffect(
+    (reader.onloadend = () => {
+      loading = false;
+      thumb = reader.result;
+    }),
+    [loading, thumb],
+  );
   if (!file) {
     return null;
   }

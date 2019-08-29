@@ -76,9 +76,9 @@ const accidents = handleActions(
       ...state,
       error: action.payload,
     }),
-    [submitSuccess]: (state, action) => ({
+    [submitSuccess]: state => ({
       ...state,
-      markers: [...state.markers, action.payload],
+      markers: [...state.markers],
     }),
     [setCurrentMarkerSuccess]: (state, action) => ({
       ...state,
