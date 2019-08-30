@@ -1,5 +1,6 @@
 import React from 'react';
 import { Formik, Field } from 'formik';
+import PropTypes from 'prop-types';
 import Drawer from 'react-drag-drawer';
 import { FilterSelectType, FilterSelectTime } from './FilterSelects';
 import './FilterMenu.scss';
@@ -63,3 +64,7 @@ const FilterMenu = ({ filtering }) => {
 };
 
 export default FilterMenu;
+
+FilterMenu.propTypes = {
+  filtering: PropTypes.func.isRequired,
+};

@@ -83,4 +83,8 @@ SimpleTable.propTypes = {
   gettingId: PropTypes.func.isRequired,
   dumpingAccident: PropTypes.func.isRequired,
   filtering: PropTypes.func.isRequired,
+  user: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+  }).isRequired,
 };
