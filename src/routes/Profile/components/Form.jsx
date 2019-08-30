@@ -25,7 +25,7 @@ const Form = ({ postIdeaCard }) => (
       }}
     >
       {({
-        values, handleChange, handleBlur, handleSubmit, isSubmitting,
+        values, handleChange, handleBlur, handleSubmit,
       }) => (
         <form onSubmit={handleSubmit} className="profile-form">
           <div className="inputs-profile">
@@ -88,7 +88,7 @@ const Form = ({ postIdeaCard }) => (
               />
             </div>
 
-            <button className="save-profile" type="submit" disabled={isSubmitting}>
+            <button className="save-profile" type="submit">
               Save
             </button>
           </div>

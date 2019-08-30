@@ -11,14 +11,13 @@ import {
 import Map from './Map';
 import './Form.scss';
 
-
 const Form = ({
   setSubmitData, setCurrentMarker, markers, currentMarker, user,
 }) => {
   const onSubmit = (values) => {
     const postId = refPostsDB.push(values).key;
     setSubmitData([postId, values]);
-    refUsersDB(user.id).push({ [postId]: { ...values, id: postId } });
+    refUsersDB(user.id, postId).set({ ...values, id: postId });
     values.images.map(el => refStorage(postId, el));
     history.push(accidents);
   };
@@ -41,12 +40,7 @@ const Form = ({
         onSubmit={onSubmit}
       >
         {({
-          values,
-          handleChange,
-          handleBlur,
-          handleSubmit,
-          isSubmitting,
-          setFieldValue,
+          values, handleChange, handleBlur, handleSubmit, setFieldValue,
         }) => (
           <form onSubmit={handleSubmit} className="new-accident-form">
             <div className="new-accident-inputs">
@@ -140,7 +134,7 @@ const Form = ({
                 values={values}
               />
             </div>
-            <button className="save-new-accident" type="submit" disabled={isSubmitting}>
+            <button className="save-new-accident" type="submit">
               Save
             </button>
           </form>

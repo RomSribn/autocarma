@@ -11,7 +11,9 @@ import FilterMenu from './FIlterMenu';
 import AccidentRow from './TableRow';
 import './Table.scss';
 
-const SimpleTable = ({ markers, gettingId, dumpingAccident }) => {
+const SimpleTable = ({
+  markers, gettingId, dumpingAccident, filtering, user,
+}) => {
   const [value, setValue] = React.useState(1);
 
   const handleChange = (pageNumber) => {
@@ -20,9 +22,12 @@ const SimpleTable = ({ markers, gettingId, dumpingAccident }) => {
 
   return (
     <>
-      <span className="accidents-title">Accidents via @admin</span>
+      <span className="accidents-title">
+Accidents via @
+        {user.name}
+      </span>
       <div className="table-accidents">
-        <FilterMenu />
+        <FilterMenu filtering={filtering} />
         <Paper>
           <Table className="table">
             <TableHead>
@@ -77,4 +82,5 @@ SimpleTable.propTypes = {
   ).isRequired,
   gettingId: PropTypes.func.isRequired,
   dumpingAccident: PropTypes.func.isRequired,
+  filtering: PropTypes.func.isRequired,
 };

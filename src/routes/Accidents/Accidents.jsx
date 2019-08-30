@@ -4,11 +4,28 @@ import Table from './components/Table';
 
 import './Accidents.scss';
 
-const SimpleTable = ({ markers, gettingId, dumpingAccident }) => (
-  <div className="accidents">
-    <Table markers={markers} gettingId={gettingId} dumpingAccident={dumpingAccident} />
-  </div>
-);
+const SimpleTable = ({
+  markers,
+  users,
+  gettingId,
+  dumpingAccident,
+  filtering,
+  filteredMarkers,
+  user,
+}) => {
+  const checkedMarkers = user.id === '8mOY0CflD6QXjebbE7ibObU1Shw1' ? markers : users;
+  return (
+    <div className="accidents">
+      <Table
+        markers={filteredMarkers.length ? filteredMarkers : checkedMarkers}
+        gettingId={gettingId}
+        dumpingAccident={dumpingAccident}
+        filtering={filtering}
+        user={user}
+      />
+    </div>
+  );
+};
 
 export default SimpleTable;
 
@@ -24,4 +41,5 @@ SimpleTable.propTypes = {
   ).isRequired,
   gettingId: PropTypes.func.isRequired,
   dumpingAccident: PropTypes.func.isRequired,
+  filtering: PropTypes.func.isRequired,
 };

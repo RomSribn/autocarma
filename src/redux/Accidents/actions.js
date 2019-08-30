@@ -18,6 +18,7 @@ import {
   GET_ID_SUCCESS,
   GET_IMG_SUCCESS,
   DUMP_ACCIDENT_SUCCESS,
+  FILTER_SUCCESS,
 } from './action_types';
 
 export const fetchUsersSuccess = createAction(FETCH_USERS_SUCCESS);
@@ -33,6 +34,7 @@ export const setCurrentMarkerSuccess = createAction(SET_CURRENT_MARKER_SUCCESS);
 export const getIdSuccess = createAction(GET_ID_SUCCESS);
 export const getImgSuccess = createAction(GET_IMG_SUCCESS);
 export const dumpingAccidentSuccess = createAction(DUMP_ACCIDENT_SUCCESS);
+export const filterSuccess = createAction(FILTER_SUCCESS);
 
 export const fetchAccidents = () => dispatch => showLastItems().then((response) => {
   response.on('value', (snap) => {
@@ -46,9 +48,9 @@ export const fetchAccidents = () => dispatch => showLastItems().then((response) 
 export const fetchUsers = user => dispatch => showUserPost(user).then((response) => {
   response.on('value', (snap) => {
     const value = snap.val();
-    const result = value ? Object.values(value) : null;
-    const newArray = [];
-    result.map(el => newArray.push(Object.entries(el)));
+
+    const result = value ? Object.entries(value) : null;
+
     dispatch(fetchUsersSuccess(result));
   });
 });
@@ -100,3 +102,5 @@ export const dumpingAccident = id => (dispatch) => {
   deletePost(id);
   dispatch(dumpingAccidentSuccess(id));
 };
+
+export const filtering = values => dispatch => dispatch(filterSuccess(values));

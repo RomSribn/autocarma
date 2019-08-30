@@ -13,6 +13,7 @@ import {
   getIdSuccess,
   getImgSuccess,
   dumpingAccidentSuccess,
+  filterSuccess,
 } from './actions';
 
 const initialState = {
@@ -32,6 +33,7 @@ const initialState = {
       },
     ],
   ],
+  filteredMarkers: [],
   currenMarker: {},
   error: '',
   user: {
@@ -39,7 +41,36 @@ const initialState = {
     name: '',
   },
   currentId: '',
-  users: [],
+  users: [
+    [
+      '-LmxgZcP6t2jvCTAZI1N',
+      {
+        id: '4n5pxq24kpiob12og9',
+        coordinates: {
+          lat: 50.00008585430338,
+          lng: 36.24283354637146,
+        },
+        type: 'Parking law',
+        license: 'AXB8979JV',
+        model: 'Tesla model X',
+        description: 'lorem ipsum doloooororosjl',
+      },
+    ],
+    [
+      '-LmxgZcP6t2jvCTAZI1N',
+      {
+        id: '4n5pxq24kpiob12og9',
+        coordinates: {
+          lat: 50.00008585430338,
+          lng: 36.24283354637146,
+        },
+        type: 'Parking law',
+        license: 'AXB8979JV',
+        model: 'Tesla model X',
+        description: 'lorem ipsum doloooororosjl',
+      },
+    ],
+  ],
   images: [],
 };
 
@@ -98,6 +129,18 @@ const accidents = handleActions(
     [dumpingAccidentSuccess]: (state, action) => ({
       ...state,
       markers: state.markers.filter(marker => marker[0] !== action.payload),
+    }),
+    [filterSuccess]: (state, action) => ({
+      ...state,
+      filteredMarkers: (() => {
+        const checkedMarkers = state.user.id === '8mOY0CflD6QXjebbE7ibObU1Shw1' ? state.markers : state.users;
+        return checkedMarkers.filter((marker) => {
+          if (action.payload.type) {
+            return marker[1].type === action.payload.type;
+          }
+          return true;
+        });
+      })(),
     }),
   },
   initialState,

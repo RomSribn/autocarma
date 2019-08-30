@@ -24,7 +24,7 @@ const CenteredTabs = ({
     }
     loginCheck(user);
     if (user) {
-      if (user.uid === '8mOY0CflD6QXjebbE7ibObU1Shw1') fetchAccidents();
+      fetchAccidents();
       fetchUsers(user.uid);
     }
   }, [fetchAccidents, fetchUsers, loginCheck, routes, user]);
@@ -52,9 +52,8 @@ const CenteredTabs = ({
           centered
         >
           <Tab className="logo-bold" label="Autocarma" />
-          <Tab label="Accidents" />
-          <Tab label="Add new accidents" />
           <Tab label="My accidents" />
+          <Tab label="Add new accidents" />
           <Tab label="About" />
           <Tab label="Profile" />
           <Tab label="Logout" onClick={onLogout} />

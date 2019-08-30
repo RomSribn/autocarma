@@ -7,7 +7,6 @@ import {
   home,
   accidents,
   createAccident,
-  myAccidents,
   about,
   profile,
   logout,
@@ -30,7 +29,6 @@ const Router = ({ user }) => (
         <Route exact path={home} component={Autocarma} />
         <Route exact path={accidents} component={Accidents} />
         <Route exact path={createAccident} component={NewAccident} />
-        <Route exact path={myAccidents} component={() => <div />} />
         <Route exact path={about} component={() => <div />} />
         <Route exact path={profile} component={Profile} />
         <Route exact path={logout} component={() => <div />} />
