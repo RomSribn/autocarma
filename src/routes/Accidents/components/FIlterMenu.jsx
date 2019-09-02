@@ -16,8 +16,8 @@ const FilterMenu = ({ filtering }) => {
     filtering(values);
   };
   return (
-    <div className="form-new-accident-wrapper">
-      <button type="button" className="license-button" onClick={toggle}>
+    <div className="form-filter-wrapper">
+      <button type="button" className="filter-button" onClick={toggle}>
         Filtering
       </button>
       <Formik
@@ -31,7 +31,7 @@ const FilterMenu = ({ filtering }) => {
           values, handleChange, handleBlur, handleSubmit,
         }) => (
           <Drawer open={open} onRequestClose={toggle} modalElementClass="modal">
-            <form onSubmit={handleSubmit} className="new-accident-form">
+            <form onSubmit={handleSubmit} className="filter-form">
               <ul className="filter-menu">
                 <li className="select-wrap">
                   <Field
