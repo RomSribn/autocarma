@@ -8,7 +8,7 @@ import './Form.scss';
 
 interface FormProps {
   login: (values: object) => void;
-  error: object;
+  error: string;
 }
 
 const Form = ({ login, error }: FormProps) => (

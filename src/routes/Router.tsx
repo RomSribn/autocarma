@@ -29,7 +29,7 @@ interface RouterProps {
   };
 }
 
-const Router = ({ user }: RouterProps) => (
+const Router: any = ({ user }: RouterProps) => (
   <Switch>
     {user ? (
       <>
