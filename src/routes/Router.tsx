@@ -7,12 +7,12 @@ import {
   home,
   accidents,
   createAccident,
-  myAccidents,
   about,
   profile,
   logout,
   signup,
   login,
+  viewpage,
 } from './variables';
 import Autocarma from './Autocarma';
 import Accidents from './Accidents';
@@ -20,18 +20,26 @@ import NewAccident from './NewAccident';
 import Profile from './Profile/Profile';
 import Signup from './Signup';
 import Login from './Login';
+import ViewPage from './ViewPage';
 
-const Router = ({ user }) => (
+interface RouterProps {
+  user: {
+    login: string;
+    name: string;
+  };
+}
+
+const Router = ({ user }: RouterProps) => (
   <Switch>
     {user ? (
       <>
         <Route exact path={home} component={Autocarma} />
         <Route exact path={accidents} component={Accidents} />
         <Route exact path={createAccident} component={NewAccident} />
-        <Route exact path={myAccidents} component={() => <div />} />
         <Route exact path={about} component={() => <div />} />
         <Route exact path={profile} component={Profile} />
         <Route exact path={logout} component={() => <div />} />
+        <Route exact path={viewpage} component={ViewPage} />
       </>
     ) : (
       <>
@@ -47,11 +55,3 @@ export default withFirebaseAuth({
   providers,
   firebaseAppAuth,
 })(Router);
-
-Router.propTypes = {
-  user: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    login: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-  }).isRequired,
-};

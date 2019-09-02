@@ -29,7 +29,7 @@ interface CustomFieldProps {
 interface CustomFileInputProps extends CustomFieldProps {
   setFieldValue: (field: string, params: any) => void;
   values: {
-    images: Array<string>;
+    images: Array<object>;
     id: string;
   };
 }
@@ -78,8 +78,8 @@ export const CustomFieldTextArea = ({
       <TextareaAutosize
         id={label}
         className="inputs-textarea"
-        rows="12"
-        rowsMax="12"
+        rows={12}
+        rowsMax={12}
         {...field}
         {...props}
       />

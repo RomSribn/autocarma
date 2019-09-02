@@ -24,10 +24,13 @@ interface currentMarkerProps {
 
 interface FormProps {
   setCurrentMarker: () => void;
-  setSubmitData: () => void;
+  setSubmitData: (array: Array<object>) => void;
   currentMarker: currentMarkerProps;
   markers: Array<MarkersProps>;
-  user: string;
+  user: {
+    id: string;
+    name: string;
+  };
 }
 
 const Form = ({ setSubmitData, setCurrentMarker, markers, currentMarker, user }: FormProps) => {
