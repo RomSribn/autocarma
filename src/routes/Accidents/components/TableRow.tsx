@@ -7,9 +7,26 @@ import Eye from '@material-ui/icons/RemoveRedEye';
 import history from 'utils/history';
 import './TableRow.scss';
 
+interface MarkersProps {
+  id: number;
+  type: string;
+  license: string;
+  time: string;
+  rating: number;
+  currentId: string;
+  gettingId: (id: string) => void;
+  dumpingAccident: (currentId: string) => void;
+}
+
 const AccidentRow = ({
-  id, type, license, time, currentId, gettingId, dumpingAccident,
-}) => {
+  id,
+  type,
+  license,
+  time,
+  currentId,
+  gettingId,
+  dumpingAccident,
+}: MarkersProps) => {
   const onEyeClick = () => {
     gettingId(currentId);
     history.push('/viewpage');
@@ -37,13 +54,3 @@ const AccidentRow = ({
 };
 
 export default AccidentRow;
-
-AccidentRow.propTypes = {
-  id: PropTypes.number.isRequired,
-  type: PropTypes.string.isRequired,
-  license: PropTypes.string.isRequired,
-  time: PropTypes.string.isRequired,
-  currentId: PropTypes.string.isRequired,
-  gettingId: PropTypes.func.isRequired,
-  dumpingAccident: PropTypes.func.isRequired,
-};

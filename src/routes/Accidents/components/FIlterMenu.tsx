@@ -5,13 +5,17 @@ import Drawer from 'react-drag-drawer';
 import { FilterSelectType, FilterSelectTime } from './FilterSelects';
 import './FilterMenu.scss';
 
-const FilterMenu = ({ filtering }) => {
+interface FilterMenuProps {
+  filtering: (values: object) => void;
+}
+
+const FilterMenu = ({ filtering }: FilterMenuProps) => {
   const [open, setOpen] = React.useState(false);
   const toggle = () => {
     setOpen(!open);
   };
 
-  const onSubmit = (values) => {
+  const onSubmit = (values: object) => {
     toggle();
     filtering(values);
   };

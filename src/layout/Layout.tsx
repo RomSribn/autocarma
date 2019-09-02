@@ -1,11 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Header from './components/Header/Header.tsx';
+import Header from './components/Header/Header';
 import Main from './components/Main';
+
+interface LayoutProps {
+  children: React.ReactNode;
+  fetchAccidents: () => void;
+  logout: () => void;
+  loginCheck: (user: object) => void;
+  fetchUsers: (uid: string) => void;
+}
 
 const Layout = ({
   children, logout, loginCheck, fetchAccidents, fetchUsers,
-}) => (
+}: LayoutProps) => (
   <>
     <Header
       logout={logout}
@@ -18,11 +26,3 @@ const Layout = ({
 );
 
 export default Layout;
-
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
-  fetchAccidents: PropTypes.func.isRequired,
-  logout: PropTypes.func.isRequired,
-  loginCheck: PropTypes.func.isRequired,
-  fetchUsers: PropTypes.func.isRequired,
-};
