@@ -6,7 +6,12 @@ import Error from '_assets/shared/Error/components/Error';
 import Input from './Input';
 import './Form.scss';
 
-const Form = ({ login, error }) => (
+interface FormProps {
+  login: (values: object) => void;
+  error: object;
+}
+
+const Form = ({ login, error }: FormProps) => (
   <div className="form-login">
     {error ? <Error message={error} /> : null}
     <div className="login-title">
@@ -20,9 +25,7 @@ const Form = ({ login, error }) => (
       validationSchema={ValidateLogin}
       onSubmit={values => login(values)}
     >
-      {({
-        values, handleChange, handleBlur, handleSubmit,
-      }) => (
+      {({ values, handleChange, handleBlur, handleSubmit }) => (
         <form onSubmit={handleSubmit} className="login-form">
           <div className="inputs-login">
             <div className="input-wrapper">
@@ -59,8 +62,3 @@ const Form = ({ login, error }) => (
 );
 
 export default Form;
-
-Form.propTypes = {
-  login: PropTypes.func.isRequired,
-  error: PropTypes.string.isRequired,
-};

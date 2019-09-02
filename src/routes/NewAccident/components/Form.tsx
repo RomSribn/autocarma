@@ -5,16 +5,33 @@ import history from 'utils/history';
 import { refPostsDB, refUsersDB } from 'services/FirebaseDB';
 import { refStorage } from 'services/FirebaseStorage';
 import { accidents } from 'routes/variables';
-import {
-  CustomField, CustomFieldTextArea, SimpleSelect, CustomFileInput,
-} from './Input';
+import { CustomField, CustomFieldTextArea, SimpleSelect, CustomFileInput } from './Input';
 import Map from './Map';
 import './Form.scss';
 
-const Form = ({
-  setSubmitData, setCurrentMarker, markers, currentMarker, user,
-}) => {
-  const onSubmit = (values) => {
+interface MarkersProps {
+  id: number;
+  type: string;
+  license: string;
+  time: string;
+  rating: number;
+}
+
+interface currentMarkerProps {
+  lat: number;
+  lng: number;
+}
+
+interface FormProps {
+  setCurrentMarker: () => void;
+  setSubmitData: () => void;
+  currentMarker: currentMarkerProps;
+  markers: Array<MarkersProps>;
+  user: string;
+}
+
+const Form = ({ setSubmitData, setCurrentMarker, markers, currentMarker, user }: FormProps) => {
+  const onSubmit = values => {
     const postId = refPostsDB.push(values).key;
     setSubmitData([postId, values]);
     refUsersDB(user.id, postId).set({ ...values, id: postId });
@@ -39,9 +56,7 @@ const Form = ({
         }}
         onSubmit={onSubmit}
       >
-        {({
-          values, handleChange, handleBlur, handleSubmit, setFieldValue,
-        }) => (
+        {({ values, handleChange, handleBlur, handleSubmit, setFieldValue }) => (
           <form onSubmit={handleSubmit} className="new-accident-form">
             <div className="new-accident-inputs">
               <div className="inputs-col">
@@ -145,22 +160,3 @@ const Form = ({
 };
 
 export default Form;
-
-Form.propTypes = {
-  setCurrentMarker: PropTypes.func.isRequired,
-  setSubmitData: PropTypes.func.isRequired,
-  currentMarker: PropTypes.shape({
-    lat: PropTypes.number.isRequired,
-    lng: PropTypes.number.isRequired,
-  }).isRequired,
-  markers: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      type: PropTypes.string.isRequired,
-      license: PropTypes.string.isRequired,
-      time: PropTypes.string.isRequired,
-      rating: PropTypes.number.isRequired,
-    }),
-  ).isRequired,
-  user: PropTypes.string.isRequired,
-};

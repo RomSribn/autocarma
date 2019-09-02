@@ -5,7 +5,19 @@ import Map from './components/Map';
 import Carousel from './components/Carousel';
 import './Autocarma.scss';
 
-const Autocarma = ({ markers }) => (
+interface MarkersProps {
+  id: number;
+  type: string;
+  license: string;
+  time: string;
+  rating: number;
+}
+
+interface SimpleTableProps {
+  markers: Array<MarkersProps>;
+}
+
+const Autocarma = ({ markers }: SimpleTableProps) => (
   <div className="autocarma-content">
     <div className="autocarma-map">
       <span className="map-title">Accidents map</span>
@@ -26,15 +38,3 @@ const Autocarma = ({ markers }) => (
 );
 
 export default Autocarma;
-
-Autocarma.propTypes = {
-  markers: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      type: PropTypes.string.isRequired,
-      license: PropTypes.string.isRequired,
-      time: PropTypes.string.isRequired,
-      rating: PropTypes.number.isRequired,
-    }),
-  ).isRequired,
-};

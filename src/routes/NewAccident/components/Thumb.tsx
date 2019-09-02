@@ -1,7 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Thumb = ({ file }) => {
+interface ThumbProps {
+  file: {
+    name: string;
+  };
+}
+
+const Thumb = ({ file }: ThumbProps) => {
   let loading;
   let thumb;
 
@@ -26,9 +32,3 @@ const Thumb = ({ file }) => {
 };
 
 export default Thumb;
-
-Thumb.propTypes = {
-  file: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-  }).isRequired,
-};
