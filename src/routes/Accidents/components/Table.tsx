@@ -7,11 +7,38 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Pagination from 'react-js-pagination';
-import FilterMenu from './components/FIlterMenu';
-import AccidentRow from './components/TableRow';
-import './Accidents.scss';
+import FilterMenu from './FIlterMenu';
+import AccidentRow from './TableRow';
+import './Table.scss';
 
-const SimpleTable = ({ markers }) => {
+interface MarkersProps {
+  id: number;
+  type: string;
+  license: string;
+  time: string;
+  rating: number;
+}
+
+interface UserProps {
+  id: string;
+  name: string;
+}
+
+interface SimpleTableProps {
+  markers: Array<MarkersProps>;
+  gettingId: (id: string) => void;
+  dumpingAccident: () => void;
+  filtering: (values: object) => void;
+  user: UserProps;
+}
+
+const SimpleTable = ({
+  markers,
+  gettingId,
+  dumpingAccident,
+  filtering,
+  user,
+}: SimpleTableProps) => {
   const [value, setValue] = React.useState(1);
 
   const handleChange = (pageNumber) => {
@@ -19,10 +46,13 @@ const SimpleTable = ({ markers }) => {
   };
 
   return (
-    <div className="accidents">
-      <h2 className="accidents-title">Accidents via @admin</h2>
+    <>
+      <span className="accidents-title">
+Accidents via @
+        {user.name}
+      </span>
       <div className="table-accidents">
-        <FilterMenu />
+        <FilterMenu filtering={filtering} />
         <Paper>
           <Table className="table">
             <TableHead>
@@ -37,7 +67,14 @@ const SimpleTable = ({ markers }) => {
             </TableHead>
             <TableBody>
               {markers.map(el => (
-                <AccidentRow key={el.id} {...el} id={markers.indexOf(el) + 1} />
+                <AccidentRow
+                  gettingId={gettingId}
+                  dumpingAccident={dumpingAccident}
+                  currentId={el[0]}
+                  key={el[0]}
+                  {...el[1]}
+                  id={markers.indexOf(el) + 1}
+                />
               ))}
             </TableBody>
           </Table>
@@ -52,20 +89,8 @@ const SimpleTable = ({ markers }) => {
           />
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
 export default SimpleTable;
-
-SimpleTable.propTypes = {
-  markers: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      type: PropTypes.string.isRequired,
-      license: PropTypes.string.isRequired,
-      time: PropTypes.string.isRequired,
-      rating: PropTypes.number.isRequired,
-    }),
-  ).isRequired,
-};
