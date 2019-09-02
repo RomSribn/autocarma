@@ -4,15 +4,19 @@ import Header from './components/Header/Header';
 import Main from './components/Main';
 
 interface LayoutProps {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   fetchAccidents: () => void;
   logout: () => void;
   loginCheck: (user: object) => void;
   fetchUsers: (uid: string) => void;
 }
 
-const Layout = ({
-  children, logout, loginCheck, fetchAccidents, fetchUsers,
+const Layout: React.FC<LayoutProps> = ({
+  children,
+  logout,
+  loginCheck,
+  fetchAccidents,
+  fetchUsers,
 }: LayoutProps) => (
   <>
     <Header
