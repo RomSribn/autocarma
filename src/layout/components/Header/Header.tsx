@@ -11,21 +11,44 @@ import { routesGuest, routesUser, login } from 'routes/variables';
 
 import './Header.scss';
 
-const CenteredTabs = ({
-  user, signOut, logout, loginCheck, fetchAccidents,
-}) => {
-  let routes;
+interface user {
+  uid: string;
+}
 
-  if (user) {
-    routes = routesUser;
-    fetchAccidents();
+interface CenteredTabsProps {
+  fetchAccidents: () => void;
+  signOut: () => Promise<void>;
+  logout: () => void;
+  loginCheck: (user: object) => void;
+  fetchUsers: (uid: string) => void;
+  user: user;
+}
+
+const CenteredTabs: React.FC<CenteredTabsProps> = ({
+  user,
+  signOut,
+  logout,
+  loginCheck,
+  fetchAccidents,
+  fetchUsers,
+}: CenteredTabsProps) => {
+  const routes = user ? routesUser : routesGuest;
+
+  const [value, setValue] = React.useState(0);
+
+  React.useEffect(() => {
+    if (history.location.pathname) {
+      setValue(routes.indexOf(history.location.pathname));
+    }
     loginCheck(user);
-  } else {
-    routes = routesGuest;
-  }
+    if (user) {
+      const { uid } = user;
+      fetchAccidents();
+      fetchUsers(uid);
+    }
+  }, [fetchAccidents, fetchUsers, loginCheck, routes, user]);
 
-  const [value, setValue] = React.useState(routes.indexOf(history.location.pathname));
-  function handleChange(event, newValue) {
+  function handleChange(event: React.ChangeEvent<{}>, newValue: number) {
     history.push(routes[newValue]);
     setValue(newValue);
   }
@@ -48,9 +71,8 @@ const CenteredTabs = ({
           centered
         >
           <Tab className="logo-bold" label="Autocarma" />
-          <Tab label="Accidents" />
-          <Tab label="Add new accidents" />
           <Tab label="My accidents" />
+          <Tab label="Add new accidents" />
           <Tab label="About" />
           <Tab label="Profile" />
           <Tab label="Logout" onClick={onLogout} />
@@ -76,19 +98,3 @@ export default withFirebaseAuth({
   providers,
   firebaseAppAuth,
 })(CenteredTabs);
-
-CenteredTabs.defaultProps = {
-  user: null,
-};
-
-CenteredTabs.propTypes = {
-  fetchAccidents: PropTypes.func.isRequired,
-  signOut: PropTypes.func.isRequired,
-  logout: PropTypes.func.isRequired,
-  loginCheck: PropTypes.func.isRequired,
-  user: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    login: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-  }),
-};

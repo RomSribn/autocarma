@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Header from './components/Header/Header';
+import Header from './components/Header/Header.tsx';
 import Main from './components/Main';
 
 const Layout = ({
