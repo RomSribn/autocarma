@@ -1,44 +1,62 @@
 import React from 'react';
 import { Formik, Field } from 'formik';
 import PropTypes from 'prop-types';
-import uuidv1 from 'uuid/v1';
 import history from 'utils/history';
-import { ref } from 'services/FirebaseDB';
+import { refPostsDB, refUsersDB } from 'services/FirebaseDB';
+import { refStorage } from 'services/FirebaseStorage';
 import { accidents } from 'routes/variables';
-import { CustomField, CustomFieldTextArea, SimpleSelect } from './Input';
+import { CustomField, CustomFieldTextArea, SimpleSelect, CustomFileInput } from './Input';
 import Map from './Map';
 import './Form.scss';
 
-const Form = ({
-  setSubmitData, setCurrentMarker, markers, currentMarker, user,
-}) => {
-  const onSubmit = (values) => {
-    setSubmitData(values);
-    ref.push(values);
+interface MarkersProps {
+  id: number;
+  type: string;
+  license: string;
+  time: string;
+  rating: number;
+}
+
+interface currentMarkerProps {
+  lat: number;
+  lng: number;
+}
+
+interface FormProps {
+  setCurrentMarker: () => void;
+  setSubmitData: () => void;
+  currentMarker: currentMarkerProps;
+  markers: Array<MarkersProps>;
+  user: string;
+}
+
+const Form = ({ setSubmitData, setCurrentMarker, markers, currentMarker, user }: FormProps) => {
+  const onSubmit = values => {
+    const postId = refPostsDB.push(values).key;
+    setSubmitData([postId, values]);
+    refUsersDB(user.id, postId).set({ ...values, id: postId });
+    values.images.map(el => refStorage(postId, el));
     history.push(accidents);
   };
   return (
     <div className="form-new-accident-wrapper">
       <div className="form-new-accident-title">
-        <h1>New Accident</h1>
+        <span className="new-accident-title">New Accident</span>
       </div>
       <Formik
         initialValues={{
-          id: uuidv1(),
           type: '',
           license: '',
           model: '',
           description: '',
           time: '',
           coordinates: '',
-          author: user,
-          img: '',
+          author: user.name,
+          images: [],
         }}
         onSubmit={onSubmit}
       >
-        {({
-          values, handleChange, handleBlur, handleSubmit, isSubmitting, setFieldValue,
-        }) => (
+        {({ values, handleChange, handleBlur, handleSubmit, setFieldValue }) => (
           <form onSubmit={handleSubmit} className="new-accident-form">
             <div className="new-accident-inputs">
               <div className="inputs-col">
@@ -120,7 +138,18 @@ const Form = ({
                 markers={markers}
               />
             </div>
-            <button className="save-new-accident" type="submit" disabled={isSubmitting}>
+            <div className="input-wrapper dropzone-wrapper">
+              <Field
+                component={CustomFileInput}
+                name="description"
+                label="Description"
+                onChange={handleChange}
+                setFieldValue={setFieldValue}
+                onBlur={handleBlur}
+                values={values}
+              />
+            </div>
+            <button className="save-new-accident" type="submit">
               Save
             </button>
           </form>
@@ -131,22 +160,3 @@ const Form = ({
 };
 
 export default Form;
-
-Form.propTypes = {
-  setCurrentMarker: PropTypes.func.isRequired,
-  setSubmitData: PropTypes.func.isRequired,
-  currentMarker: PropTypes.shape({
-    lat: PropTypes.number.isRequired,
-    lng: PropTypes.number.isRequired,
-  }).isRequired,
-  markers: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      type: PropTypes.string.isRequired,
-      license: PropTypes.string.isRequired,
-      time: PropTypes.string.isRequired,
-      rating: PropTypes.number.isRequired,
-    }),
-  ).isRequired,
-  user: PropTypes.string.isRequired,
-};
