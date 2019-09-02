@@ -6,9 +6,13 @@ import { autoPlay } from 'react-swipeable-views-utils';
 
 import './Slider.scss';
 
+interface SliderProps {
+  images: Array<string>;
+}
+
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
-function SwipeableTextMobileStepper({ images }) {
+function Slider({ images }: SliderProps) {
   const theme = useTheme();
   const [activeStep, setActiveStep] = React.useState(0);
 
@@ -25,7 +29,7 @@ function SwipeableTextMobileStepper({ images }) {
         enableMouseEvents
       >
         {images.map((step, index) => (
-          <div key={step.label}>
+          <div key={index}>
             {Math.abs(activeStep - index) <= 2 ? (
               <img className="img" src={step} alt="current images" />
             ) : null}
@@ -36,8 +40,4 @@ function SwipeableTextMobileStepper({ images }) {
   );
 }
 
-export default SwipeableTextMobileStepper;
-
-SwipeableTextMobileStepper.propTypes = {
-  images: PropTypes.shape([]).isRequired,
-};
+export default Slider;

@@ -22,7 +22,14 @@ import Signup from './Signup';
 import Login from './Login';
 import ViewPage from './ViewPage';
 
-const Router = ({ user }) => (
+interface RouterProps {
+  user: {
+    login: string;
+    name: string;
+  };
+}
+
+const Router = ({ user }: RouterProps) => (
   <Switch>
     {user ? (
       <>
@@ -48,10 +55,3 @@ export default withFirebaseAuth({
   providers,
   firebaseAppAuth,
 })(Router);
-
-Router.propTypes = {
-  user: PropTypes.shape({
-    login: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-  }).isRequired,
-};

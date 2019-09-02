@@ -6,7 +6,12 @@ import Error from '_assets/shared/Error/components/Error';
 import Input from './Input';
 import './Form.scss';
 
-const Form = ({ signup, error }) => (
+interface FormProps {
+  signup: (values: object) => void;
+  error: string;
+}
+
+const Form = ({ signup, error }: FormProps) => (
   <div className="form-signup">
     {error ? <Error message={error} /> : null}
     <div className="signup-title">
@@ -86,8 +91,3 @@ const Form = ({ signup, error }) => (
 );
 
 export default Form;
-
-Form.propTypes = {
-  signup: PropTypes.func.isRequired,
-  error: PropTypes.string.isRequired,
-};
