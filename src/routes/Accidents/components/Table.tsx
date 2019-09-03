@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { SimpleTableProps } from 'types/index';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -10,27 +10,6 @@ import Pagination from 'react-js-pagination';
 import FilterMenu from './FIlterMenu';
 import AccidentRow from './TableRow';
 import './Table.scss';
-
-interface MarkersProps {
-  id: number;
-  type: string;
-  license: string;
-  time: string;
-  rating: number;
-}
-
-interface UserProps {
-  id: string;
-  name: string;
-}
-
-interface SimpleTableProps {
-  markers: Array<MarkersProps>;
-  gettingId: (id: string) => void;
-  dumpingAccident: () => void;
-  filtering: (values: object) => void;
-  user: UserProps;
-}
 
 const SimpleTable = ({
   markers,

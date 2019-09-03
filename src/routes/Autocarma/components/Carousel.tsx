@@ -1,22 +1,14 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { MarkersProps } from 'types/index';
 import ItemsCarousel from 'react-items-carousel';
 import CarouselItem from './CarouselItem';
 import './Carousel.scss';
 
-interface MarkersProps {
-  id: number;
-  type: string;
-  license: string;
-  time: string;
-  rating: number;
-}
-
-interface SimpleTableProps {
+interface CarouselProps {
   markers: Array<MarkersProps>;
 }
 
-const Carousel = ({ markers }: SimpleTableProps) => {
+const Carousel = ({ markers }: CarouselProps) => {
   const [activeItemIndex, setState] = React.useState(0);
 
   return (
@@ -33,7 +25,7 @@ const Carousel = ({ markers }: SimpleTableProps) => {
         showSlither={false}
         firstAndLastGutter={false}
         activeItemIndex={activeItemIndex}
-        requestToChangeActive={value => {
+        requestToChangeActive={(value) => {
           setState(value);
         }}
         rightChevron={'>'}

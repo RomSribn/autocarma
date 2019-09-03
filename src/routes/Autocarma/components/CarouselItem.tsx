@@ -1,15 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { CarouselItemProps } from 'types/index';
 import './CarouselItem.scss';
 
-interface CarouselItemProps {
-  model: string;
-  license: string;
-  author: string;
-  time: timestamp;
-}
-
-const CarouselItem = ({ model, license, author, time }: CarouselItemProps) => (
+const CarouselItem = ({
+  model, license, author, time,
+}: CarouselItemProps) => (
   <ul className="carousel-item">
     <li className="item">
       <span className="key">Car model:</span>

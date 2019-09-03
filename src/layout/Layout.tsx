@@ -1,15 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { LayoutProps } from 'types/index';
 import Header from './components/Header/Header';
 import Main from './components/Main';
-
-interface LayoutProps {
-  children?: React.ReactNode;
-  fetchAccidents: () => void;
-  logout: () => void;
-  loginCheck: (user: object) => void;
-  fetchUsers: (uid: string) => void;
-}
 
 const Layout: React.FC<LayoutProps> = ({
   children,
@@ -17,6 +9,7 @@ const Layout: React.FC<LayoutProps> = ({
   loginCheck,
   fetchAccidents,
   fetchUsers,
+  user,
 }: LayoutProps) => (
   <>
     <Header
@@ -24,6 +17,7 @@ const Layout: React.FC<LayoutProps> = ({
       loginCheck={loginCheck}
       fetchUsers={fetchUsers}
       fetchAccidents={fetchAccidents}
+      user={user}
     />
     <Main>{children}</Main>
   </>

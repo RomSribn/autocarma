@@ -1,24 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-
-interface fieldProps {
-  name: string;
-  value: string;
-  onChange: () => void;
-  onBlur: () => void;
-}
-
-interface formProps {
-  touched: object;
-  errors: object;
-}
-
-interface FilterSelectsProps {
-  field: fieldProps;
-  form: formProps;
-  label: string;
-  type: string;
-}
+import { FilterSelectsProps } from 'types/index';
 
 export const FilterSelectType = ({
   field,
