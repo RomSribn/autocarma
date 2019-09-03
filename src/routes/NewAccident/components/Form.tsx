@@ -1,5 +1,6 @@
 import React from 'react';
 import { Formik, Field } from 'formik';
+import { FormNewAccidentProps } from 'types/index';
 import history from 'utils/history';
 import { refPostsDB, refUsersDB } from 'services/FirebaseDB';
 import { refStorage } from 'services/FirebaseStorage';
@@ -8,31 +9,7 @@ import { CustomField, CustomFieldTextArea, SimpleSelect, CustomFileInput } from 
 import Map from './Map';
 import './Form.scss';
 
-interface MarkersProps {
-  id: number;
-  type: string;
-  license: string;
-  time: string;
-  rating: number;
-}
-
-interface currentMarkerProps {
-  lat: number;
-  lng: number;
-}
-
-interface FormProps {
-  setCurrentMarker: () => void;
-  setSubmitData: (array: Array<object>) => void;
-  currentMarker: currentMarkerProps;
-  markers: Array<MarkersProps>;
-  user: {
-    id: string;
-    name: string;
-  };
-}
-
-const Form = ({ setSubmitData, setCurrentMarker, markers, currentMarker, user }: FormProps) => {
+const Form = ({ setSubmitData, setCurrentMarker, markers, currentMarker, user }: FormNewAccidentProps) => {
   const onSubmit = values => {
     const postId = refPostsDB.push(values).key;
     setSubmitData([postId, values]);

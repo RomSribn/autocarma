@@ -1,34 +1,13 @@
 import React from 'react';
+import { MapComponentProps } from 'types/index';
 import { defaultConfig } from 'config';
 
 import {
   withScriptjs, withGoogleMap, GoogleMap, Marker,
 } from 'react-google-maps';
 
-interface MarkersProps {
-  id: number;
-  type: string;
-  license: string;
-  time: string;
-  rating: number;
-}
-
-interface currentMarkerProps {
-  lat: number;
-  lng: number;
-}
-
-interface FormProps {
-  setCurrentMarker: (params: object) => void;
-  setFieldValue: (key: string, value: any) => void;
-  currentMarker: currentMarkerProps;
-  markers: Array<MarkersProps>;
-  user: string;
-  isMarkerShown: boolean;
-}
-
 const MyMapComponent = withScriptjs(
-  withGoogleMap((props: FormProps) => {
+  withGoogleMap((props: MapComponentProps) => {
     const {
       markers, setFieldValue, setCurrentMarker, currentMarker,
     } = props;

@@ -1,16 +1,12 @@
 import React from 'react';
+import { SignUp } from 'types/index';
 import { Formik, Field } from 'formik';
 import { ValidateSignup } from 'utils/validate/validate';
 import Error from '_assets/shared/Error/components/Error';
 import Input from './Input';
 import './Form.scss';
 
-interface FormProps {
-  signup: (values: object) => void;
-  error: string;
-}
-
-const Form = ({ signup, error }: FormProps) => (
+const Form = ({ signup, error }: SignUp) => (
   <div className="form-signup">
     {error ? <Error message={error} /> : null}
     <div className="signup-title">

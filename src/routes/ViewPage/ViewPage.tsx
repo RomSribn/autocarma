@@ -1,28 +1,10 @@
 import React from 'react';
+import { ViewPageProps } from 'types/index';
 import Map from 'routes/Autocarma/components/Map';
 import { defaultConfig } from 'config';
 import ViewPageTable from './components/ViewPageTable';
 import Slider from './components/Slider';
 import './ViewPage.scss';
-
-interface MarkersProps {
-  id: number;
-  type: string;
-  license: string;
-  time: string;
-  rating: number;
-}
-
-interface currentMarkerProps {
-  lat: number;
-  lng: number;
-}
-
-interface ViewPageProps {
-  markers: Array<MarkersProps>;
-  images: Array<string>;
-  currentId: currentMarkerProps;
-}
 
 const ViewPage = ({ markers, images, currentId }: ViewPageProps) => {
   const currentMarker = markers.filter(el => el[0] === currentId);
