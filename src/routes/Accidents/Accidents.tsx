@@ -1,31 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { AccidentsProps } from 'types/index';
 import Table from './components/Table';
 
 import './Accidents.scss';
-
-interface MarkersProps {
-  id: number;
-  type: string;
-  license: string;
-  time: string;
-  rating: number;
-}
-
-interface UserProps {
-  id: string;
-  name: string;
-}
-
-interface AccidentsProps {
-  markers: Array<MarkersProps>;
-  users: Array<MarkersProps>;
-  filteredMarkers: Array<MarkersProps>;
-  user: UserProps;
-  gettingId: (id: string) => void;
-  dumpingAccident: () => void;
-  filtering: (values: object) => void;
-}
 
 const Accidents = ({
   markers,

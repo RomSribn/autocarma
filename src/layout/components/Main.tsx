@@ -1,10 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import './Main.scss';
-
-interface MainProps {
-  children: React.ReactNode;
-}
+import { MainProps } from 'types/index';
 
 const Main = ({ children }: MainProps) => <div className="main">{children}</div>;
 

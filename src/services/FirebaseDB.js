@@ -1,5 +1,7 @@
-import { database } from 'firebase';
+import { database, initializeApp } from 'firebase';
+import { firebaseConfig } from 'config';
 
+initializeApp(firebaseConfig);
 export const refPostsDB = database().ref('posts/');
 
 export const refUsersDB = (user, post) => database()

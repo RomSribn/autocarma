@@ -1,13 +1,9 @@
 import React from 'react';
 import { Formik, Field } from 'formik';
-import PropTypes from 'prop-types';
 import Drawer from 'react-drag-drawer';
+import { FilterMenuProps } from 'types/index';
 import { FilterSelectType, FilterSelectTime } from './FilterSelects';
 import './FilterMenu.scss';
-
-interface FilterMenuProps {
-  filtering: (values: object) => void;
-}
 
 const FilterMenu = ({ filtering }: FilterMenuProps) => {
   const [open, setOpen] = React.useState(false);
