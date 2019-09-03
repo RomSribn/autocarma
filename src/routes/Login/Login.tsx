@@ -1,11 +1,7 @@
 import React from 'react';
+import { LoginProps } from 'types/index';
 import Form from './components/Form';
 import './Login.scss';
-
-interface LoginProps {
-  login: (values: object) => void;
-  error: string;
-}
 
 const Login = ({ login, error }: LoginProps) => (
   <div className="profile-form">

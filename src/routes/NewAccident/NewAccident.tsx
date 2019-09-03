@@ -1,30 +1,7 @@
 import React from 'react';
+import { FormNewAccidentProps } from 'types/index';
 import Form from './components/Form';
 import './NewAccident.scss';
-
-interface MarkersProps {
-  id: number;
-  type: string;
-  license: string;
-  time: string;
-  rating: number;
-}
-
-interface currentMarkerProps {
-  lat: number;
-  lng: number;
-}
-
-interface NewAccidentProps {
-  setCurrentMarker: () => void;
-  setSubmitData: () => void;
-  currentMarker: currentMarkerProps;
-  markers: Array<MarkersProps>;
-  user: {
-    id: string;
-    name: string;
-  };
-}
 
 const NewAccident = ({
   setSubmitData,
@@ -32,7 +9,7 @@ const NewAccident = ({
   markers,
   currentMarker,
   user,
-}: NewAccidentProps) => (
+}: FormNewAccidentProps) => (
   <div className="create-accident-form">
     <Form
       setSubmitData={setSubmitData}

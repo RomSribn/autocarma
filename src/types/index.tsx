@@ -1,5 +1,3 @@
-import { WrappedComponentProps } from 'react-with-firebase-auth';
-
 export interface CenteredTabsProps extends LayoutProps {
   fetchAccidents: () => void;
   signOut: () => Promise<void>;
@@ -50,11 +48,11 @@ export interface FilterSelectsProps {
 }
 
 export interface MarkersProps {
-  id: number;
+  id?: number;
   type: string;
   license: string;
-  time: string;
-  rating: number;
+  time?: string;
+  rating?: number;
 }
 
 export interface UserProps {
@@ -91,4 +89,51 @@ export interface CarouselItemProps {
   license: string;
   author: string;
   time: string;
+}
+
+export interface LoginProps {
+  login: (values: object) => void;
+  error: string;
+}
+
+export interface currentMarkerProps {
+  lat: number;
+  lng: number;
+}
+
+export interface FormNewAccidentProps {
+  setCurrentMarker: () => void;
+  setSubmitData: (array: Array<object>) => void;
+  currentMarker: currentMarkerProps;
+  markers: Array<MarkersProps>;
+  user: {
+    id: string;
+    name: string;
+  };
+}
+
+export interface MapComponentProps {
+  setCurrentMarker: (params: object) => void;
+  setFieldValue: (key: string, value: any) => void;
+  currentMarker: currentMarkerProps;
+  markers: Array<MarkersProps>;
+  user: string;
+  isMarkerShown: boolean;
+}
+
+export interface SignUp {
+  signup: (values: object) => void;
+  error: string;
+}
+
+export interface AccidentProps extends MarkersProps {
+  model: string;
+  author: string;
+  description: string;
+}
+
+export interface ViewPageProps {
+  markers: Array<MarkersProps>;
+  images: Array<string>;
+  currentId: currentMarkerProps;
 }

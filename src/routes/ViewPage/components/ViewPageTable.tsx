@@ -1,10 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { AccidentProps } from 'types/index';
 import './ViewPageTable.scss';
 
 const ViewPageTable = ({
   type, model, license, author, time, description,
-}) => (
+}: AccidentProps) => (
   <ul className="viewpage-table">
     <li className="item">
       <span className="key">Type:</span>
@@ -42,12 +42,3 @@ const ViewPageTable = ({
 );
 
 export default ViewPageTable;
-
-ViewPageTable.propTypes = {
-  model: PropTypes.string.isRequired,
-  license: PropTypes.string.isRequired,
-  author: PropTypes.string.isRequired,
-  time: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-};
