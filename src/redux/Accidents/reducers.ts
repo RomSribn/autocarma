@@ -1,20 +1,38 @@
 import { handleActions } from 'redux-actions';
 import {
-  fetchUsersSuccess,
-  fetchAccidentsSuccess,
-  loginCheckSuccess,
-  loginSuccess,
-  loginFailed,
-  logoutSuccess,
-  signupSuccess,
-  signupFailed,
-  submitSuccess,
-  setCurrentMarkerSuccess,
-  getIdSuccess,
-  getImgSuccess,
-  dumpingAccidentSuccess,
-  filterSuccess,
-} from './actions';
+  FETCH_USERS_SUCCESS,
+  FETCH_ACCIDENTS_SUCCESS,
+  LOGIN_CHECK,
+  LOGIN_FAILED,
+  LOGIN_SUCCESS,
+  LOGOUT_SUCCESS,
+  SIGNUP_FAILED,
+  SIGNUP_SUCCESS,
+  SUBMIT_SUCCESS,
+  SET_CURRENT_MARKER_SUCCESS,
+  GET_ID_SUCCESS,
+  GET_IMG_SUCCESS,
+  DUMP_ACCIDENT_SUCCESS,
+  FILTER_SUCCESS,
+} from './action_types';
+
+import { AccidentsActionTypes } from './actions';
+
+const admin = '8mOY0CflD6QXjebbE7ibObU1Shw1';
+
+interface IState {
+  markers: any;
+  filteredMarkers: any;
+  currenMarker: object;
+  error: string;
+  user: {
+    id: string;
+    name: string;
+  };
+  currentId: string;
+  users: any;
+  images: any;
+}
 
 const initialState = {
   markers: [
@@ -76,64 +94,64 @@ const initialState = {
 
 const accidents = handleActions(
   {
-    [fetchUsersSuccess]: (state, action) => ({
+    [FETCH_USERS_SUCCESS]: (state: IState, action: AccidentsActionTypes) => ({
       ...state,
       users: action.payload || state.users,
     }),
-    [fetchAccidentsSuccess]: (state, action) => ({
+    [FETCH_ACCIDENTS_SUCCESS]: (state: IState, action: AccidentsActionTypes) => ({
       ...state,
       markers: action.payload || state.markers,
     }),
-    [loginCheckSuccess]: (state, action) => ({
+    [LOGIN_CHECK]: (state: IState, action: AccidentsActionTypes) => ({
       ...state,
       user: action.payload,
     }),
-    [loginSuccess]: (state, action) => ({
+    [LOGIN_SUCCESS]: (state: IState, action: AccidentsActionTypes) => ({
       ...state,
       user: action.payload,
       error: '',
     }),
-    [loginFailed]: (state, action) => ({
+    [LOGIN_FAILED]: (state: IState, action: AccidentsActionTypes) => ({
       ...state,
       error: action.payload,
     }),
-    [logoutSuccess]: state => ({
+    [LOGOUT_SUCCESS]: (state: any) => ({
       ...state,
       user: '',
     }),
-    [signupSuccess]: (state, action) => ({
+    [SIGNUP_SUCCESS]: (state: IState, action: AccidentsActionTypes) => ({
       ...state,
       user: action.payload,
       error: '',
     }),
-    [signupFailed]: (state, action) => ({
+    [SIGNUP_FAILED]: (state: IState, action: AccidentsActionTypes) => ({
       ...state,
       error: action.payload,
     }),
-    [submitSuccess]: state => ({
+    [SUBMIT_SUCCESS]: (state: IState) => ({
       ...state,
       markers: [...state.markers],
     }),
-    [setCurrentMarkerSuccess]: (state, action) => ({
+    [SET_CURRENT_MARKER_SUCCESS]: (state: IState, action: AccidentsActionTypes) => ({
       ...state,
       currentMarker: action.payload,
     }),
-    [getIdSuccess]: (state, action) => ({
+    [GET_ID_SUCCESS]: (state: IState, action: AccidentsActionTypes) => ({
       ...state,
       currentId: action.payload,
     }),
-    [getImgSuccess]: (state, action) => ({
+    [GET_IMG_SUCCESS]: (state: IState, action: AccidentsActionTypes) => ({
       ...state,
       images: action.payload,
     }),
-    [dumpingAccidentSuccess]: (state, action) => ({
+    [DUMP_ACCIDENT_SUCCESS]: (state: IState, action: AccidentsActionTypes) => ({
       ...state,
       markers: state.markers.filter(marker => marker[0] !== action.payload),
     }),
-    [filterSuccess]: (state, action) => ({
+    [FILTER_SUCCESS]: (state: IState, action: AccidentsActionTypes) => ({
       ...state,
       filteredMarkers: (() => {
-        const checkedMarkers = state.user.id === '8mOY0CflD6QXjebbE7ibObU1Shw1' ? state.markers : state.users;
+        const checkedMarkers = state.user.id === admin ? state.markers : state.users;
         return checkedMarkers.filter((marker) => {
           if (action.payload.type) {
             return marker[1].type === action.payload.type;
