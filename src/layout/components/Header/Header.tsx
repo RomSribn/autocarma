@@ -56,6 +56,9 @@ const CenteredTabs: any = ({
           onChange={handleChange}
           indicatorColor="primary"
           textColor="primary"
+          variant="scrollable"
+          scrollButtons="on"
+          aria-label="scrollable auto tabs example"
           centered
         >
           <Tab className="logo-bold" label="Autocarma" />
