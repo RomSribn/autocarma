@@ -5,10 +5,14 @@
 }
 
 .MuiTabs-flexContainer {
-  justify-content: center;
   .MuiTab-textColorPrimary.Mui-selected {
     color: $gray;
     font-weight: bold;
+  }
+  @media (min-width: $mobile) {
+    & {
+      justify-content: center;
+    }
   }
 }
 
