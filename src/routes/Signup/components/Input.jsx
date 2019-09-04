@@ -9,25 +9,20 @@ const CustomField = ({
 }) => (
   <>
     <div className="label">
-
       <label htmlFor={label}>
         {label}
         <br />
-        <input
-          id={label}
-          type={type}
-          className="profile-input"
-          {...field}
-          {...props}
-        />
+        <input id={label} type={type} className="profile-input" {...field} {...props} />
       </label>
       <i className="filled" />
-      <div><Clear className="cross" /></div>
-      <div><Check className="filled" /></div>
+      <div>
+        <Clear className="cross" />
+      </div>
+      <div>
+        <Check className="filled" />
+      </div>
     </div>
-    {touched[field.name] && errors[field.name] && (
-      <div className="error">{errors[field.name]}</div>
-    )}
+    {touched[field.name] && errors[field.name] && <div className="error">{errors[field.name]}</div>}
   </>
 );
 

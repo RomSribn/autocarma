@@ -12,7 +12,10 @@ import {
   setCurrentMarkerSuccess,
   getIdSuccess,
   getImgSuccess,
+<<<<<<< HEAD
   dumpingAccidentSuccess,
+=======
+>>>>>>> 56692bb4876071864cb36fb4ef631cf08248c37b
 } from './actions';
 
 const initialState = {
@@ -34,10 +37,14 @@ const initialState = {
   ],
   currenMarker: {},
   error: '',
+<<<<<<< HEAD
   user: {
     id: '',
     name: '',
   },
+=======
+  user: '',
+>>>>>>> 56692bb4876071864cb36fb4ef631cf08248c37b
   currentId: '',
   users: [],
   images: [],
@@ -95,10 +102,13 @@ const accidents = handleActions(
       ...state,
       images: action.payload,
     }),
+<<<<<<< HEAD
     [dumpingAccidentSuccess]: (state, action) => ({
       ...state,
       markers: state.markers.filter(marker => marker[0] !== action.payload),
     }),
+=======
+>>>>>>> 56692bb4876071864cb36fb4ef631cf08248c37b
   },
   initialState,
 );

@@ -12,6 +12,7 @@ const MyMapComponent = withScriptjs(
       markers, setFieldValue, setCurrentMarker, currentMarker,
     } = props;
 
+<<<<<<< HEAD
     const onCLick = (evt) => {
       const data = {
         lat: evt.latLng.lat(),
@@ -24,6 +25,19 @@ const MyMapComponent = withScriptjs(
     return (
       <GoogleMap
         onClick={onCLick}
+=======
+    return (
+      <GoogleMap
+        onClick={(evt) => {
+          const data = {
+            lat: evt.latLng.lat(),
+            lng: evt.latLng.lng(),
+          };
+
+          setCurrentMarker(data);
+          setFieldValue('coordinates', data);
+        }}
+>>>>>>> 56692bb4876071864cb36fb4ef631cf08248c37b
         defaultZoom={12}
         defaultCenter={{
           lat: 49.988358,

@@ -2,7 +2,11 @@ import { createAction } from 'redux-actions';
 import { auth } from 'firebase/app';
 import history from 'utils/history';
 
+<<<<<<< HEAD
 import { showLastItems, showUserPost, deletePost } from 'services/FirebaseDB';
+=======
+import { showLastItems, showUserPost } from 'services/FirebaseDB';
+>>>>>>> 56692bb4876071864cb36fb4ef631cf08248c37b
 import { getAccidentImages } from 'services/FirebaseStorage';
 import {
   FETCH_USERS_SUCCESS,
@@ -17,7 +21,10 @@ import {
   SET_CURRENT_MARKER_SUCCESS,
   GET_ID_SUCCESS,
   GET_IMG_SUCCESS,
+<<<<<<< HEAD
   DUMP_ACCIDENT_SUCCESS,
+=======
+>>>>>>> 56692bb4876071864cb36fb4ef631cf08248c37b
 } from './action_types';
 
 export const fetchUsersSuccess = createAction(FETCH_USERS_SUCCESS);
@@ -32,7 +39,10 @@ export const submitSuccess = createAction(SUBMIT_SUCCESS);
 export const setCurrentMarkerSuccess = createAction(SET_CURRENT_MARKER_SUCCESS);
 export const getIdSuccess = createAction(GET_ID_SUCCESS);
 export const getImgSuccess = createAction(GET_IMG_SUCCESS);
+<<<<<<< HEAD
 export const dumpingAccidentSuccess = createAction(DUMP_ACCIDENT_SUCCESS);
+=======
+>>>>>>> 56692bb4876071864cb36fb4ef631cf08248c37b
 
 export const fetchAccidents = () => dispatch => showLastItems().then((response) => {
   response.on('value', (snap) => {
@@ -48,7 +58,11 @@ export const fetchUsers = user => dispatch => showUserPost(user).then((response)
   response.on('value', (snap) => {
     const value = snap.val();
 
+<<<<<<< HEAD
     const result = value ? Object.values(value) : null;
+=======
+    const result = value ? Object.entries(value) : null;
+>>>>>>> 56692bb4876071864cb36fb4ef631cf08248c37b
 
     dispatch(fetchUsersSuccess(result));
   });
@@ -96,8 +110,11 @@ export const gettingId = id => (dispatch) => {
   getAccidentImages(id).then(images => dispatch(getImgSuccess(images)));
   dispatch(getIdSuccess(id));
 };
+<<<<<<< HEAD
 
 export const dumpingAccident = id => (dispatch) => {
   deletePost(id);
   dispatch(dumpingAccidentSuccess(id));
 };
+=======
+>>>>>>> 56692bb4876071864cb36fb4ef631cf08248c37b
