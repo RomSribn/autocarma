@@ -12,14 +12,26 @@
   flex-direction: column;
   text-align: center;
   justify-content: center;
-  padding-left: 60px;
-  padding-right: 60px;
+  @media (min-width: $mobile) {
+    & {
+      padding: 30px;
+      padding-left: 60px;
+      padding-right: 60px;
+    }
+  }
 }
 
 .new-accident-inputs {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
+  align-items: center;
   flex-wrap: wrap;
+  @media (min-width: $desktopMiddle) {
+    & {
+      flex-direction: row;
+    }
+  }
 }
 
 .inputs-textarea {

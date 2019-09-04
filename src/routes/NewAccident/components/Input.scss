@@ -21,11 +21,16 @@ input.new-accident-input:focus {
 .label {
   position: relative;
   text-align: left;
-  width: 524px;
+  width: 100%;
   &.input-file {
     width: 100%;
     text-align: right;
     padding: 20px;
+  }
+  @media (min-width: $mobile) {
+    & {
+      width: 524px;
+    }
   }
 }
 
