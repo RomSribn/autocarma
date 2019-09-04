@@ -1,8 +1,13 @@
 @import "_assets/scss/abstractions/variables.scss";
 
 .create-accident-form {
-  padding: 40px;
+  padding: 20px;
   padding-top: 0;
   text-align: center;
   font-size: $small;
+  @media (min-width: $mobile) {
+    & {
+      padding: 40px;
+    }
+  }
 }

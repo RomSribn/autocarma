@@ -21,7 +21,12 @@ input.profile-input:focus {
 .label {
   position: relative;
   text-align: left;
-  width: 524px;
+  width: 100%;
+  @media (min-width: $mobile) {
+    & {
+      width: 524px;
+    }
+  }
 }
 
 .MuiSvgIcon-root.filled {
