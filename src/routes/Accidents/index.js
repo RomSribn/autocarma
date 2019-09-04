@@ -1,16 +1,15 @@
 import { connect } from 'react-redux';
-import {
-  gettingId, fetchUsers, dumpingAccident, filtering,
-} from 'redux/Accidents/actions';
+import { dumpingAccident, filtering, gettingId } from 'redux/Accidents/actions';
+import { fetchUsers } from 'redux/User/actions';
 import Accidents from './Accidents';
 
 const mapStateToProps = state => ({
   markers: state.accidents.markers,
-  users: state.accidents.users,
+  users: state.user.users,
   currentId: state.accidents.currentId,
   images: state.accidents.images,
   filteredMarkers: state.accidents.filteredMarkers,
-  user: state.accidents.user,
+  user: state.user.user,
 });
 
 const mapDispatchToProps = {
