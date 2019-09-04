@@ -29,7 +29,12 @@ input.login-input:focus {
   }
 }
 
+input.login-input:focus ~ .MuiSvgIcon-root.cross {
+  display: block;
+}
+
 .MuiSvgIcon-root.filled {
+  display: none;
   color: $blue;
   position: absolute;
   font-size: $normal;
@@ -38,8 +43,14 @@ input.login-input:focus {
 }
 
 .MuiSvgIcon-root.cross {
+  display: none;
   position: absolute;
   font-size: $normal;
   top: 43%;
   left: 95%;
+  opacity: 0.5;
+}
+
+.visible {
+  display: block !important;
 }

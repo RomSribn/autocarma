@@ -23,7 +23,7 @@ const Form = ({ signup, error }: SignUp) => (
       onSubmit={values => signup(values)}
     >
       {({
-        values, handleChange, handleBlur, handleSubmit,
+        values, handleChange, handleBlur, handleSubmit, setFieldValue,
       }) => (
         <form onSubmit={handleSubmit} className="signup-form">
           <div className="inputs-signup">
@@ -36,6 +36,7 @@ const Form = ({ signup, error }: SignUp) => (
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.username}
+                setFieldValue={setFieldValue}
               />
             </div>
 
@@ -48,6 +49,7 @@ const Form = ({ signup, error }: SignUp) => (
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.email}
+                setFieldValue={setFieldValue}
               />
             </div>
 
@@ -60,6 +62,7 @@ const Form = ({ signup, error }: SignUp) => (
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.password}
+                setFieldValue={setFieldValue}
               />
             </div>
 
@@ -72,6 +75,7 @@ const Form = ({ signup, error }: SignUp) => (
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.confirmPassword}
+                setFieldValue={setFieldValue}
               />
             </div>
 

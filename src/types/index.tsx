@@ -45,6 +45,7 @@ export interface FilterSelectsProps {
   form: IformProps;
   label: string;
   type: string;
+  setFieldValue: (field: string, params: any) => void;
 }
 
 export interface MarkersProps {

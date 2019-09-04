@@ -59,6 +59,7 @@ const Form = ({ setSubmitData, setCurrentMarker, markers, currentMarker, user }:
                     onChange={handleChange}
                     onBlur={handleBlur}
                     value={values.license}
+                    setFieldValue={setFieldValue}
                   />
                 </div>
               </div>
@@ -73,6 +74,7 @@ const Form = ({ setSubmitData, setCurrentMarker, markers, currentMarker, user }:
                     onChange={handleChange}
                     onBlur={handleBlur}
                     value={values.model}
+                    setFieldValue={setFieldValue}
                   />
                 </div>
                 <div className="input-wrapper">
@@ -84,6 +86,7 @@ const Form = ({ setSubmitData, setCurrentMarker, markers, currentMarker, user }:
                     onChange={handleChange}
                     onBlur={handleBlur}
                     value={values.time}
+                    setFieldValue={setFieldValue}
                   />
                 </div>
               </div>
