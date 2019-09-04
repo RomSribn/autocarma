@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
-import {
-  logout, loginCheck, fetchAccidents, fetchUsers,
-} from 'redux/Accidents/actions';
+import { logout, loginCheck, fetchUsers } from 'redux/User/actions';
+import { fetchAccidents } from 'redux/Accidents/actions';
 import Layout from './Layout.tsx';
 
 const mapDispatchToProps = {

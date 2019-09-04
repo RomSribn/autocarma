@@ -28,21 +28,21 @@ export interface FilterMenuProps {
   filtering: (values: object) => void;
 }
 
-interface fieldProps {
+interface IfieldProps {
   name: string;
   value: string;
   onChange: () => void;
   onBlur: () => void;
 }
 
-interface formProps {
+interface IformProps {
   touched: object;
   errors: object;
 }
 
 export interface FilterSelectsProps {
-  field: fieldProps;
-  form: formProps;
+  field: IfieldProps;
+  form: IformProps;
   label: string;
   type: string;
 }
@@ -61,7 +61,7 @@ export interface UserProps {
 }
 
 export interface SimpleTableProps {
-  markers: Array<MarkersProps>;
+  markers: MarkersProps[];
   gettingId: (id: string) => void;
   dumpingAccident: () => void;
   filtering: (values: object) => void;
@@ -75,9 +75,9 @@ export interface AccidentRowProps extends MarkersProps {
 }
 
 export interface AccidentsProps {
-  markers: Array<MarkersProps>;
-  users: Array<MarkersProps>;
-  filteredMarkers: Array<MarkersProps>;
+  markers: MarkersProps[];
+  users: MarkersProps[];
+  filteredMarkers: MarkersProps[];
   user: UserProps;
   gettingId: (id: string) => void;
   dumpingAccident: () => void;
@@ -96,16 +96,16 @@ export interface LoginProps {
   error: string;
 }
 
-export interface currentMarkerProps {
+export interface IcurrentMarkerProps {
   lat: number;
   lng: number;
 }
 
 export interface FormNewAccidentProps {
   setCurrentMarker: () => void;
-  setSubmitData: (array: Array<object>) => void;
-  currentMarker: currentMarkerProps;
-  markers: Array<MarkersProps>;
+  setSubmitData: (array: object[]) => void;
+  currentMarker: IcurrentMarkerProps;
+  markers: MarkersProps[];
   user: {
     id: string;
     name: string;
@@ -115,8 +115,8 @@ export interface FormNewAccidentProps {
 export interface MapComponentProps {
   setCurrentMarker: (params: object) => void;
   setFieldValue: (key: string, value: any) => void;
-  currentMarker: currentMarkerProps;
-  markers: Array<MarkersProps>;
+  currentMarker: IcurrentMarkerProps;
+  markers: MarkersProps[];
   user: string;
   isMarkerShown: boolean;
 }
@@ -133,7 +133,7 @@ export interface AccidentProps extends MarkersProps {
 }
 
 export interface ViewPageProps {
-  markers: Array<MarkersProps>;
-  images: Array<string>;
-  currentId: currentMarkerProps;
+  markers: MarkersProps[];
+  images: string[];
+  currentId: IcurrentMarkerProps;
 }

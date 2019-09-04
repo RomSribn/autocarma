@@ -1,17 +1,19 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import reactDom from 'react-dom';
 import { Provider } from 'react-redux';
 import { combineReducers, createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import thunkMiddleware from 'redux-thunk';
+import reduxThunk from 'redux-thunk';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import App from 'App';
-import accidentsReducer from 'redux/Accidents/reducers';
+import accidentreducers from 'redux/Accidents/reducers';
+import userReducers from 'redux/User/reducers';
 import 'index.scss';
 
-const middleware = applyMiddleware(thunkMiddleware);
+const middleware = applyMiddleware(reduxThunk);
 const rootReducer = combineReducers({
-  accidents: accidentsReducer,
+  accidents: accidentreducers,
+  user: userReducers,
 });
 const store = createStore(rootReducer, composeWithDevTools(middleware));
 const app = (
@@ -21,4 +23,4 @@ const app = (
   </Provider>
 );
 
-ReactDOM.render(app, document.getElementById('root') as HTMLElement);
+reactDom.render(app, document.getElementById('root') as HTMLElement);
