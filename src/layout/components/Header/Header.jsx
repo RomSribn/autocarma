@@ -16,7 +16,6 @@ const CenteredTabs = ({
 }) => {
   const routes = user ? routesUser : routesGuest;
 
-<<<<<<< HEAD
   const [value, setValue] = React.useState(0);
 
   React.useEffect(() => {
@@ -27,23 +26,6 @@ const CenteredTabs = ({
     loginCheck(user);
   }, [fetchAccidents, loginCheck, routes, user]);
 
-=======
-  if (user) {
-    routes = routesUser;
-  } else {
-    routes = routesGuest;
-  }
-
-  const [value, setValue] = React.useState(0);
-  React.useEffect(() => {
-    if (history.location.pathname) {
-      setValue(routes.indexOf(history.location.pathname));
-    }
-    fetchAccidents();
-    loginCheck(user);
-  }, [fetchAccidents, loginCheck, routes, user]);
-
->>>>>>> 56692bb4876071864cb36fb4ef631cf08248c37b
   function handleChange(event, newValue) {
     history.push(routes[newValue]);
     setValue(newValue);

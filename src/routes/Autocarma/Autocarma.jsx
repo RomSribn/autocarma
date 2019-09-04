@@ -7,7 +7,6 @@ import './Autocarma.scss';
 
 const Autocarma = ({ markers }) => (
   <div className="autocarma-content">
-<<<<<<< HEAD
     <div className="autocarma-map">
       <span className="map-title">Accidents map</span>
       <Map
@@ -23,16 +22,6 @@ const Autocarma = ({ markers }) => (
       <span className="carousel-title">Last 10 accidents</span>
       <Carousel markers={markers} />
     </div>
-=======
-    <Map
-      isMarkerShown
-      googleMapURL={defaultConfig.googleApiUrl}
-      loadingElement={<div style={{ height: '70%', margin: '0 0 auto' }} />}
-      containerElement={<div style={{ height: '400px', width: '70%' }} />}
-      mapElement={<div style={{ height: '100%' }} />}
-      markers={markers}
-    />
->>>>>>> 56692bb4876071864cb36fb4ef631cf08248c37b
   </div>
 );
 

@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Thumb = ({ file }) => {
-<<<<<<< HEAD
   let loading;
   let thumb;
 
@@ -15,18 +14,6 @@ const Thumb = ({ file }) => {
     }),
     [loading, thumb],
   );
-=======
-  const [loading, setLoading] = React.useState(false);
-
-  const [thumb, setThumb] = React.useState(undefined);
-
-  const reader = new FileReader();
-
-  reader.onloadend = () => {
-    setLoading(false);
-    setThumb(reader.result);
-  };
->>>>>>> 56692bb4876071864cb36fb4ef631cf08248c37b
   if (!file) {
     return null;
   }

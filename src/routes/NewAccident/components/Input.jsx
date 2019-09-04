@@ -84,7 +84,6 @@ export const SimpleSelect = ({
 
 export const CustomFileInput = ({
   field, setFieldValue, values, form: { touched, errors },
-<<<<<<< HEAD
 }) => {
   const onDrop = (acceptedFiles) => {
     if (acceptedFiles.length) {
@@ -115,38 +114,6 @@ export const CustomFileInput = ({
     </>
   );
 };
-=======
-}) => (
-  <>
-    <Dropzone
-      accept="image/*"
-      onDrop={(acceptedFiles) => {
-        // do nothing if no files was uplouded
-        if (acceptedFiles.length === 0) {
-          return;
-        }
-        setFieldValue('images', values.images.concat(acceptedFiles));
-      }}
-    >
-      {({ getRootProps, getInputProps, isDragActive }) => (
-        <>
-          <div className="dropzone" {...getRootProps()}>
-            <input {...getInputProps()} />
-            {isDragActive ? drugndropMsg.active : drugndropMsg.not}
-          </div>
-          <br />
-          <div className="dropzone-images">
-            {values.images.length
-              ? values.images.map(file => <Thumb key={values.id} file={file} />)
-              : null}
-          </div>
-        </>
-      )}
-    </Dropzone>
-    {touched[field.name] && errors[field.name] && <div className="error">{errors[field.name]}</div>}
-  </>
-);
->>>>>>> 56692bb4876071864cb36fb4ef631cf08248c37b
 
 const field = {
   field: PropTypes.shape({
