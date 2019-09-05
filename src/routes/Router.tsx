@@ -1,5 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Route, Switch } from 'react-router-dom';
+import withFirebaseAuth from 'react-with-firebase-auth';
+import { providers, firebaseAppAuth } from 'services/Auth';
 import {
   home,
   accidents,
@@ -20,10 +23,13 @@ import Login from './Login';
 import ViewPage from './ViewPage';
 
 interface RouterProps {
-  user: object;
+  user: {
+    login: string;
+    name: string;
+  };
 }
 
-const Router = ({ user }: RouterProps) => (
+const Router: any = ({ user }: RouterProps) => (
   <Switch>
     {user ? (
       <>
@@ -45,4 +51,7 @@ const Router = ({ user }: RouterProps) => (
   </Switch>
 );
 
-export default Router;
+export default withFirebaseAuth({
+  providers,
+  firebaseAppAuth,
+})(Router);

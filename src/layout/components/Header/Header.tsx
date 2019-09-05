@@ -1,23 +1,32 @@
+import withFirebaseAuth from 'react-with-firebase-auth';
 import 'firebase/auth';
-import { auth } from 'firebase/app';
 import React from 'react';
+import PropTypes from 'prop-types';
 import Paper from '@material-ui/core/Paper';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
+import { providers, firebaseAppAuth } from 'services/Auth';
 import history from 'utils/history';
 import { routesGuest, routesUser, login } from 'routes/variables';
-import { CenteredTabsProps } from 'types/index';
 
 import './Header.scss';
 
+interface user {
+  uid: string;
+}
+
+interface CenteredTabsProps {
+  fetchAccidents: () => void;
+  signOut: () => Promise<void>;
+  logout: () => void;
+  loginCheck: (user: object) => void;
+  fetchUsers: (uid: string) => void;
+  user: user;
+}
+
 const CenteredTabs: any = ({
-  user,
-  signOut,
-  logout,
-  loginCheck,
-  fetchAccidents,
-  fetchUsers,
-}: CenteredTabsProps) => {
+  user, signOut, logout, loginCheck, fetchAccidents, fetchUsers,
+}) => {
   const routes = user ? routesUser : routesGuest;
 
   const [value, setValue] = React.useState(0);
@@ -34,7 +43,7 @@ const CenteredTabs: any = ({
     }
   }, [fetchAccidents, fetchUsers, loginCheck, routes, user]);
 
-  function handleChange(event, newValue) {
+  function handleChange(event: React.ChangeEvent<{}>, newValue: number) {
     history.push(routes[newValue]);
     setValue(newValue);
   }
@@ -42,9 +51,7 @@ const CenteredTabs: any = ({
   const onLogout = () => {
     logout();
     setValue(routesGuest.indexOf(login));
-    auth()
-      .signOut()
-      .then(() => history.push(login));
+    signOut().then(() => history.push(login));
   };
 
   return (
@@ -82,4 +89,7 @@ const CenteredTabs: any = ({
   );
 };
 
-export default CenteredTabs;
+export default withFirebaseAuth({
+  providers,
+  firebaseAppAuth,
+})(CenteredTabs);

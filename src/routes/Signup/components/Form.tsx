@@ -1,5 +1,6 @@
 import React from 'react';
 import { Formik, Field } from 'formik';
+import PropTypes from 'prop-types';
 import { ValidateSignup } from 'utils/validate/validate';
 import Error from '_assets/shared/Error/components/Error';
 import Input from './Input';

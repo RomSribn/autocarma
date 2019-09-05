@@ -1,5 +1,6 @@
 import React from 'react';
 import { Formik, Field } from 'formik';
+import PropTypes from 'prop-types';
 import history from 'utils/history';
 import { refPostsDB, refUsersDB } from 'services/FirebaseDB';
 import { refStorage } from 'services/FirebaseStorage';

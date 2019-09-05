@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Map from 'routes/Autocarma/components/Map';
 import { defaultConfig } from 'config';
 import ViewPageTable from './components/ViewPageTable';

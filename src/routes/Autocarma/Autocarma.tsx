@@ -1,9 +1,21 @@
 import React from 'react';
-import { SimpleTableProps } from 'types/index';
+import PropTypes from 'prop-types';
 import { defaultConfig } from 'config';
 import Map from './components/Map';
 import Carousel from './components/Carousel';
 import './Autocarma.scss';
+
+interface MarkersProps {
+  id: number;
+  type: string;
+  license: string;
+  time: string;
+  rating: number;
+}
+
+interface SimpleTableProps {
+  markers: Array<MarkersProps>;
+}
 
 const Autocarma = ({ markers }: SimpleTableProps) => (
   <div className="autocarma-content">
