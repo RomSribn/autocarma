@@ -6,7 +6,7 @@ import { ValidateProfile } from 'utils/validate/validate';
 import Input from './Input';
 import './Form.scss';
 
-const Form = () => (
+const Form = ({ postIdeaCard }) => (
   <div className="form">
     <div>
       <span className="profile-title">Personal Information</span>
@@ -20,7 +20,9 @@ const Form = () => (
         confirmPassword: '',
       }}
       validationSchema={ValidateProfile}
-      onSubmit={() => {}}
+      onSubmit={(values) => {
+        postIdeaCard(values).then(() => history.push('/'));
+      }}
     >
       {({
         values, handleChange, handleBlur, handleSubmit,
@@ -97,3 +99,12 @@ const Form = () => (
 );
 
 export default Form;
+
+Form.propTypes = {
+  postIdeaCard: PropTypes.func.isRequired,
+  author: PropTypes.shape({
+    id: PropTypes.number,
+    login: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+  }).isRequired,
+};

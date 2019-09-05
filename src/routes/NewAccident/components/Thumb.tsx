@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 interface ThumbProps {
   file: {
-    name?: string;
+    name: string;
   };
 }
 

@@ -21,10 +21,7 @@ interface NewAccidentProps {
   setSubmitData: () => void;
   currentMarker: currentMarkerProps;
   markers: Array<MarkersProps>;
-  user: {
-    id: string;
-    name: string;
-  };
+  user: string;
 }
 
 const NewAccident = ({

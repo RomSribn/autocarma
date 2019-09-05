@@ -6,26 +6,7 @@ import ViewPageTable from './components/ViewPageTable';
 import Slider from './components/Slider';
 import './ViewPage.scss';
 
-interface MarkersProps {
-  id: number;
-  type: string;
-  license: string;
-  time: string;
-  rating: number;
-}
-
-interface currentMarkerProps {
-  lat: number;
-  lng: number;
-}
-
-interface ViewPageProps {
-  markers: Array<MarkersProps>;
-  images: Array<string>;
-  currentId: currentMarkerProps;
-}
-
-const ViewPage = ({ markers, images, currentId }: ViewPageProps) => {
+const ViewPage = ({ markers, images, currentId }) => {
   const currentMarker = markers.filter(el => el[0] === currentId);
   return (
     <>
@@ -56,3 +37,16 @@ const ViewPage = ({ markers, images, currentId }: ViewPageProps) => {
 };
 
 export default ViewPage;
+
+ViewPage.propTypes = {
+  markers: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      type: PropTypes.string.isRequired,
+      license: PropTypes.string.isRequired,
+      time: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
+  images: PropTypes.shape([]).isRequired,
+  currentId: PropTypes.string.isRequired,
+};
