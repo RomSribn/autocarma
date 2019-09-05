@@ -11,27 +11,9 @@ import { routesGuest, routesUser, login } from 'routes/variables';
 
 import './Header.scss';
 
-interface user {
-  uid: string;
-}
-
-interface CenteredTabsProps {
-  fetchAccidents: () => void;
-  signOut: () => Promise<void>;
-  logout: () => void;
-  loginCheck: (user: object) => void;
-  fetchUsers: (uid: string) => void;
-  user: user;
-}
-
-const CenteredTabs: React.FC<CenteredTabsProps> = ({
-  user,
-  signOut,
-  logout,
-  loginCheck,
-  fetchAccidents,
-  fetchUsers,
-}: CenteredTabsProps) => {
+const CenteredTabs = ({
+  user, signOut, logout, loginCheck, fetchAccidents, fetchUsers,
+}) => {
   const routes = user ? routesUser : routesGuest;
 
   const [value, setValue] = React.useState(0);
@@ -42,13 +24,12 @@ const CenteredTabs: React.FC<CenteredTabsProps> = ({
     }
     loginCheck(user);
     if (user) {
-      const { uid } = user;
       fetchAccidents();
-      fetchUsers(uid);
+      fetchUsers(user.uid);
     }
   }, [fetchAccidents, fetchUsers, loginCheck, routes, user]);
 
-  function handleChange(event: React.ChangeEvent<{}>, newValue: number) {
+  function handleChange(event, newValue) {
     history.push(routes[newValue]);
     setValue(newValue);
   }
@@ -98,3 +79,18 @@ export default withFirebaseAuth({
   providers,
   firebaseAppAuth,
 })(CenteredTabs);
+
+CenteredTabs.defaultProps = {
+  user: null,
+};
+
+CenteredTabs.propTypes = {
+  fetchAccidents: PropTypes.func.isRequired,
+  signOut: PropTypes.func.isRequired,
+  logout: PropTypes.func.isRequired,
+  loginCheck: PropTypes.func.isRequired,
+  fetchUsers: PropTypes.func.isRequired,
+  user: PropTypes.shape({
+    uid: PropTypes.string.isRequired,
+  }),
+};
