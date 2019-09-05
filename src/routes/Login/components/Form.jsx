@@ -21,7 +21,7 @@ const Form = ({ login, error }) => (
       onSubmit={values => login(values)}
     >
       {({
-        values, handleChange, handleBlur, handleSubmit, isSubmitting,
+        values, handleChange, handleBlur, handleSubmit,
       }) => (
         <form onSubmit={handleSubmit} className="login-form">
           <div className="inputs-login">
@@ -48,7 +48,7 @@ const Form = ({ login, error }) => (
                 value={values.password}
               />
             </div>
-            <button className="save-login" type="submit" disabled={isSubmitting}>
+            <button className="save-login" type="submit">
               Login
             </button>
           </div>

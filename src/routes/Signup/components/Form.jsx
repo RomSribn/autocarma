@@ -23,7 +23,7 @@ const Form = ({ signup, error }) => (
       onSubmit={values => signup(values)}
     >
       {({
-        values, handleChange, handleBlur, handleSubmit, isSubmitting,
+        values, handleChange, handleBlur, handleSubmit,
       }) => (
         <form onSubmit={handleSubmit} className="signup-form">
           <div className="inputs-signup">
@@ -75,7 +75,7 @@ const Form = ({ signup, error }) => (
               />
             </div>
 
-            <button className="save-signup" type="submit" disabled={isSubmitting}>
+            <button className="save-signup" type="submit">
               Create
             </button>
           </div>

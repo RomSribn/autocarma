@@ -1,5 +1,6 @@
 import { handleActions } from 'redux-actions';
 import {
+  fetchUsersSuccess,
   fetchAccidentsSuccess,
   loginCheckSuccess,
   loginSuccess,
@@ -9,32 +10,79 @@ import {
   signupFailed,
   submitSuccess,
   setCurrentMarkerSuccess,
+  getIdSuccess,
+  getImgSuccess,
+  dumpingAccidentSuccess,
+  filterSuccess,
 } from './actions';
 
 const initialState = {
   markers: [
-    {
-      id: '4n5pxq24kpiob12og9',
-      coordinates: {
-        lat: 50.00008585430338,
-        lng: 36.24283354637146,
+    [
+      '-LmxgZcP6t2jvCTAZI1N',
+      {
+        id: '4n5pxq24kpiob12og9',
+        coordinates: {
+          lat: 50.00008585430338,
+          lng: 36.24283354637146,
+        },
+        type: 'Parking law',
+        license: 'AXB8979JV',
+        model: 'Tesla model X',
+        description: 'lorem ipsum doloooororosjl',
       },
-      type: 'Parking law',
-      license: 'AXB8979JV',
-      model: 'Tesla model X',
-      description: 'lorem ipsum doloooororosjl',
-    },
+    ],
   ],
+  filteredMarkers: [],
   currenMarker: {},
   error: '',
-  user: '',
+  user: {
+    id: '',
+    name: '',
+  },
+  currentId: '',
+  users: [
+    [
+      '-LmxgZcP6t2jvCTAZI1N',
+      {
+        id: '4n5pxq24kpiob12og9',
+        coordinates: {
+          lat: 50.00008585430338,
+          lng: 36.24283354637146,
+        },
+        type: 'Parking law',
+        license: 'AXB8979JV',
+        model: 'Tesla model X',
+        description: 'lorem ipsum doloooororosjl',
+      },
+    ],
+    [
+      '-LmxgZcP6t2jvCTAZI1N',
+      {
+        id: '4n5pxq24kpiob12og9',
+        coordinates: {
+          lat: 50.00008585430338,
+          lng: 36.24283354637146,
+        },
+        type: 'Parking law',
+        license: 'AXB8979JV',
+        model: 'Tesla model X',
+        description: 'lorem ipsum doloooororosjl',
+      },
+    ],
+  ],
+  images: [],
 };
 
 const accidents = handleActions(
   {
+    [fetchUsersSuccess]: (state, action) => ({
+      ...state,
+      users: action.payload || state.users,
+    }),
     [fetchAccidentsSuccess]: (state, action) => ({
       ...state,
-      markers: action.payload,
+      markers: action.payload || state.markers,
     }),
     [loginCheckSuccess]: (state, action) => ({
       ...state,
@@ -62,13 +110,37 @@ const accidents = handleActions(
       ...state,
       error: action.payload,
     }),
-    [submitSuccess]: (state, action) => ({
+    [submitSuccess]: state => ({
       ...state,
-      markers: [...state.markers, action.payload],
+      markers: [...state.markers],
     }),
     [setCurrentMarkerSuccess]: (state, action) => ({
       ...state,
       currentMarker: action.payload,
+    }),
+    [getIdSuccess]: (state, action) => ({
+      ...state,
+      currentId: action.payload,
+    }),
+    [getImgSuccess]: (state, action) => ({
+      ...state,
+      images: action.payload,
+    }),
+    [dumpingAccidentSuccess]: (state, action) => ({
+      ...state,
+      markers: state.markers.filter(marker => marker[0] !== action.payload),
+    }),
+    [filterSuccess]: (state, action) => ({
+      ...state,
+      filteredMarkers: (() => {
+        const checkedMarkers = state.user.id === '8mOY0CflD6QXjebbE7ibObU1Shw1' ? state.markers : state.users;
+        return checkedMarkers.filter((marker) => {
+          if (action.payload.type) {
+            return marker[1].type === action.payload.type;
+          }
+          return true;
+        });
+      })(),
     }),
   },
   initialState,

@@ -1,24 +1,70 @@
 import React from 'react';
+import { Formik, Field } from 'formik';
+import PropTypes from 'prop-types';
+import Drawer from 'react-drag-drawer';
+import { FilterSelectType, FilterSelectTime } from './FilterSelects';
 import './FilterMenu.scss';
 
-export default function SimpleSelect() {
-  return (
-    <form>
-      <ul className="filter-menu">
-        <li>Filter by:</li>
-        <li className="select-wrap">
-          <select id="select" className="form-item__element form-item__element--select" required>
-            <option disabled selected value="">Please select value</option>
-            <option value="1">Accident type</option>
-            <option value="2">Time</option>
-          </select>
-        </li>
-        <li><div className="license-button">License plate</div></li>
-        <li>
-          <input className="filter-submit" type="submit" value="Filter" />
-        </li>
-      </ul>
-    </form>
+const FilterMenu = ({ filtering }) => {
+  const [open, setOpen] = React.useState(false);
+  const toggle = () => {
+    setOpen(!open);
+  };
 
+  const onSubmit = (values) => {
+    toggle();
+    filtering(values);
+  };
+  return (
+    <div className="form-filter-wrapper">
+      <button type="button" className="filter-button" onClick={toggle}>
+        Filtering
+      </button>
+      <Formik
+        initialValues={{
+          type: '',
+          time: '',
+        }}
+        onSubmit={onSubmit}
+      >
+        {({
+          values, handleChange, handleBlur, handleSubmit,
+        }) => (
+          <Drawer open={open} onRequestClose={toggle} modalElementClass="modal">
+            <form onSubmit={handleSubmit} className="filter-form">
+              <ul className="filter-menu">
+                <li className="select-wrap">
+                  <Field
+                    component={FilterSelectType}
+                    name="type"
+                    label="Accident type"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    values={values.type}
+                  />
+                </li>
+                <li className="select-wrap">
+                  <Field
+                    component={FilterSelectTime}
+                    name="time"
+                    label="Time"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    values={values.time}
+                  />
+                </li>
+              </ul>
+              <input className="filter-submit" type="submit" value="Filter" />
+            </form>
+          </Drawer>
+        )}
+      </Formik>
+    </div>
   );
-}
+};
+
+export default FilterMenu;
+
+FilterMenu.propTypes = {
+  filtering: PropTypes.func.isRequired,
+};

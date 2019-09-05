@@ -4,10 +4,15 @@ import Header from './components/Header/Header';
 import Main from './components/Main';
 
 const Layout = ({
-  children, logout, loginCheck, fetchAccidents,
+  children, logout, loginCheck, fetchAccidents, fetchUsers,
 }) => (
   <>
-    <Header logout={logout} loginCheck={loginCheck} fetchAccidents={fetchAccidents} />
+    <Header
+      logout={logout}
+      loginCheck={loginCheck}
+      fetchUsers={fetchUsers}
+      fetchAccidents={fetchAccidents}
+    />
     <Main>{children}</Main>
   </>
 );
@@ -19,4 +24,5 @@ Layout.propTypes = {
   fetchAccidents: PropTypes.func.isRequired,
   logout: PropTypes.func.isRequired,
   loginCheck: PropTypes.func.isRequired,
+  fetchUsers: PropTypes.func.isRequired,
 };

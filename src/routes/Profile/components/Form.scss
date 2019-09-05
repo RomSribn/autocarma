@@ -1,3 +1,5 @@
+@import "_assets/scss/abstractions/variables.scss";
+
 .form {
   display: flex;
   flex-direction: column;
@@ -9,6 +11,14 @@
   margin-top: 25px;
   text-align: center;
   justify-content: center;
+  .profile-title {
+    text-align: center;
+    display: block;
+    font-size: $big;
+    font-weight: bold;
+    padding: 30px;
+    padding-top: 50px;
+  }
 }
 
 .inputs-profile {

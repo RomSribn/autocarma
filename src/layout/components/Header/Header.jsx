@@ -12,19 +12,23 @@ import { routesGuest, routesUser, login } from 'routes/variables';
 import './Header.scss';
 
 const CenteredTabs = ({
-  user, signOut, logout, loginCheck, fetchAccidents,
+  user, signOut, logout, loginCheck, fetchAccidents, fetchUsers,
 }) => {
-  let routes;
+  const routes = user ? routesUser : routesGuest;
 
-  if (user) {
-    routes = routesUser;
-    fetchAccidents();
+  const [value, setValue] = React.useState(0);
+
+  React.useEffect(() => {
+    if (history.location.pathname) {
+      setValue(routes.indexOf(history.location.pathname));
+    }
     loginCheck(user);
-  } else {
-    routes = routesGuest;
-  }
+    if (user) {
+      fetchAccidents();
+      fetchUsers(user.uid);
+    }
+  }, [fetchAccidents, fetchUsers, loginCheck, routes, user]);
 
-  const [value, setValue] = React.useState(routes.indexOf(history.location.pathname));
   function handleChange(event, newValue) {
     history.push(routes[newValue]);
     setValue(newValue);
@@ -48,9 +52,8 @@ const CenteredTabs = ({
           centered
         >
           <Tab className="logo-bold" label="Autocarma" />
-          <Tab label="Accidents" />
-          <Tab label="Add new accidents" />
           <Tab label="My accidents" />
+          <Tab label="Add new accidents" />
           <Tab label="About" />
           <Tab label="Profile" />
           <Tab label="Logout" onClick={onLogout} />
@@ -86,9 +89,8 @@ CenteredTabs.propTypes = {
   signOut: PropTypes.func.isRequired,
   logout: PropTypes.func.isRequired,
   loginCheck: PropTypes.func.isRequired,
+  fetchUsers: PropTypes.func.isRequired,
   user: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    login: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
+    uid: PropTypes.string.isRequired,
   }),
 };
