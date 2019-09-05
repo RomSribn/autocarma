@@ -17,9 +17,9 @@ const MyMapComponent = withScriptjs(
         {props.isMarkerShown
           && markers.map(el => (
             <Marker
-              key={el.id}
+              key={el[0]}
               onDblClick={evt => `${evt.latLng.lat()} ${evt.latLng.lng()}`}
-              position={el.coordinates}
+              position={el[1].coordinates}
             />
           ))}
       </GoogleMap>

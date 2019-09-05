@@ -1,16 +1,33 @@
 import React from 'react';
 import { Formik, Field } from 'formik';
+<<<<<<< HEAD:src/routes/NewAccident/components/Form.tsx
 import { FormNewAccidentProps } from 'types/index';
+=======
+import PropTypes from 'prop-types';
+>>>>>>> develop:src/routes/NewAccident/components/Form.jsx
 import history from 'utils/history';
 import { refPostsDB, refUsersDB } from 'services/FirebaseDB';
 import { refStorage } from 'services/FirebaseStorage';
 import { accidents } from 'routes/variables';
+<<<<<<< HEAD:src/routes/NewAccident/components/Form.tsx
 import { CustomField, CustomFieldTextArea, SimpleSelect, CustomFileInput } from './Input';
 import Map from './Map';
 import './Form.scss';
 
 const Form = ({ setSubmitData, setCurrentMarker, markers, currentMarker, user }: FormNewAccidentProps) => {
   const onSubmit = values => {
+=======
+import {
+  CustomField, CustomFieldTextArea, SimpleSelect, CustomFileInput,
+} from './Input';
+import Map from './Map';
+import './Form.scss';
+
+const Form = ({
+  setSubmitData, setCurrentMarker, markers, currentMarker, user,
+}) => {
+  const onSubmit = (values) => {
+>>>>>>> develop:src/routes/NewAccident/components/Form.jsx
     const postId = refPostsDB.push(values).key;
     setSubmitData([postId, values]);
     refUsersDB(user.id, postId).set({ ...values, id: postId });
@@ -35,7 +52,13 @@ const Form = ({ setSubmitData, setCurrentMarker, markers, currentMarker, user }:
         }}
         onSubmit={onSubmit}
       >
+<<<<<<< HEAD:src/routes/NewAccident/components/Form.tsx
         {({ values, handleChange, handleBlur, handleSubmit, setFieldValue }) => (
+=======
+        {({
+          values, handleChange, handleBlur, handleSubmit, setFieldValue,
+        }) => (
+>>>>>>> develop:src/routes/NewAccident/components/Form.jsx
           <form onSubmit={handleSubmit} className="new-accident-form">
             <div className="new-accident-inputs">
               <div className="inputs-col">

@@ -7,7 +7,7 @@ import './Form.scss';
 const Form = () => (
   <div className="form">
     <div>
-      <h1>Personal Information</h1>
+      <span className="profile-title">Personal Information</span>
     </div>
     <Formik
       initialValues={{
@@ -21,7 +21,7 @@ const Form = () => (
       onSubmit={() => {}}
     >
       {({
-        values, handleChange, handleBlur, handleSubmit, isSubmitting,
+        values, handleChange, handleBlur, handleSubmit,
       }) => (
         <form onSubmit={handleSubmit} className="profile-form">
           <div className="inputs-profile">
@@ -84,7 +84,7 @@ const Form = () => (
               />
             </div>
 
-            <button className="save-profile" type="submit" disabled={isSubmitting}>
+            <button className="save-profile" type="submit">
               Save
             </button>
           </div>

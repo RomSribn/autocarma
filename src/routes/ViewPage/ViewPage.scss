@@ -3,6 +3,7 @@
 .viewpage {
   display: flex;
   justify-content: center;
+<<<<<<< HEAD
   flex-direction: column;
   flex-wrap: wrap;
   padding-top: 10px;
@@ -12,10 +13,17 @@
       flex-direction: row;
     }
   }
+=======
+  flex-wrap: wrap;
+  padding: 200px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+>>>>>>> develop
 }
 
 .viewpage-title {
   display: block;
+<<<<<<< HEAD
   font-weight: bold;
   font-size: $normal;
   padding-top: 30px;
@@ -26,11 +34,19 @@
       font-size: $big;
     }
   }
+=======
+  font-size: $big;
+  font-weight: bold;
+  padding: 30px;
+  padding-top: 50px;
+  text-align: center;
+>>>>>>> develop
 }
 
 .viewpage-media {
   display: flex;
   flex-direction: column;
+<<<<<<< HEAD
   justify-content: space-between;
   align-items: center;
   width: 100%;
@@ -45,4 +61,12 @@
       padding-left: 20px;
     }
   }
+=======
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  .media-item {
+    width: 100%;
+  }
+>>>>>>> develop
 }
