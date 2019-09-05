@@ -1,12 +1,12 @@
 import React from 'react';
-import { SimpleTableProps } from 'types/index';
+import { ISimpleTableProps } from 'interfaces';
 import { defaultConfig } from 'config';
 import Map from './components/Map';
 import Carousel from './components/Carousel';
 import MobileCarousel from './components/MobileCarousel';
 import './Autocarma.scss';
 
-const Autocarma = ({ markers }: SimpleTableProps) => {
+const Autocarma = ({ markers }: ISimpleTableProps) => {
   const width = window.innerWidth;
   const mapWidth = width > 800 ? '70%' : '100%';
   return (

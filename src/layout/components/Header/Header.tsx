@@ -6,18 +6,17 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import history from 'utils/history';
 import { routesGuest, routesUser, login } from 'routes/variables';
-import { CenteredTabsProps } from 'types/index';
+import { ICenteredTabsProps } from '../../interface';
 
 import './Header.scss';
 
 const CenteredTabs: any = ({
   user,
-  signOut,
   logout,
   loginCheck,
   fetchAccidents,
   fetchUsers,
-}: CenteredTabsProps) => {
+}: ICenteredTabsProps) => {
   const routes = user ? routesUser : routesGuest;
 
   const [value, setValue] = React.useState(0);

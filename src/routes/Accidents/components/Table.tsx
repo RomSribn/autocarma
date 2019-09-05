@@ -1,5 +1,5 @@
 import React from 'react';
-import { SimpleTableProps } from 'types/index';
+import { ISimpleTableProps } from 'interfaces';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -17,7 +17,7 @@ const SimpleTable = ({
   dumpingAccident,
   filtering,
   user,
-}: SimpleTableProps) => {
+}: ISimpleTableProps) => {
   const [value, setValue] = React.useState(1);
 
   const handleChange = (pageNumber) => {

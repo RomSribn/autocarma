@@ -1,7 +1,7 @@
 import React from 'react';
-import { ViewPageProps } from 'types/index';
 import Map from 'routes/Autocarma/components/Map';
 import { defaultConfig } from 'config';
+import { ViewPageProps } from './interface';
 import ViewPageTable from './components/ViewPageTable';
 import Slider from './components/Slider';
 import './ViewPage.scss';

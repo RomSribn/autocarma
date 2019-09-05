@@ -1,5 +1,5 @@
 import React from 'react';
-import { FilterSelectsProps } from 'types/index';
+import { IFilterSelectsProps } from 'interfaces';
 import Clear from '@material-ui/icons/Clear';
 import Check from '@material-ui/icons/Check';
 import Dropzone from 'react-dropzone';
@@ -7,7 +7,7 @@ import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import Thumb from './Thumb';
 import './Input.scss';
 
-interface CustomFileInputProps extends FilterSelectsProps {
+interface ICustomFileInputProps extends IFilterSelectsProps {
   setFieldValue: (field: string, params: any) => void;
   values: {
     images: Array<object>;
@@ -26,7 +26,7 @@ export const CustomField = ({
   type,
   form: { touched, errors },
   ...props
-}: FilterSelectsProps) => (
+}: IFilterSelectsProps) => (
   <>
     <div className="label">
       <label htmlFor={label}>
@@ -52,7 +52,7 @@ export const CustomFieldTextArea = ({
   type,
   form: { touched, errors },
   ...props
-}: FilterSelectsProps) => (
+}: IFilterSelectsProps) => (
   <>
     <label htmlFor={label}>
       {label}
@@ -75,7 +75,7 @@ export const SimpleSelect = ({
   type,
   form: { touched, errors },
   ...props
-}: CustomFileInputProps) => (
+}: ICustomFileInputProps) => (
   <div className="label">
     <label htmlFor={label}>
       {label}
@@ -103,7 +103,7 @@ export const CustomFileInput = ({
   setFieldValue,
   values,
   form: { touched, errors },
-}: CustomFileInputProps) => {
+}: ICustomFileInputProps) => {
   const onDrop = (acceptedFiles) => {
     if (acceptedFiles.length) {
       setFieldValue('images', values.images.concat(acceptedFiles));

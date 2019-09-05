@@ -1,10 +1,10 @@
 import React from 'react';
-import { AccidentRowProps } from 'types/index';
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
 import Clear from '@material-ui/icons/Clear';
 import Eye from '@material-ui/icons/RemoveRedEye';
 import history from 'utils/history';
+import { IAccidentRowProps } from '../interface';
 import './TableRow.scss';
 
 const AccidentRow = ({
@@ -15,7 +15,7 @@ const AccidentRow = ({
   currentId,
   gettingId,
   dumpingAccident,
-}: AccidentRowProps) => {
+}: IAccidentRowProps) => {
   const onEyeClick = () => {
     gettingId(currentId);
     history.push('/viewpage');

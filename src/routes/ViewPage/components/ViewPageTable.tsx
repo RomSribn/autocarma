@@ -1,10 +1,10 @@
 import React from 'react';
-import { AccidentProps } from 'types/index';
+import { IAccidentProps } from 'interfaces';
 import './ViewPageTable.scss';
 
 const ViewPageTable = ({
   type, model, license, author, time, description,
-}: AccidentProps) => (
+}: IAccidentProps) => (
   <ul className="viewpage-table">
     <li className="item">
       <span className="key">Type:</span>

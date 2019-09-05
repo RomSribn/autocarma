@@ -1,5 +1,4 @@
 import React from 'react';
-import { MarkersProps } from 'types/index';
 import { useTheme } from '@material-ui/core/styles';
 import MobileStepper from '@material-ui/core/MobileStepper';
 import Paper from '@material-ui/core/Paper';
@@ -7,11 +6,8 @@ import Button from '@material-ui/core/Button';
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import SwipeableViews from 'react-swipeable-views';
+import { IMobileCarouselProps } from '../interface';
 import CarouselItem from './CarouselItem';
-
-interface IMobileCarouselProps {
-  markers: MarkersProps[];
-}
 
 const MobileCarousel = ({ markers }: IMobileCarouselProps) => {
   const theme = useTheme();
@@ -20,6 +16,8 @@ const MobileCarousel = ({ markers }: IMobileCarouselProps) => {
 
   function handleNext() {
     setActiveStep(prevActiveStep => prevActiveStep + 1);
+    console.log(theme);
+    debugger;
   }
 
   function handleBack() {

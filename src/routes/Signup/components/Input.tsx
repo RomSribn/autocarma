@@ -1,5 +1,5 @@
 import React from 'react';
-import { FilterSelectsProps } from 'types/index';
+import { IFilterSelectsProps } from 'interfaces';
 import Clear from '@material-ui/icons/Clear';
 import Check from '@material-ui/icons/Check';
 import './Input.scss';
@@ -10,7 +10,7 @@ const CustomField = ({
   type,
   form: { touched, errors },
   ...props
-}: FilterSelectsProps) => (
+}: IFilterSelectsProps) => (
   <>
     <div className="label">
       <label htmlFor={label}>

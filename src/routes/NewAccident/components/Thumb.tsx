@@ -1,10 +1,5 @@
 import React from 'react';
-
-interface ThumbProps {
-  file: {
-    name?: string;
-  };
-}
+import { ThumbProps } from '../interface';
 
 const Thumb = ({ file }: ThumbProps) => {
   let loading;

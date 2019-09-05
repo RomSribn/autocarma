@@ -1,13 +1,13 @@
 import React from 'react';
-import { MapComponentProps } from 'types/index';
 import { defaultConfig } from 'config';
 
 import {
   withScriptjs, withGoogleMap, GoogleMap, Marker,
 } from 'react-google-maps';
+import { IMapComponentProps } from '../interface';
 
 const MyMapComponent = withScriptjs(
-  withGoogleMap((props: MapComponentProps) => {
+  withGoogleMap((props: IMapComponentProps) => {
     const {
       markers, setFieldValue, setCurrentMarker, currentMarker,
     } = props;

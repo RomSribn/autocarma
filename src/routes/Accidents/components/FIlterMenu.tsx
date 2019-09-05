@@ -1,18 +1,17 @@
 import React from 'react';
 import { Formik, Field } from 'formik';
 import Drawer from 'react-drag-drawer';
-import { FilterMenuProps } from 'types/index';
+import { IFilterMenuProps } from '../interface';
 import { FilterSelectType, FilterSelectTime } from './FilterSelects';
 import './FilterMenu.scss';
 
-const FilterMenu = ({ filtering }: FilterMenuProps) => {
+const FilterMenu = ({ filtering }: IFilterMenuProps) => {
   const [open, setOpen] = React.useState(false);
   const toggle = () => {
     setOpen(!open);
   };
 
   const onSubmit = (values: object) => {
-    debugger;
     toggle();
     filtering(values);
   };

@@ -1,9 +1,9 @@
 import React from 'react';
-import { LoginProps } from 'types/index';
+import { ILoginProps } from './interface';
 import Form from './components/Form';
 import './Login.scss';
 
-const Login = ({ login, error }: LoginProps) => (
+const Login = ({ login, error }: ILoginProps) => (
   <div className="profile-form">
     <Form login={login} error={error} />
   </div>

@@ -131,7 +131,6 @@ const accidents = handleActions(
       ...state,
       filteredMarkers: (() => {
         const checkedMarkers = state.user.id === admin ? state.markers : state.users;
-        debugger;
         return checkedMarkers.filter((marker) => {
           if (action.payload.type) {
             return marker[1].type === action.payload.type;

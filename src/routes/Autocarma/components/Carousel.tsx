@@ -1,11 +1,11 @@
 import React from 'react';
-import { MarkersProps } from 'types/index';
+import { IMarkersProps } from 'interfaces';
 import ItemsCarousel from 'react-items-carousel';
 import CarouselItem from './CarouselItem';
 import './Carousel.scss';
 
 interface ICarouselProps {
-  markers: Array<MarkersProps>;
+  markers: Array<IMarkersProps>;
 }
 
 const Carousel = ({ markers }: ICarouselProps) => {

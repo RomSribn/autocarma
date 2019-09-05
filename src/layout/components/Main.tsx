@@ -1,7 +1,7 @@
 import React from 'react';
 import './Main.scss';
-import { MainProps } from 'types/index';
+import { IMainProps } from '../interface';
 
-const Main = ({ children }: MainProps) => <div className="main">{children}</div>;
+const Main = ({ children }: IMainProps) => <div className="main">{children}</div>;
 
 export default Main;

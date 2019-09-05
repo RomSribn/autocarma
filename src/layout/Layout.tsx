@@ -1,16 +1,16 @@
 import React from 'react';
-import { LayoutProps } from 'types/index';
+import { ILayoutProps } from './interface';
 import Header from './components/Header/Header';
 import Main from './components/Main';
 
-const Layout: React.FC<LayoutProps> = ({
+const Layout: React.FC<ILayoutProps> = ({
   children,
   logout,
   loginCheck,
   fetchAccidents,
   fetchUsers,
   user,
-}: LayoutProps) => (
+}: ILayoutProps) => (
   <>
     <Header
       logout={logout}

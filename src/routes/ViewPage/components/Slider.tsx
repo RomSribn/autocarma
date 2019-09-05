@@ -2,16 +2,13 @@ import React from 'react';
 import { useTheme } from '@material-ui/core/styles';
 import SwipeableViews from 'react-swipeable-views';
 import { autoPlay } from 'react-swipeable-views-utils';
-
 import './Slider.scss';
 
-interface SliderProps {
-  images: Array<string>;
-}
+import { ISliderProps } from '../interface';
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
-function Slider({ images }: SliderProps) {
+function Slider({ images }: ISliderProps) {
   const theme = useTheme();
   const [activeStep, setActiveStep] = React.useState(0);
 

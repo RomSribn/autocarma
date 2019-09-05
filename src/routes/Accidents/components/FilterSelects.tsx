@@ -1,5 +1,5 @@
 import React from 'react';
-import { FilterSelectsProps } from 'types/index';
+import { IFilterSelectsProps } from 'interfaces';
 
 export const FilterSelectType = ({
   field,
@@ -7,7 +7,7 @@ export const FilterSelectType = ({
   type,
   form: { touched, errors },
   ...props
-}: FilterSelectsProps) => (
+}: IFilterSelectsProps) => (
   <>
     <label htmlFor={label}>
       {label}
@@ -35,7 +35,7 @@ export const FilterSelectTime = ({
   type,
   form: { touched, errors },
   ...props
-}: FilterSelectsProps) => (
+}: IFilterSelectsProps) => (
   <>
     <label htmlFor={label}>
       {label}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { FormNewAccidentProps } from 'types/index';
+import { IFormNewAccidentProps } from './interface';
 import Form from './components/Form';
 import './NewAccident.scss';
 
@@ -9,7 +9,7 @@ const NewAccident = ({
   markers,
   currentMarker,
   user,
-}: FormNewAccidentProps) => (
+}: IFormNewAccidentProps) => (
   <div className="create-accident-form">
     <Form
       setSubmitData={setSubmitData}

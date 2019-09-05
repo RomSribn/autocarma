@@ -1,6 +1,6 @@
 import React from 'react';
 import { Formik, Field } from 'formik';
-import { FormNewAccidentProps } from 'types/index';
+import { IFormNewAccidentProps } from '../interface';
 import history from 'utils/history';
 import { refPostsDB, refUsersDB } from 'services/FirebaseDB';
 import { refStorage } from 'services/FirebaseStorage';
@@ -9,8 +9,15 @@ import { CustomField, CustomFieldTextArea, SimpleSelect, CustomFileInput } from 
 import Map from './Map';
 import './Form.scss';
 
-const Form = ({ setSubmitData, setCurrentMarker, markers, currentMarker, user }: FormNewAccidentProps) => {
-  const onSubmit = values => {
+const Form = (
+  {
+  setSubmitData,
+  setCurrentMarker,
+  markers,
+  currentMarker,
+  user,
+}: IFormNewAccidentProps) => {
+  const onSubmit = ( values ) => {
     const postId = refPostsDB.push(values).key;
     setSubmitData([postId, values]);
     refUsersDB(user.id, postId).set({ ...values, id: postId });

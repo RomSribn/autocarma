@@ -2,9 +2,10 @@ import React from 'react';
 import {
   withScriptjs, withGoogleMap, GoogleMap, Marker,
 } from 'react-google-maps';
+import { IAutocarmaMapProps } from '../interface';
 
 const MyMapComponent = withScriptjs(
-  withGoogleMap((props) => {
+  withGoogleMap((props: IAutocarmaMapProps) => {
     const { markers } = props;
     return (
       <GoogleMap

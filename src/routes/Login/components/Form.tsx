@@ -1,12 +1,12 @@
 import React from 'react';
 import { Formik, Field } from 'formik';
 import { ValidateLogin } from 'utils/validate/validate';
-import { LoginProps } from 'types/index';
+import { ILoginProps } from '../interface';
 import Error from '_assets/shared/Error/components/Error';
 import Input from './Input';
 import './Form.scss';
 
-const Form = ({ login, error }: LoginProps) => (
+const Form = ({ login, error }: ILoginProps) => (
   <div className="form-login">
     {error ? <Error message={error} /> : null}
     <div className="login-title">

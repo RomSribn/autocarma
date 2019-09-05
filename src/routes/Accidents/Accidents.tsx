@@ -1,5 +1,5 @@
 import React from 'react';
-import { AccidentsProps } from 'types/index';
+import { IAccidentsProps } from './interface';
 import Table from './components/Table';
 
 import './Accidents.scss';
@@ -12,7 +12,7 @@ const Accidents = ({
   filtering,
   filteredMarkers,
   user,
-}: AccidentsProps) => {
+}: IAccidentsProps) => {
   const checkedMarkers = user.id === '8mOY0CflD6QXjebbE7ibObU1Shw1' ? markers : users;
   return (
     <div className="accidents">
