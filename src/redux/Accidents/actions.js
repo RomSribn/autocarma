@@ -68,7 +68,7 @@ export const loginCheck = user => (dispatch) => {
 
 export const login = values => dispatch => auth()
   .signInWithEmailAndPassword(values.email, values.password)
-  .then((res: { user }) => {
+  .then((res) => {
     dispatch(loginSuccess(res.user.uid));
     history.push('/accidents');
   })
@@ -78,7 +78,7 @@ export const logout = () => dispatch => dispatch(logoutSuccess());
 
 export const signup = values => dispatch => auth()
   .createUserWithEmailAndPassword(values.email, values.password)
-  .then((res: { user }) => {
+  .then((res) => {
     res.user.updateProfile({
       displayName: values.username,
     });
@@ -104,20 +104,3 @@ export const dumpingAccident = id => (dispatch) => {
 };
 
 export const filtering = values => dispatch => dispatch(filterSuccess(values));
-
-export type AccidentsActionTypes = ReturnType<
-  | typeof fetchUsersSuccess
-  | typeof fetchAccidentsSuccess
-  | typeof loginCheckSuccess
-  | typeof loginFailed
-  | typeof loginSuccess
-  | typeof logoutSuccess
-  | typeof signupFailed
-  | typeof signupSuccess
-  | typeof submitSuccess
-  | typeof setCurrentMarkerSuccess
-  | typeof getIdSuccess
-  | typeof getImgSuccess
-  | typeof dumpingAccidentSuccess
-  | typeof filterSuccess
->;

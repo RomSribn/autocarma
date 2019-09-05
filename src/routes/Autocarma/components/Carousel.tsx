@@ -4,11 +4,11 @@ import ItemsCarousel from 'react-items-carousel';
 import CarouselItem from './CarouselItem';
 import './Carousel.scss';
 
-interface ICarouselProps {
+interface CarouselProps {
   markers: Array<MarkersProps>;
 }
 
-const Carousel = ({ markers }: ICarouselProps) => {
+const Carousel = ({ markers }: CarouselProps) => {
   const [activeItemIndex, setState] = React.useState(0);
 
   return (
