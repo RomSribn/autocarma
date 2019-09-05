@@ -21,12 +21,7 @@ input.login-input:focus {
 .label {
   position: relative;
   text-align: left;
-  width: 100%;
-  @media (min-width: $mobile) {
-    & {
-      width: 524px;
-    }
-  }
+  width: 524px;
 }
 
 .MuiSvgIcon-root.filled {
