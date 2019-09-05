@@ -8,28 +8,26 @@ const CustomField = ({
   field,
   label,
   type,
-  setFieldValue,
   form: { touched, errors },
   ...props
-}: FilterSelectsProps) => {
-  const classNameCntrl = field.value ? 'visible' : null;
-  return (
-    <>
-      <div className="label">
-        <label htmlFor={label}>{label}</label>
+}: FilterSelectsProps) => (
+  <>
+    <div className="label">
+      <label htmlFor={label}>
+        {label}
+        <br />
         <input id={label} type={type} className="login-input" {...field} {...props} />
-
-        <Clear
-          className={`cross ${classNameCntrl}`}
-          onClick={() => setFieldValue(field.name, '')}
-        />
+      </label>
+      <i className="filled" />
+      <div>
+        <Clear className="cross" />
+      </div>
+      <div>
         <Check className="filled" />
       </div>
-      {touched[field.name] && errors[field.name] && (
-        <div className="error">{errors[field.name]}</div>
-      )}
-    </>
-  );
-};
+    </div>
+    {touched[field.name] && errors[field.name] && <div className="error">{errors[field.name]}</div>}
+  </>
+);
 
 export default CustomField;

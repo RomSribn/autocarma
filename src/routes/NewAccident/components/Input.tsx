@@ -10,7 +10,7 @@ import './Input.scss';
 interface CustomFileInputProps extends FilterSelectsProps {
   setFieldValue: (field: string, params: any) => void;
   values: {
-    images: object[];
+    images: Array<object>;
     id: string;
   };
 }
@@ -24,36 +24,27 @@ export const CustomField = ({
   field,
   label,
   type,
-  setFieldValue,
   form: { touched, errors },
   ...props
-}: FilterSelectsProps) => {
-  const classNameCntrl = field.value ? 'visible' : null;
-  return (
-    <>
-      <div className="label">
-        <label htmlFor={label}>
-          {label}
-          <br />
-          <input id={label} type={type} className="new-accident-input" {...field} {...props} />
-        </label>
-        <i className="filled" />
-        <div>
-          <Clear
-            className={`cross ${classNameCntrl}`}
-            onClick={() => setFieldValue(field.name, '')}
-          />
-        </div>
-        <div>
-          <Check className="filled" />
-        </div>
+}: FilterSelectsProps) => (
+  <>
+    <div className="label">
+      <label htmlFor={label}>
+        {label}
+        <br />
+        <input id={label} type={type} className="new-accident-input" {...field} {...props} />
+      </label>
+      <i className="filled" />
+      <div>
+        <Clear className="cross" />
       </div>
-      {touched[field.name] && errors[field.name] && (
-        <div className="error">{errors[field.name]}</div>
-      )}
-    </>
-  );
-};
+      <div>
+        <Check className="filled visible" />
+      </div>
+    </div>
+    {touched[field.name] && errors[field.name] && <div className="error">{errors[field.name]}</div>}
+  </>
+);
 
 export const CustomFieldTextArea = ({
   field,

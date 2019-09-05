@@ -20,7 +20,7 @@ const Form = ({ login, error }: LoginProps) => (
       validationSchema={ValidateLogin}
       onSubmit={values => login(values)}
     >
-      {({ values, handleChange, handleBlur, handleSubmit, setFieldValue }) => (
+      {({ values, handleChange, handleBlur, handleSubmit }) => (
         <form onSubmit={handleSubmit} className="login-form">
           <div className="inputs-login">
             <div className="input-wrapper">
@@ -32,7 +32,6 @@ const Form = ({ login, error }: LoginProps) => (
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.email}
-                setFieldValue={setFieldValue}
               />
             </div>
 

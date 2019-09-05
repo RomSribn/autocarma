@@ -13,13 +13,20 @@
   margin-bottom: 20px;
 }
 
-input.login-input:focus {
+input.login-input::focus {
   outline: none;
   border: 1px solid $blue;
 }
 
-input.login-input:focus ~ .MuiSvgIcon-root.cross {
-  display: block;
+.label {
+  position: relative;
+  text-align: left;
+  width: 100%;
+  @media (min-width: $mobile) {
+    & {
+      width: 524px;
+    }
+  }
 }
 
 .MuiSvgIcon-root.filled {
@@ -37,7 +44,6 @@ input.login-input:focus ~ .MuiSvgIcon-root.cross {
   font-size: $normal;
   top: 43%;
   left: 95%;
-  opacity: 0.5;
 }
 
 .visible {
