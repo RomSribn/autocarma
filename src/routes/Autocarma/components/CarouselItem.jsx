@@ -2,14 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './CarouselItem.scss';
 
-interface CarouselItemProps {
-  model: string;
-  license: string;
-  author: string;
-  time: timestamp;
-}
-
-const CarouselItem = ({ model, license, author, time }: CarouselItemProps) => (
+const CarouselItem = ({
+  model, license, author, time,
+}) => (
   <ul className="carousel-item">
     <li className="item">
       <span className="key">Car model:</span>
@@ -31,3 +26,10 @@ const CarouselItem = ({ model, license, author, time }: CarouselItemProps) => (
 );
 
 export default CarouselItem;
+
+CarouselItem.propTypes = {
+  model: PropTypes.string.isRequired,
+  license: PropTypes.string.isRequired,
+  author: PropTypes.string.isRequired,
+  time: PropTypes.string.isRequired,
+};

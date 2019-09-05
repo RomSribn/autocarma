@@ -68,3 +68,7 @@ const FilterMenu = ({ filtering }: FilterMenuProps) => {
 };
 
 export default FilterMenu;
+
+FilterMenu.propTypes = {
+  filtering: PropTypes.func.isRequired,
+};

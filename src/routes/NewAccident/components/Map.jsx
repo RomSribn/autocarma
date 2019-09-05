@@ -6,30 +6,8 @@ import {
   withScriptjs, withGoogleMap, GoogleMap, Marker,
 } from 'react-google-maps';
 
-interface MarkersProps {
-  id: number;
-  type: string;
-  license: string;
-  time: string;
-  rating: number;
-}
-
-interface currentMarkerProps {
-  lat: number;
-  lng: number;
-}
-
-interface FormProps {
-  setCurrentMarker: (params: object) => void;
-  setFieldValue: (key: string, value: any) => void;
-  currentMarker: currentMarkerProps;
-  markers: Array<MarkersProps>;
-  user: string;
-  isMarkerShown: boolean;
-}
-
 const MyMapComponent = withScriptjs(
-  withGoogleMap((props: FormProps) => {
+  withGoogleMap((props) => {
     const {
       markers, setFieldValue, setCurrentMarker, currentMarker,
     } = props;
@@ -97,3 +75,35 @@ const Map = ({
 );
 
 export default Map;
+
+const field = {
+  setFieldValue: PropTypes.func.isRequired,
+  setCurrentMarker: PropTypes.func.isRequired,
+  field: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    value: PropTypes.string.isRequired,
+    onChange: PropTypes.func.isRequired,
+    onBlur: PropTypes.func.isRequired,
+  }).isRequired,
+  form: PropTypes.shape({
+    touched: PropTypes.object,
+    errors: PropTypes.object,
+  }).isRequired,
+  label: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+  markers: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      type: PropTypes.string.isRequired,
+      license: PropTypes.string.isRequired,
+      time: PropTypes.string.isRequired,
+      rating: PropTypes.number.isRequired,
+    }),
+  ).isRequired,
+  currentMarker: PropTypes.shape({
+    lat: PropTypes.number.isRequired,
+    lng: PropTypes.number.isRequired,
+  }).isRequired,
+};
+
+Map.propTypes = field;

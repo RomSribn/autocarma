@@ -7,45 +7,14 @@ import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import Thumb from './Thumb';
 import './Input.scss';
 
-interface fieldProps {
-  name: string;
-  value: string;
-  onChange: () => void;
-  onBlur: () => void;
-}
-
-interface formProps {
-  touched: object;
-  errors: object;
-}
-
-interface CustomFieldProps {
-  field: fieldProps;
-  form: formProps;
-  label: string;
-  type: string;
-}
-
-interface CustomFileInputProps extends CustomFieldProps {
-  setFieldValue: (field: string, params: any) => void;
-  values: {
-    images: Array<string>;
-    id: string;
-  };
-}
-
 const drugndropMsg = {
   active: "Drop it like it's hot!",
   not: 'Click me or drag a file to upload!',
 };
 
 export const CustomField = ({
-  field,
-  label,
-  type,
-  form: { touched, errors },
-  ...props
-}: CustomFieldProps) => (
+  field, label, type, form: { touched, errors }, ...props
+}) => (
   <>
     <div className="label">
       <label htmlFor={label}>
@@ -71,7 +40,7 @@ export const CustomFieldTextArea = ({
   type,
   form: { touched, errors },
   ...props
-}: CustomFieldProps) => (
+}) => (
   <>
     <label htmlFor={label}>
       {label}
@@ -89,12 +58,8 @@ export const CustomFieldTextArea = ({
 );
 
 export const SimpleSelect = ({
-  field,
-  label,
-  type,
-  form: { touched, errors },
-  ...props
-}: CustomFieldProps) => (
+  field, label, type, form: { touched, errors }, ...props
+}) => (
   <div className="label">
     <label htmlFor={label}>
       {label}
@@ -118,11 +83,8 @@ export const SimpleSelect = ({
 );
 
 export const CustomFileInput = ({
-  field,
-  setFieldValue,
-  values,
-  form: { touched, errors },
-}: CustomFileInputProps) => {
+  field, setFieldValue, values, form: { touched, errors },
+}) => {
   const onDrop = (acceptedFiles) => {
     if (acceptedFiles.length) {
       setFieldValue('images', values.images.concat(acceptedFiles));
@@ -151,4 +113,27 @@ export const CustomFileInput = ({
       )}
     </>
   );
+};
+
+const field = {
+  field: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    value: PropTypes.string.isRequired,
+    onChange: PropTypes.func.isRequired,
+    onBlur: PropTypes.func.isRequired,
+  }).isRequired,
+  form: PropTypes.shape({
+    touched: PropTypes.object,
+    errors: PropTypes.object,
+  }).isRequired,
+  label: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+};
+
+CustomField.propTypes = field;
+CustomFieldTextArea.propTypes = field;
+SimpleSelect.propTypes = field;
+CustomFileInput.propTypes = {
+  ...field,
+  setFieldValue: PropTypes.func.isRequired,
 };
