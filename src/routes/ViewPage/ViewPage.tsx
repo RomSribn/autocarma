@@ -6,7 +6,7 @@ import ViewPageTable from './components/ViewPageTable';
 import Slider from './components/Slider';
 import './ViewPage.scss';
 
-const ViewPage: React.FC<ViewPageProps> = ({ markers, images, currentId }: ViewPageProps) => {
+const ViewPage = ({ markers, images, currentId }: ViewPageProps) => {
   const currentMarker = markers.filter(el => el[0] === currentId);
   return (
     <>
