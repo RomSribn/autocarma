@@ -12,6 +12,7 @@ const FilterMenu = ({ filtering }: FilterMenuProps) => {
   };
 
   const onSubmit = (values: object) => {
+    debugger;
     toggle();
     filtering(values);
   };

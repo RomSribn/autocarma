@@ -1,12 +1,14 @@
 import { handleActions } from 'redux-actions';
 import {
   FETCH_ACCIDENTS_SUCCESS,
+  FETCH_USERS_SUCCESS,
   SUBMIT_SUCCESS,
   SET_CURRENT_MARKER_SUCCESS,
   GET_IMG_SUCCESS,
   DUMP_ACCIDENT_SUCCESS,
   FILTER_SUCCESS,
   GET_ID_SUCCESS,
+  LOGIN_CHECK,
 } from './action_types';
 
 import { AccidentsActionTypes } from './actions';
@@ -90,6 +92,11 @@ const accidents = handleActions(
       markers: action.payload || state.markers,
     }),
 
+    [FETCH_USERS_SUCCESS]: (state: IState, action: AccidentsActionTypes) => ({
+      ...state,
+      users: action.payload || state.users,
+    }),
+
     [SUBMIT_SUCCESS]: (state: IState) => ({
       ...state,
       markers: [...state.markers],
@@ -115,10 +122,16 @@ const accidents = handleActions(
       currentId: action.payload,
     }),
 
+    [LOGIN_CHECK]: (state: IState, action: AccidentsActionTypes) => ({
+      ...state,
+      user: action.payload,
+    }),
+
     [FILTER_SUCCESS]: (state: IState, action: AccidentsActionTypes) => ({
       ...state,
       filteredMarkers: (() => {
         const checkedMarkers = state.user.id === admin ? state.markers : state.users;
+        debugger;
         return checkedMarkers.filter((marker) => {
           if (action.payload.type) {
             return marker[1].type === action.payload.type;

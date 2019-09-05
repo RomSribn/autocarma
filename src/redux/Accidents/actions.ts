@@ -1,6 +1,6 @@
 import { createAction } from 'redux-actions';
 
-import { showLastItems, deletePost } from 'services/FirebaseDB';
+import { showUserPost, showLastItems, deletePost } from 'services/FirebaseDB';
 import { getAccidentImages } from 'services/FirebaseStorage';
 import {
   FETCH_ACCIDENTS_SUCCESS,
@@ -10,15 +10,19 @@ import {
   DUMP_ACCIDENT_SUCCESS,
   FILTER_SUCCESS,
   GET_ID_SUCCESS,
+  LOGIN_CHECK,
+  FETCH_USERS_SUCCESS,
 } from './action_types';
 
 export const fetchAccidentsSuccess = createAction(FETCH_ACCIDENTS_SUCCESS);
+export const fetchUsersSuccess = createAction(FETCH_USERS_SUCCESS);
 export const submitSuccess = createAction(SUBMIT_SUCCESS);
 export const setCurrentMarkerSuccess = createAction(SET_CURRENT_MARKER_SUCCESS);
 export const getImgSuccess = createAction(GET_IMG_SUCCESS);
 export const dumpingAccidentSuccess = createAction(DUMP_ACCIDENT_SUCCESS);
 export const filterSuccess = createAction(FILTER_SUCCESS);
 export const getIdSuccess = createAction(GET_ID_SUCCESS);
+export const loginCheckSuccess = createAction(LOGIN_CHECK);
 
 export const fetchAccidents = () => dispatch => showLastItems().then((response) => {
   response.on('value', (snap) => {
@@ -26,6 +30,16 @@ export const fetchAccidents = () => dispatch => showLastItems().then((response) 
     const result = value ? Object.entries(value) : null;
 
     dispatch(fetchAccidentsSuccess(result));
+  });
+});
+
+export const fetchUsers = user => dispatch => showUserPost(user).then((response) => {
+  response.on('value', (snap) => {
+    const value = snap.val();
+
+    const result = value ? Object.entries(value) : null;
+
+    dispatch(fetchUsersSuccess(result));
   });
 });
 
@@ -49,9 +63,11 @@ export const filtering = values => dispatch => dispatch(filterSuccess(values));
 
 export type AccidentsActionTypes = ReturnType<
   | typeof fetchAccidentsSuccess
+  | typeof fetchUsersSuccess
   | typeof submitSuccess
   | typeof setCurrentMarkerSuccess
   | typeof getImgSuccess
   | typeof dumpingAccidentSuccess
   | typeof filterSuccess
+  | typeof loginCheckSuccess
 >;

@@ -1,11 +1,12 @@
 import { connect } from 'react-redux';
-import { dumpingAccident, filtering, gettingId } from 'redux/Accidents/actions';
-import { fetchUsers } from 'redux/User/actions';
+import {
+  dumpingAccident, filtering, gettingId, fetchUsers,
+} from 'redux/Accidents/actions';
 import Accidents from './Accidents';
 
 const mapStateToProps = state => ({
   markers: state.accidents.markers,
-  users: state.user.users,
+  users: state.accidents.users,
   currentId: state.accidents.currentId,
   images: state.accidents.images,
   filteredMarkers: state.accidents.filteredMarkers,

@@ -1,5 +1,3 @@
-export const FETCH_USERS_SUCCESS: string = 'FETCH_USERS_SUCCESS';
-
 export const LOGIN_CHECK: string = 'LOGIN_CHECK';
 
 export const LOGIN_FAILED: string = 'LOGIN_FAILED';
