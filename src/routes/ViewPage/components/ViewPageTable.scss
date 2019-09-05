@@ -9,11 +9,7 @@
   border: 1px solid #dfdfdf;
   border-radius: 5px;
   font-size: 14pt;
-  @media (min-width: $mobile) {
-    & {
-      width: 30%;
-    }
-  }
+  width: 30%;
 }
 
 .item {
@@ -24,10 +20,5 @@
   font-weight: 500;
   .key {
     color: $gray;
-  }
-  @media (min-width: $desktopMiddle) {
-    & {
-      font-size: $normal;
-    }
   }
 }

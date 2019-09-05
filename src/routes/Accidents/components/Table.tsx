@@ -62,7 +62,7 @@ Accidents via @
           <Pagination
             activePage={value}
             itemsCountPerPage={10}
-            totalItemsCount={markers.length}
+            totalItemsCount={450}
             pageRangeDisplayed={5}
             onChange={handleChange}
           />
