@@ -4,8 +4,8 @@ import Form from './components/Form';
 import './Login.scss';
 
 interface LoginProps {
-  login: (values: object) => void;
-  error: string;
+  login: string;
+  error: object;
 }
 
 const Login = ({ login, error }: LoginProps) => (
