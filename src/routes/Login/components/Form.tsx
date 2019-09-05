@@ -20,13 +20,7 @@ const Form = ({ login, error }: LoginProps) => (
       validationSchema={ValidateLogin}
       onSubmit={values => login(values)}
     >
-<<<<<<< HEAD:src/routes/Login/components/Form.tsx
       {({ values, handleChange, handleBlur, handleSubmit }) => (
-=======
-      {({
-        values, handleChange, handleBlur, handleSubmit,
-      }) => (
->>>>>>> develop:src/routes/Login/components/Form.jsx
         <form onSubmit={handleSubmit} className="login-form">
           <div className="inputs-login">
             <div className="input-wrapper">

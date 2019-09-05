@@ -7,7 +7,6 @@ import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import Thumb from './Thumb';
 import './Input.scss';
 
-<<<<<<< HEAD:src/routes/NewAccident/components/Input.tsx
 interface CustomFileInputProps extends FilterSelectsProps {
   setFieldValue: (field: string, params: any) => void;
   values: {
@@ -16,8 +15,6 @@ interface CustomFileInputProps extends FilterSelectsProps {
   };
 }
 
-=======
->>>>>>> develop:src/routes/NewAccident/components/Input.jsx
 const drugndropMsg = {
   active: "Drop it like it's hot!",
   not: 'Click me or drag a file to upload!',
@@ -102,23 +99,16 @@ export const SimpleSelect = ({
 );
 
 export const CustomFileInput = ({
-<<<<<<< HEAD:src/routes/NewAccident/components/Input.tsx
   field,
   setFieldValue,
   values,
   form: { touched, errors },
 }: CustomFileInputProps) => {
-=======
-  field, setFieldValue, values, form: { touched, errors },
-}) => {
->>>>>>> develop:src/routes/NewAccident/components/Input.jsx
   const onDrop = (acceptedFiles) => {
     if (acceptedFiles.length) {
       setFieldValue('images', values.images.concat(acceptedFiles));
     }
   };
-<<<<<<< HEAD:src/routes/NewAccident/components/Input.tsx
-=======
 
   return (
     <>
@@ -143,39 +133,3 @@ export const CustomFileInput = ({
     </>
   );
 };
->>>>>>> develop:src/routes/NewAccident/components/Input.jsx
-
-  return (
-    <>
-      <Dropzone accept="image/*" onDrop={acceptedFiles => onDrop(acceptedFiles)}>
-        {({ getRootProps, getInputProps, isDragActive }) => (
-          <>
-            <div className="dropzone" {...getRootProps()}>
-              <input {...getInputProps()} />
-              {isDragActive ? drugndropMsg.active : drugndropMsg.not}
-            </div>
-            <br />
-            <div className="dropzone-images">
-              {values.images.length
-                && values.images.map(file => <Thumb key={values.id} file={file} />)}
-            </div>
-          </>
-        )}
-      </Dropzone>
-      {touched[field.name] && errors[field.name] && (
-        <div className="error">{errors[field.name]}</div>
-      )}
-    </>
-  );
-};
-<<<<<<< HEAD:src/routes/NewAccident/components/Input.tsx
-=======
-
-CustomField.propTypes = field;
-CustomFieldTextArea.propTypes = field;
-SimpleSelect.propTypes = field;
-CustomFileInput.propTypes = {
-  ...field,
-  setFieldValue: PropTypes.func.isRequired,
-};
->>>>>>> develop:src/routes/NewAccident/components/Input.jsx
