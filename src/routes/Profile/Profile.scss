@@ -1,14 +1,10 @@
 @import "_assets/scss/abstractions/variables.scss";
 
 .profile-form {
+  padding: 40px;
   padding-top: 0;
   text-align: center;
   font-size: $small;
-  @media (min-width: $mobile) {
-    & {
-      padding: 40px;
-    }
-  }
 }
 
 .MuiFilledInput-root {
