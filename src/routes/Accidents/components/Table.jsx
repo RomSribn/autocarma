@@ -11,34 +11,9 @@ import FilterMenu from './FIlterMenu';
 import AccidentRow from './TableRow';
 import './Table.scss';
 
-interface MarkersProps {
-  id: number;
-  type: string;
-  license: string;
-  time: string;
-  rating: number;
-}
-
-interface UserProps {
-  id: string;
-  name: string;
-}
-
-interface SimpleTableProps {
-  markers: Array<MarkersProps>;
-  gettingId: (id: string) => void;
-  dumpingAccident: () => void;
-  filtering: (values: object) => void;
-  user: UserProps;
-}
-
 const SimpleTable = ({
-  markers,
-  gettingId,
-  dumpingAccident,
-  filtering,
-  user,
-}: SimpleTableProps) => {
+  markers, gettingId, dumpingAccident, filtering, user,
+}) => {
   const [value, setValue] = React.useState(1);
 
   const handleChange = (pageNumber) => {
@@ -94,3 +69,22 @@ Accidents via @
 };
 
 export default SimpleTable;
+
+SimpleTable.propTypes = {
+  markers: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      type: PropTypes.string.isRequired,
+      license: PropTypes.string.isRequired,
+      time: PropTypes.string.isRequired,
+      rating: PropTypes.number.isRequired,
+    }),
+  ).isRequired,
+  gettingId: PropTypes.func.isRequired,
+  dumpingAccident: PropTypes.func.isRequired,
+  filtering: PropTypes.func.isRequired,
+  user: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+  }).isRequired,
+};

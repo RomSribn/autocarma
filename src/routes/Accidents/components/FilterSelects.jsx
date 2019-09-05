@@ -1,32 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-interface fieldProps {
-  name: string;
-  value: string;
-  onChange: () => void;
-  onBlur: () => void;
-}
-
-interface formProps {
-  touched: object;
-  errors: object;
-}
-
-interface FilterSelectsProps {
-  field: fieldProps;
-  form: formProps;
-  label: string;
-  type: string;
-}
-
 export const FilterSelectType = ({
-  field,
-  label,
-  type,
-  form: { touched, errors },
-  ...props
-}: FilterSelectsProps) => (
+  field, label, type, form: { touched, errors }, ...props
+}) => (
   <>
     <label htmlFor={label}>
       {label}
@@ -49,12 +26,8 @@ export const FilterSelectType = ({
 );
 
 export const FilterSelectTime = ({
-  field,
-  label,
-  type,
-  form: { touched, errors },
-  ...props
-}: FilterSelectsProps) => (
+  field, label, type, form: { touched, errors }, ...props
+}) => (
   <>
     <label htmlFor={label}>
       {label}
@@ -76,3 +49,21 @@ export const FilterSelectTime = ({
     {touched[field.name] && errors[field.name] && <div className="error">{errors[field.name]}</div>}
   </>
 );
+
+const field = {
+  field: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    value: PropTypes.string.isRequired,
+    onChange: PropTypes.func.isRequired,
+    onBlur: PropTypes.func.isRequired,
+  }).isRequired,
+  form: PropTypes.shape({
+    touched: PropTypes.object,
+    errors: PropTypes.object,
+  }).isRequired,
+  label: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+};
+
+FilterSelectType.propTypes = field;
+FilterSelectTime.propTypes = field;
