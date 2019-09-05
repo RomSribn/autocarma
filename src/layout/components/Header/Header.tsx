@@ -24,9 +24,14 @@ interface CenteredTabsProps {
   user: user;
 }
 
-const CenteredTabs: any = ({
-  user, signOut, logout, loginCheck, fetchAccidents, fetchUsers,
-}) => {
+const CenteredTabs: React.FC<CenteredTabsProps> = ({
+  user,
+  signOut,
+  logout,
+  loginCheck,
+  fetchAccidents,
+  fetchUsers,
+}: CenteredTabsProps) => {
   const routes = user ? routesUser : routesGuest;
 
   const [value, setValue] = React.useState(0);
