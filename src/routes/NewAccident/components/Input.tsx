@@ -39,7 +39,7 @@ export const CustomField = ({
         <Clear className="cross" />
       </div>
       <div>
-        <Check className="filled visible" />
+        <Check className="filled" />
       </div>
     </div>
     {touched[field.name] && errors[field.name] && <div className="error">{errors[field.name]}</div>}
