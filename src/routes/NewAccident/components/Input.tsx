@@ -1,5 +1,4 @@
 import React from 'react';
-import { FilterSelectsProps } from 'types/index';
 import Clear from '@material-ui/icons/Clear';
 import Check from '@material-ui/icons/Check';
 import Dropzone from 'react-dropzone';
@@ -7,7 +6,26 @@ import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import Thumb from './Thumb';
 import './Input.scss';
 
-interface CustomFileInputProps extends FilterSelectsProps {
+interface fieldProps {
+  name: string;
+  value: string;
+  onChange: () => void;
+  onBlur: () => void;
+}
+
+interface formProps {
+  touched: object;
+  errors: object;
+}
+
+interface CustomFieldProps {
+  field: fieldProps;
+  form: formProps;
+  label: string;
+  type: string;
+}
+
+interface CustomFileInputProps extends CustomFieldProps {
   setFieldValue: (field: string, params: any) => void;
   values: {
     images: Array<object>;
@@ -26,7 +44,7 @@ export const CustomField = ({
   type,
   form: { touched, errors },
   ...props
-}: FilterSelectsProps) => (
+}: CustomFieldProps) => (
   <>
     <div className="label">
       <label htmlFor={label}>
@@ -52,7 +70,7 @@ export const CustomFieldTextArea = ({
   type,
   form: { touched, errors },
   ...props
-}: FilterSelectsProps) => (
+}: CustomFieldProps) => (
   <>
     <label htmlFor={label}>
       {label}
@@ -75,7 +93,7 @@ export const SimpleSelect = ({
   type,
   form: { touched, errors },
   ...props
-}: CustomFileInputProps) => (
+}: CustomFieldProps) => (
   <div className="label">
     <label htmlFor={label}>
       {label}

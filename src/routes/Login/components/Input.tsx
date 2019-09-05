@@ -1,8 +1,26 @@
 import React from 'react';
-import { FilterSelectsProps } from 'types/index';
 import Clear from '@material-ui/icons/Clear';
 import Check from '@material-ui/icons/Check';
 import './Input.scss';
+
+interface fieldProps {
+  name: string;
+  value: string;
+  onChange: () => void;
+  onBlur: () => void;
+}
+
+interface formProps {
+  touched: object;
+  errors: object;
+}
+
+interface CustomFieldProps {
+  field: fieldProps;
+  form: formProps;
+  label: string;
+  type: string;
+}
 
 const CustomField = ({
   field,
@@ -10,7 +28,7 @@ const CustomField = ({
   type,
   form: { touched, errors },
   ...props
-}: FilterSelectsProps) => (
+}: CustomFieldProps) => (
   <>
     <div className="label">
       <label htmlFor={label}>
