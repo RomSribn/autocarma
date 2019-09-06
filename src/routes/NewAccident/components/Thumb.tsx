@@ -11,6 +11,7 @@ const Thumb = ({ file }: ThumbProps) => {
     (reader.onloadend = () => {
       loading = false;
       thumb = reader.result;
+      debugger;
     }),
     [loading, thumb],
   );
@@ -21,7 +22,6 @@ const Thumb = ({ file }: ThumbProps) => {
   if (loading) {
     return <p>loading...</p>;
   }
-
   return <img src={thumb} alt={file.name} className="img-thumbnail mt-2" height={200} />;
 };
 

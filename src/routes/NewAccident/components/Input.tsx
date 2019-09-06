@@ -17,7 +17,7 @@ interface ICustomFileInputProps extends IFilterSelectsProps {
 
 const drugndropMsg = {
   active: "Drop it like it's hot!",
-  not: 'Click me or drag a file to upload!',
+  not: 'Add photo',
 };
 
 export const CustomField = ({
@@ -107,6 +107,7 @@ export const CustomFileInput = ({
   const onDrop = (acceptedFiles) => {
     if (acceptedFiles.length) {
       setFieldValue('images', values.images.concat(acceptedFiles));
+      debugger;
     }
   };
 
