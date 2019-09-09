@@ -65,6 +65,7 @@ const Form = (
                     label="License plate"
                     onChange={handleChange}
                     onBlur={handleBlur}
+                    setFieldValue={setFieldValue}
                     value={values.license}
                   />
                 </div>
@@ -79,6 +80,7 @@ const Form = (
                     label="Car model"
                     onChange={handleChange}
                     onBlur={handleBlur}
+                    setFieldValue={setFieldValue}
                     value={values.model}
                   />
                 </div>
@@ -90,6 +92,7 @@ const Form = (
                     label="Happened at"
                     onChange={handleChange}
                     onBlur={handleBlur}
+                    setFieldValue={setFieldValue}
                     value={values.time}
                   />
                 </div>

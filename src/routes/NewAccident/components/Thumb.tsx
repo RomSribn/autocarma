@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { ThumbProps } from '../interface';
 
 const Thumb = ({ file }: ThumbProps) => {
@@ -11,7 +11,6 @@ const Thumb = ({ file }: ThumbProps) => {
     (reader.onloadend = () => {
       loading = false;
       thumb = reader.result;
-      debugger;
     }),
     [loading, thumb],
   );

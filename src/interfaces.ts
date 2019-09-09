@@ -13,6 +13,7 @@ interface IformProps {
 export interface IFilterSelectsProps {
   field: IfieldProps;
   form: IformProps;
+  setFieldValue: (key: string, value: any) => void;
   label: string;
   type: string;
 }
