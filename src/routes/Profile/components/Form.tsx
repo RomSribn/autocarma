@@ -21,7 +21,7 @@ const Form = () => (
       onSubmit={() => {}}
     >
       {({
-        values, handleChange, handleBlur, handleSubmit,
+        values, handleChange, handleBlur, handleSubmit, setFieldValue,
       }) => (
         <form onSubmit={handleSubmit} className="profile-form">
           <div className="inputs-profile">
@@ -33,6 +33,7 @@ const Form = () => (
                 label="Username"
                 onChange={handleChange}
                 onBlur={handleBlur}
+                setFieldValue={setFieldValue}
                 value={values.username}
               />
             </div>
@@ -44,6 +45,7 @@ const Form = () => (
                 label="Email"
                 onChange={handleChange}
                 onBlur={handleBlur}
+                setFieldValue={setFieldValue}
                 value={values.email}
               />
             </div>
@@ -56,6 +58,7 @@ const Form = () => (
                 label="Old Password"
                 onChange={handleChange}
                 onBlur={handleBlur}
+                setFieldValue={setFieldValue}
                 value={values.oldPassword}
               />
             </div>
@@ -68,6 +71,7 @@ const Form = () => (
                 label="New Password"
                 onChange={handleChange}
                 onBlur={handleBlur}
+                setFieldValue={setFieldValue}
                 value={values.newPassword}
               />
             </div>
@@ -80,6 +84,7 @@ const Form = () => (
                 label="Confirm New Password"
                 onChange={handleChange}
                 onBlur={handleBlur}
+                setFieldValue={setFieldValue}
                 value={values.confirmPassword}
               />
             </div>
