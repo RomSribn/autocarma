@@ -27,22 +27,6 @@ export const CustomField = ({
   setFieldValue,
   form: { touched, errors },
   ...props
-<<<<<<< HEAD
-}: IFilterSelectsProps) => (
-  <>
-    <div className="label">
-      <label htmlFor={label}>
-        {label}
-        <br />
-        <input id={label} type={type} className="new-accident-input" {...field} {...props} />
-      </label>
-      <i className="filled" />
-      <div>
-        <Clear className="cross" />
-      </div>
-      <div>
-        <Check className="filled visible" />
-=======
 }: IFilterSelectsProps) => {
   const classNameCntrl = field.value ? 'visible' : null;
   return (
@@ -63,7 +47,6 @@ export const CustomField = ({
         <div>
           <Check className="filled" />
         </div>
->>>>>>> ts-branch-inputs
       </div>
       {touched[field.name] && errors[field.name] && (
         <div className="error">{errors[field.name]}</div>
