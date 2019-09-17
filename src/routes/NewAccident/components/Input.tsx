@@ -33,7 +33,7 @@ export const CustomField = ({
     <>
       <div className="label">
         <label htmlFor={label}>
-          {label}
+          {label} 
           <br />
           <input id={label} type={type} className="new-accident-input" {...field} {...props} />
         </label>
