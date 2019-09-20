@@ -7,8 +7,8 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Pagination from 'react-js-pagination';
-import FilterMenu from './FIlterMenu';
-import AccidentRow from './TableRow';
+import FilterMenu from './FilterMenu';
+import AccidentRow from './AccidentRow';
 import './Table.scss';
 
 const SimpleTable = ({
@@ -32,7 +32,7 @@ Accidents via @
       </span>
       <div className="table-accidents">
         <FilterMenu filtering={filtering} />
-        <Paper>
+        <Paper className="table-wrapper">
           <Table className="table">
             <TableHead>
               <TableRow>
