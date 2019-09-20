@@ -17,8 +17,6 @@ const MobileCarousel = ({ markers }: IMobileCarouselProps) => {
 
   function handleNext() {
     setActiveStep(prevActiveStep => prevActiveStep + 1);
-    console.log(theme);
-    debugger;
   }
 
   function handleBack() {
