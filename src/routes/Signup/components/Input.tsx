@@ -13,6 +13,7 @@ export const CustomField = ({
   ...props
 }: IFilterSelectsProps) => {
   const classNameCntrl = field.value ? 'visible' : null;
+  const isError = touched[field.name] && errors[field.name];
   return (
     <>
       <div className="label">
@@ -32,9 +33,7 @@ export const CustomField = ({
           <Check className="filled" />
         </div>
       </div>
-      {touched[field.name] && errors[field.name] && (
-        <div className="error">{errors[field.name]}</div>
-      )}
+      {isError && <div className="error">{errors[field.name]}</div>}
     </>
   );
 };

@@ -5,7 +5,8 @@ import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
-import SwipeableViews from 'react-swipeable-views';
+import ReactSwipeableViews from 'react-swipeable-views';
+import { sliderDirectionCheck, sliderDirectionReverse, sliderDirectionNormal } from 'variables';
 import { IMobileCarouselProps } from '../interface';
 import CarouselItem from './CarouselItem';
 
@@ -30,20 +31,22 @@ const MobileCarousel = ({ markers }: IMobileCarouselProps) => {
 
   return (
     <div className="mobile-carousel">
-      <SwipeableViews
-        axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
+      <ReactSwipeableViews
+        axis={
+          theme.direction === sliderDirectionCheck ? sliderDirectionReverse : sliderDirectionNormal
+        }
         index={activeStep}
         onChangeIndex={handleStepChange}
         enableMouseEvents
       >
         {markers
-          ? markers.map(el => (
+          ? markers.map(marker => (
             <Paper square elevation={0} className="mobile-carousel-item">
-              <CarouselItem key={el[0]} {...el[1]} />
+              <CarouselItem key={marker[0]} {...marker[1]} />
             </Paper>
           ))
           : null}
-      </SwipeableViews>
+      </ReactSwipeableViews>
       <MobileStepper
         steps={maxSteps}
         position="static"
@@ -52,12 +55,20 @@ const MobileCarousel = ({ markers }: IMobileCarouselProps) => {
         nextButton={(
           <Button size="small" onClick={handleNext} disabled={activeStep === maxSteps - 1}>
             Next
-            {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
+            {theme.direction === sliderDirectionCheck ? (
+              <KeyboardArrowLeft />
+            ) : (
+              <KeyboardArrowRight />
+            )}
           </Button>
 )}
         backButton={(
           <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
-            {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
+            {theme.direction === sliderDirectionCheck ? (
+              <KeyboardArrowRight />
+            ) : (
+              <KeyboardArrowLeft />
+            )}
             Back
           </Button>
 )}

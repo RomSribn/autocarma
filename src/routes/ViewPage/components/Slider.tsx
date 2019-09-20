@@ -2,6 +2,7 @@ import React from 'react';
 import { useTheme } from '@material-ui/core/styles';
 import SwipeableViews from 'react-swipeable-views';
 import { autoPlay } from 'react-swipeable-views-utils';
+import { sliderDirectionCheck, sliderDirectionReverse, sliderDirectionNormal } from 'variables';
 import './Slider.scss';
 
 import { ISliderProps } from '../interface';
@@ -19,7 +20,9 @@ function Slider({ images }: ISliderProps) {
   return (
     <div className="slider">
       <AutoPlaySwipeableViews
-        axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
+        axis={
+          theme.direction === sliderDirectionCheck ? sliderDirectionReverse : sliderDirectionNormal
+        }
         index={activeStep}
         onChangeIndex={handleStepChange}
         enableMouseEvents
