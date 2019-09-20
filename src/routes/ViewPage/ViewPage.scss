@@ -3,28 +3,46 @@
 .viewpage {
   display: flex;
   justify-content: center;
+  flex-direction: column;
   flex-wrap: wrap;
-  padding: 200px;
   padding-top: 10px;
   padding-bottom: 10px;
+  @media (min-width: $mobile) {
+    & {
+      flex-direction: row;
+    }
+  }
 }
 
 .viewpage-title {
   display: block;
-  font-size: $big;
   font-weight: bold;
-  padding: 30px;
-  padding-top: 50px;
+  font-size: $normal;
+  padding-top: 30px;
   text-align: center;
+  @media (min-width: $mobile) {
+    & {
+      padding: 30px;
+      font-size: $big;
+    }
+  }
 }
 
 .viewpage-media {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  width: 50%;
+  width: 100%;
+  padding: 0;
   .media-item {
     width: 100%;
+  }
+  @media (min-width: $mobile) {
+    & {
+      width: 50%;
+      padding: 5px;
+      padding-left: 20px;
+    }
   }
 }

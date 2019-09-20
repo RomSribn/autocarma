@@ -1,10 +1,10 @@
 import { connect } from 'react-redux';
-import { signup } from 'redux/Accidents/actions';
+import { signup } from 'redux/User/actions';
 import Form from './Signup';
 
 const mapStateToProps = state => ({
   cards: state.accidents.data,
-  error: state.accidents.error,
+  error: state.user.error,
 });
 
 const mapDispatchToProps = {

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import {
-  gettingId, fetchUsers, dumpingAccident, filtering,
+  dumpingAccident, filtering, gettingId, fetchUsers,
 } from 'redux/Accidents/actions';
 import Accidents from './Accidents';
 
@@ -10,7 +10,7 @@ const mapStateToProps = state => ({
   currentId: state.accidents.currentId,
   images: state.accidents.images,
   filteredMarkers: state.accidents.filteredMarkers,
-  user: state.accidents.user,
+  user: state.user.user,
 });
 
 const mapDispatchToProps = {
