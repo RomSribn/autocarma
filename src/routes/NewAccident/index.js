@@ -5,7 +5,7 @@ import NewAccident from './NewAccident';
 const mapStateToProps = state => ({
   markers: state.accidents.markers,
   currentMarker: state.accidents.currentMarker,
-  user: state.user.user,
+  userCurrent: state.user.userCurrent,
 });
 
 const mapDispatchToProps = {

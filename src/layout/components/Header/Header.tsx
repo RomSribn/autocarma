@@ -68,19 +68,24 @@ const CenteredTabs: any = ({
           <Tab label="Logout" onClick={onLogout} />
         </Tabs>
       ) : isLoading ? (
-        <Loader />
+        () => <Loader />
       ) : (
-        <Tabs
-          className="tabs"
-          value={value}
-          onChange={handleChange}
-          indicatorColor="primary"
-          textColor="primary"
-          centered
-        >
-          <Tab label="Create an account" />
-          <Tab label="Get started" />
-        </Tabs>
+        () => {
+          history.push(routes[1]);
+          return (
+            <Tabs
+              className="tabs"
+              value={value}
+              onChange={handleChange}
+              indicatorColor="primary"
+              textColor="primary"
+              centered
+            >
+              <Tab label="Create an account" />
+              <Tab label="Get started" />
+            </Tabs>
+          );
+        }
       )}
     </Paper>
   );
