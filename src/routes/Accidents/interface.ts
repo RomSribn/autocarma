@@ -8,6 +8,7 @@ export interface IAccidentRowProps extends IMarkersProps {
   currentId: string;
   gettingId: (id: string) => void;
   dumpingAccident: (currentId: string) => void;
+  isAdmin: boolean;
 }
 
 export interface IAccidentsProps {

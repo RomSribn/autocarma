@@ -17,6 +17,7 @@ const SimpleTable = ({
   dumpingAccident,
   filtering,
   user,
+  isAdmin = false,
 }: ISimpleTableProps) => {
   const [value, setValue] = React.useState(1);
   const totalItemsCount = markers.length;
@@ -24,7 +25,6 @@ const SimpleTable = ({
   const end = value * itemsCountPerPage;
   const start = end - itemsCountPerPage;
   const pgArray = markers.slice(start, end);
-  // debugger;
   const handleChange = (pageNumber) => {
     setValue(pageNumber);
   };
@@ -58,6 +58,7 @@ Accidents via @
                   key={el[0]}
                   {...el[1]}
                   id={markers.indexOf(el) + 1}
+                  isAdmin={isAdmin}
                 />
               ))}
             </TableBody>

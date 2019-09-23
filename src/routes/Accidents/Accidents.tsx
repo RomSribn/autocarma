@@ -13,7 +13,12 @@ const Accidents = ({
   filteredMarkers,
   userCurrent,
 }: IAccidentsProps) => {
-  const checkedMarkers = userCurrent.id === '8mOY0CflD6QXjebbE7ibObU1Shw1' ? markers : users;
+  let isAdmin = false;
+  let checkedMarkers = users;
+  if (userCurrent.id === '8mOY0CflD6QXjebbE7ibObU1Shw1') {
+    isAdmin = true;
+    checkedMarkers = markers;
+  }
   return (
     <div className="accidents">
       <Table
@@ -22,6 +27,7 @@ const Accidents = ({
         dumpingAccident={dumpingAccident}
         filtering={filtering}
         user={userCurrent}
+        isAdmin={isAdmin}
       />
     </div>
   );
