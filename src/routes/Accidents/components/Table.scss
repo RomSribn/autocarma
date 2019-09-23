@@ -1,5 +1,10 @@
 @import "_assets/scss/abstractions/variables.scss";
 
+.table-wrapper {
+  width: 100%;
+  overflow: auto;
+}
+
 .accidents-title {
   text-align: center;
   display: block;
@@ -25,10 +30,16 @@
   font-size: $small;
 }
 
-.pagination {
+.pag-wrapper .pagination {
   display: flex;
   font-size: $normal;
-  justify-content: flex-end;
+  justify-content: center;
+  padding-left: 0;
+  @media (min-width: $mobile) {
+    & {
+      justify-content: flex-end;
+    }
+  }
 
   & > * {
     display: flex;
