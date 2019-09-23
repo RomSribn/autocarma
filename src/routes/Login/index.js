@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { login } from 'redux/User/actions';
+import { login, toggleLoader } from 'redux/User/actions';
 import Form from './Login';
 
 const mapStateToProps = state => ({
@@ -9,6 +9,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
   login,
+  toggleLoader,
 };
 
 export default connect(

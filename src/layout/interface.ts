@@ -2,11 +2,12 @@ export interface ICenteredTabsProps extends ILayoutProps {
   fetchAccidents: () => void;
   signOut: () => Promise<void>;
   logout: () => void;
-  loginCheck: (user: object) => void;
+  loginCheck: (user: object) => Promise<any>;
   fetchUsers: (uid: string) => void;
   user: {
     uid: string;
   };
+  isLoading: boolean;
 }
 
 export interface IMainProps {
@@ -22,4 +23,5 @@ export interface ILayoutProps {
   user: {
     uid: string;
   };
+  isLoading: boolean;
 }
