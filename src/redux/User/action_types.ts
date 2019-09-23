@@ -9,3 +9,5 @@ export const LOGOUT_SUCCESS: string = 'LOGOUT_SUCCESS';
 export const SIGNUP_FAILED: string = 'SIGNUP_FAILED';
 
 export const SIGNUP_SUCCESS: string = 'SIGNUP_SUCCESS';
+
+export const TOGGLE_LOADER_SUCCES: string = 'TOGGLE_LOADER_SUCCES';

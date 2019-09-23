@@ -6,6 +6,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import history from 'utils/history';
 import { routesGuest, routesUser, login } from 'routes/variables';
+import Loader from '_assets/shared/Loader/Loader';
 import { ICenteredTabsProps } from '../../interface';
 
 import './Header.scss';
@@ -16,11 +17,10 @@ const CenteredTabs: any = ({
   loginCheck,
   fetchAccidents,
   fetchUsers,
+  isLoading,
 }: ICenteredTabsProps) => {
   const routes = user ? routesUser : routesGuest;
-
   const [value, setValue] = React.useState(0);
-
   React.useEffect(() => {
     if (history.location.pathname) {
       setValue(routes.indexOf(history.location.pathname));
@@ -67,6 +67,8 @@ const CenteredTabs: any = ({
           <Tab label="Profile" />
           <Tab label="Logout" onClick={onLogout} />
         </Tabs>
+      ) : isLoading ? (
+        <Loader />
       ) : (
         <Tabs
           className="tabs"

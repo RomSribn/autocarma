@@ -11,9 +11,9 @@ const Accidents = ({
   dumpingAccident,
   filtering,
   filteredMarkers,
-  user,
+  userCurrent,
 }: IAccidentsProps) => {
-  const checkedMarkers = user.id === '8mOY0CflD6QXjebbE7ibObU1Shw1' ? markers : users;
+  const checkedMarkers = userCurrent.id === '8mOY0CflD6QXjebbE7ibObU1Shw1' ? markers : users;
   return (
     <div className="accidents">
       <Table
@@ -21,7 +21,7 @@ const Accidents = ({
         gettingId={gettingId}
         dumpingAccident={dumpingAccident}
         filtering={filtering}
-        user={user}
+        user={userCurrent}
       />
     </div>
   );

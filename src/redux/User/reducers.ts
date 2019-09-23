@@ -6,26 +6,22 @@ import {
   LOGOUT_SUCCESS,
   SIGNUP_FAILED,
   SIGNUP_SUCCESS,
+  TOGGLE_LOADER_SUCCES,
 } from './action_types';
 
 import { AccidentsActionTypes } from './actions';
 
 interface IState {
   error: string;
-  user: {
-    id: string;
-    name: string;
-  };
+  userCurrent: any;
   currentId: string;
   users: any;
+  isLoading: boolean;
 }
 
 const initialState = {
   error: '',
-  user: {
-    id: '',
-    name: '',
-  },
+  userCurrent: '',
   currentId: '',
   users: [
     [
@@ -57,17 +53,18 @@ const initialState = {
       },
     ],
   ],
+  isLoading: true,
 };
 
 const accidents = handleActions(
   {
     [LOGIN_CHECK]: (state: IState, action: AccidentsActionTypes) => ({
       ...state,
-      user: action.payload,
+      userCurrent: action.payload,
     }),
     [LOGIN_SUCCESS]: (state: IState, action: AccidentsActionTypes) => ({
       ...state,
-      user: action.payload,
+      userCurrent: action.payload,
       error: '',
     }),
     [LOGIN_FAILED]: (state: IState, action: AccidentsActionTypes) => ({
@@ -76,16 +73,20 @@ const accidents = handleActions(
     }),
     [LOGOUT_SUCCESS]: (state: any) => ({
       ...state,
-      user: '',
+      userCurrent: '',
     }),
     [SIGNUP_SUCCESS]: (state: IState, action: AccidentsActionTypes) => ({
       ...state,
-      user: action.payload,
+      userCurrent: action.payload,
       error: '',
     }),
     [SIGNUP_FAILED]: (state: IState, action: AccidentsActionTypes) => ({
       ...state,
       error: action.payload,
+    }),
+    [TOGGLE_LOADER_SUCCES]: (state: IState, action: AccidentsActionTypes) => ({
+      ...state,
+      isLoading: action.payload,
     }),
   },
   initialState,

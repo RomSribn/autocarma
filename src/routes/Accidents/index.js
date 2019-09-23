@@ -10,7 +10,7 @@ const mapStateToProps = state => ({
   currentId: state.accidents.currentId,
   images: state.accidents.images,
   filteredMarkers: state.accidents.filteredMarkers,
-  user: state.user.user,
+  userCurrent: state.user.userCurrent,
 });
 
 const mapDispatchToProps = {

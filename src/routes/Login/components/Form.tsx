@@ -6,7 +6,7 @@ import Error from '_assets/shared/Error/components/Error';
 import Input from './Input';
 import './Form.scss';
 
-const Form = ({ login, error }: ILoginProps) => (
+const Form = ({ login, error, toggleLoader }: ILoginProps) => (
   <div className="form-login">
     {error ? <Error message={error} /> : null}
     <div className="login-title">
