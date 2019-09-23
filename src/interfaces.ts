@@ -42,6 +42,7 @@ export interface ISimpleTableProps {
   dumpingAccident: () => void;
   filtering: (values: object) => void;
   user: IUserProps;
+  isAdmin?: boolean;
 }
 
 export interface IAccidentProps extends IMarkersProps {

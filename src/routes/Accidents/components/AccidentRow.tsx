@@ -15,6 +15,7 @@ const AccidentRow = ({
   currentId,
   gettingId,
   dumpingAccident,
+  isAdmin,
 }: IAccidentRowProps) => {
   const onEyeClick = () => {
     gettingId(currentId);
@@ -36,7 +37,9 @@ const AccidentRow = ({
       <TableCell align="left">0</TableCell>
       <TableCell align="center">
         <RemoveRedEye fontSize="large" color="disabled" onClick={onEyeClick} />
-        <Clear className="clear-icon" fontSize="large" color="disabled" onClick={onCrossClick} />
+        {isAdmin ? (
+          <Clear className="clear-icon" fontSize="large" color="disabled" onClick={onCrossClick} />
+        ) : null}
       </TableCell>
     </TableRow>
   );

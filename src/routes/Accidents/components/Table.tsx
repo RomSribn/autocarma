@@ -17,9 +17,14 @@ const SimpleTable = ({
   dumpingAccident,
   filtering,
   user,
+  isAdmin = false,
 }: ISimpleTableProps) => {
   const [value, setValue] = React.useState(1);
-
+  const totalItemsCount = markers.length;
+  const itemsCountPerPage = 5;
+  const end = value * itemsCountPerPage;
+  const start = end - itemsCountPerPage;
+  const pgArray = markers.slice(start, end);
   const handleChange = (pageNumber) => {
     setValue(pageNumber);
   };
@@ -45,7 +50,7 @@ Accidents via @
               </TableRow>
             </TableHead>
             <TableBody>
-              {markers.map(el => (
+              {pgArray.map(el => (
                 <AccidentRow
                   gettingId={gettingId}
                   dumpingAccident={dumpingAccident}
@@ -53,6 +58,7 @@ Accidents via @
                   key={el[0]}
                   {...el[1]}
                   id={markers.indexOf(el) + 1}
+                  isAdmin={isAdmin}
                 />
               ))}
             </TableBody>
@@ -61,8 +67,8 @@ Accidents via @
         <div className="pag-wrapper">
           <Pagination
             activePage={value}
-            itemsCountPerPage={10}
-            totalItemsCount={markers.length}
+            itemsCountPerPage={itemsCountPerPage}
+            totalItemsCount={totalItemsCount}
             pageRangeDisplayed={5}
             onChange={handleChange}
           />
