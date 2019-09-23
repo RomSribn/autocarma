@@ -14,7 +14,7 @@ export interface IAccidentsProps {
   markers: IMarkersProps[];
   users: IMarkersProps[];
   filteredMarkers: IMarkersProps[];
-  user: IUserProps;
+  userCurrent: IUserProps;
   gettingId: (id: string) => void;
   dumpingAccident: () => void;
   filtering: (values: object) => void;

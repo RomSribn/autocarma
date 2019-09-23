@@ -19,7 +19,7 @@ interface IState {
   markers: any;
   filteredMarkers: any;
   currenMarker: object;
-  user: {
+  userCurrent: {
     id: string;
     name: string;
   };
@@ -47,7 +47,7 @@ const initialState = {
   ],
   filteredMarkers: [],
   currenMarker: {},
-  user: {
+  userCurrent: {
     id: '',
     name: '',
   },
@@ -124,13 +124,13 @@ const accidents = handleActions(
 
     [LOGIN_CHECK]: (state: IState, action: AccidentsActionTypes) => ({
       ...state,
-      user: action.payload,
+      userCurrent: action.payload,
     }),
 
     [FILTER_SUCCESS]: (state: IState, action: AccidentsActionTypes) => ({
       ...state,
       filteredMarkers: (() => {
-        const checkedMarkers = state.user.id === admin ? state.markers : state.users;
+        const checkedMarkers = state.userCurrent.id === admin ? state.markers : state.users;
         return checkedMarkers.filter((marker) => {
           if (action.payload.type) {
             return marker[1].type === action.payload.type;

@@ -9,6 +9,7 @@ import {
   LOGOUT_SUCCESS,
   SIGNUP_FAILED,
   SIGNUP_SUCCESS,
+  TOGGLE_LOADER_SUCCES,
 } from './action_types';
 
 export const loginCheckSuccess = createAction(LOGIN_CHECK);
@@ -17,6 +18,9 @@ export const loginSuccess = createAction(LOGIN_SUCCESS);
 export const logoutSuccess = createAction(LOGOUT_SUCCESS);
 export const signupFailed = createAction(SIGNUP_FAILED);
 export const signupSuccess = createAction(SIGNUP_SUCCESS);
+export const toggleLoaderSuccess = createAction(TOGGLE_LOADER_SUCCES);
+
+export const toggleLoader = (flag: boolean) => dispatch => dispatch(toggleLoaderSuccess(flag));
 
 export const loginCheck = user => (dispatch) => {
   if (user) {
@@ -24,6 +28,7 @@ export const loginCheck = user => (dispatch) => {
       id: user.uid,
       name: user.displayName,
     };
+    if (!user.uid && !user.displayName) dispatch(loginCheckSuccess(null));
     return dispatch(loginCheckSuccess(result));
   }
   return null;
@@ -33,6 +38,7 @@ export const login = values => dispatch => auth()
   .signInWithEmailAndPassword(values.email, values.password)
   .then((res: { user }) => {
     dispatch(loginSuccess(res.user.uid));
+    toggleLoader(true);
     history.push('/accidents');
   })
   .catch(error => dispatch(loginFailed(error.message)));
@@ -57,4 +63,5 @@ export type AccidentsActionTypes = ReturnType<
   | typeof logoutSuccess
   | typeof signupFailed
   | typeof signupSuccess
+  | typeof toggleLoaderSuccess
 >;
