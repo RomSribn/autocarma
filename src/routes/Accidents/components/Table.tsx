@@ -8,11 +8,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Pagination from 'react-js-pagination';
 import FilterMenu from './FilterMenu';
-<<<<<<< HEAD
-import AccidentRow from './TableRow';
-=======
 import AccidentRow from './AccidentRow';
->>>>>>> develop
 import './Table.scss';
 
 const SimpleTable = ({
