@@ -52,36 +52,7 @@ const initialState = {
     name: '',
   },
   currentId: '',
-  users: [
-    [
-      '-LmxgZcP6t2jvCTAZI1N',
-      {
-        id: '4n5pxq24kpiob12og9',
-        coordinates: {
-          lat: 50.00008585430338,
-          lng: 36.24283354637146,
-        },
-        type: 'Parking law',
-        license: 'AXB8979JV',
-        model: 'Tesla model X',
-        description: 'lorem ipsum doloooororosjl',
-      },
-    ],
-    [
-      '-LmxgZcP6t2jvCTAZI1N',
-      {
-        id: '4n5pxq24kpiob12og9',
-        coordinates: {
-          lat: 50.00008585430338,
-          lng: 36.24283354637146,
-        },
-        type: 'Parking law',
-        license: 'AXB8979JV',
-        model: 'Tesla model X',
-        description: 'lorem ipsum doloooororosjl',
-      },
-    ],
-  ],
+  users: [],
   images: [],
 };
 
@@ -89,12 +60,12 @@ const accidents = handleActions(
   {
     [FETCH_ACCIDENTS_SUCCESS]: (state: IState, action: AccidentsActionTypes) => ({
       ...state,
-      markers: action.payload || state.markers,
+      markers: action.payload,
     }),
 
     [FETCH_USERS_SUCCESS]: (state: IState, action: AccidentsActionTypes) => ({
       ...state,
-      users: action.payload || state.users,
+      users: action.payload,
     }),
 
     [SUBMIT_SUCCESS]: (state: IState) => ({
