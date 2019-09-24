@@ -2,6 +2,8 @@ import React from 'react';
 import { ISignUp } from '../interface';
 import { Formik, Field } from 'formik';
 import { ValidateSignup } from 'utils/validate/validate';
+import { login } from '../../variables';
+import history from 'utils/history';
 import Error from '_assets/shared/Error/components/Error';
 import Input from './Input';
 import './Form.scss';
@@ -82,6 +84,10 @@ const Form = ({ signup, error }: ISignUp) => (
             <button className="save-signup" type="submit">
               Create
             </button>
+            <p className="under-authorize" onClick={() => history.push(login)}>
+              Already have an account?
+              </p>
+
           </div>
         </form>
       )}
