@@ -113,16 +113,18 @@ export const CustomFileInput = ({
   form: { touched, errors },
 }: ICustomFileInputProps) => {
   const [images, setImages] = React.useState();
+
+  const onDrop = (acceptedFiles) => {
+    setImages(acceptedFiles);
+    setFieldValue('images', values.images.concat(acceptedFiles));
+  };
+
   const handleRemove = (index) => {
     debugger;
     const newImages = images;
     newImages.splice(index, 1);
     setImages(newImages);
     setFieldValue('images', newImages);
-  };
-  const onDrop = (acceptedFiles) => {
-    setImages(acceptedFiles);
-    setFieldValue('images', values.images.concat(acceptedFiles));
   };
   return (
     <>
