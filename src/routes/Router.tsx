@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch, Link } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import {
   home,
   accidents,
@@ -39,15 +39,7 @@ const Router = ({ user }: RouterProps) => (
       </>
     ) : (
       <>
-        <Route
-          exact
-          path={home}
-          component={() => (
-            <Link to={login}>
-              <Home />
-            </Link>
-          )}
-        />
+        <Route exact path={home} component={Home} />
         <Route exact path={signup} component={Signup} />
         <Route exact path={login} component={Login} />
       </>

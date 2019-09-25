@@ -3,6 +3,7 @@ import { ISignUp } from '../interface';
 import { Formik, Field } from 'formik';
 import { ValidateSignup } from 'utils/validate/validate';
 import { login } from '../../variables';
+import { toLoginMsg } from '../variables';
 import history from 'utils/history';
 import Error from '_assets/shared/Error/components/Error';
 import Input from './Input';
@@ -85,7 +86,7 @@ const Form = ({ signup, error }: ISignUp) => (
               Create
             </button>
             <p className="under-authorize" onClick={() => history.push(login)}>
-              Already have an account?
+            {toLoginMsg}
               </p>
 
           </div>

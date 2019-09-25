@@ -5,6 +5,7 @@ import history from 'utils/history';
 import Error from '_assets/shared/Error/components/Error';
 import { ILoginProps } from '../interface';
 import { signup } from '../../variables';
+import { toRegisterMsg } from '../variables';
 import Input from './Input';
 import './Form.scss';
 
@@ -56,7 +57,7 @@ const Form = ({ login, error, toggleLoader }: ILoginProps) => (
               Login
             </button>
             <p className="under-authorize" onClick={() => history.push(signup)}>
-        Don't have an account?
+        {toRegisterMsg}
       </p>
           </div>
         </form>
