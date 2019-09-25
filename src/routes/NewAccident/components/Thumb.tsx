@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { ThumbProps } from '../interface';
+import './Thumb.scss';
 
 const Thumb = ({ file, index, handleRemove }) => {
   let loading;
@@ -22,15 +23,17 @@ const Thumb = ({ file, index, handleRemove }) => {
     return <p>loading...</p>;
   }
   return (
-    <img
-      onClick={() => {
-        handleRemove(index);
-      }}
-      src={thumb}
-      alt={file.name}
-      className="img-thumbnail mt-2"
-      height={200}
-    />
+    <figure className="hover-img">
+      <img
+        onClick={() => {
+          handleRemove(index);
+        }}
+        src={thumb}
+        alt={file.name}
+        className="img-thumbnail mt-2"
+        height={200}
+      />
+    </figure>
   );
 };
 
