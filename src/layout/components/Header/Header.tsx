@@ -69,19 +69,7 @@ const CenteredTabs: any = ({
         </Tabs>
       ) : isLoading ? (
         <Loader />
-      ) : (
-        <Tabs
-          className="tabs"
-          value={value}
-          onChange={handleChange}
-          indicatorColor="primary"
-          textColor="primary"
-          centered
-        >
-          <Tab label="Create an account" />
-          <Tab label="Get started" />
-        </Tabs>
-      )}
+      ) : null}
     </Paper>
   );
 };

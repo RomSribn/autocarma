@@ -1,8 +1,11 @@
 import React from 'react';
 import { Formik, Field } from 'formik';
 import { ValidateLogin } from 'utils/validate/validate';
-import { ILoginProps } from '../interface';
+import history from 'utils/history';
 import Error from '_assets/shared/Error/components/Error';
+import { ILoginProps } from '../interface';
+import { signup } from '../../variables';
+import { toRegisterMsg } from '../variables';
 import Input from './Input';
 import './Form.scss';
 
@@ -20,7 +23,9 @@ const Form = ({ login, error, toggleLoader }: ILoginProps) => (
       validationSchema={ValidateLogin}
       onSubmit={values => login(values)}
     >
-      {({ values, handleChange, handleBlur, handleSubmit, setFieldValue }) => (
+      {({
+        values, handleChange, handleBlur, handleSubmit, setFieldValue,
+      }) => (
         <form onSubmit={handleSubmit} className="login-form">
           <div className="inputs-login">
             <div className="input-wrapper">
@@ -51,6 +56,9 @@ const Form = ({ login, error, toggleLoader }: ILoginProps) => (
             <button className="save-login" type="submit">
               Login
             </button>
+            <p className="under-authorize" onClick={() => history.push(signup)}>
+        {toRegisterMsg}
+      </p>
           </div>
         </form>
       )}

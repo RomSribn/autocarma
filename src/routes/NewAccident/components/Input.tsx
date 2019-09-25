@@ -33,7 +33,7 @@ export const CustomField = ({
     <>
       <div className="label">
         <label htmlFor={label}>
-          {label} 
+          {label}
           <br />
           <input id={label} type={type} className="new-accident-input" {...field} {...props} />
         </label>
@@ -106,7 +106,6 @@ export const SimpleSelect = ({
     {touched[field.name] && errors[field.name] && <div className="error">{errors[field.name]}</div>}
   </div>
 );
-
 export const CustomFileInput = ({
   field,
   setFieldValue,
@@ -114,15 +113,11 @@ export const CustomFileInput = ({
   form: { touched, errors },
 }: ICustomFileInputProps) => {
   const onDrop = (acceptedFiles) => {
-    if (acceptedFiles.length) {
-      setFieldValue('images', values.images.concat(acceptedFiles));
-      debugger;
-    }
+    setFieldValue('images', values.images.concat(acceptedFiles));
   };
-
   return (
     <>
-      <Dropzone accept="image/*" onDrop={acceptedFiles => onDrop(acceptedFiles)}>
+      <Dropzone multiple onDrop={onDrop}>
         {({ getRootProps, getInputProps, isDragActive }) => (
           <>
             <div className="dropzone" {...getRootProps()}>
@@ -131,8 +126,7 @@ export const CustomFileInput = ({
             </div>
             <br />
             <div className="dropzone-images">
-              {values.images.length
-                && values.images.map(file => <Thumb key={values.id} file={file} />)}
+              {values.images.length && values.images.map(file => <Thumb file={file} />)}
             </div>
           </>
         )}

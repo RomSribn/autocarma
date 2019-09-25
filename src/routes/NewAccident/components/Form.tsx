@@ -15,12 +15,12 @@ const Form = (
   setCurrentMarker,
   markers,
   currentMarker,
-  user,
+  userCurrent,
 }: IFormNewAccidentProps) => {
   const onSubmit = ( values ) => {
     const postId = refPostsDB.push(values).key;
     setSubmitData([postId, values]);
-    refUsersDB(user.id, postId).set({ ...values, id: postId });
+    refUsersDB(userCurrent.id, postId).set({ ...values, id: postId });
     values.images.map(el => refStorage(postId, el));
     history.push(accidents);
   };
@@ -37,7 +37,7 @@ const Form = (
           description: '',
           time: '',
           coordinates: '',
-          author: user.name,
+          author: userCurrent.name,
           images: [],
         }}
         onSubmit={onSubmit}

@@ -1,19 +1,19 @@
 import * as React from 'react';
 import { ThumbProps } from '../interface';
 
-const Thumb = ({ file }: ThumbProps) => {
+const Thumb = ({ file }) => {
   let loading;
-  let thumb;
+  const [thumb, setThumb] = React.useState();
 
   const reader = new FileReader();
 
-  React.useEffect(
-    (reader.onloadend = () => {
+  React.useEffect(() => {
+    reader.onload = () => {
       loading = false;
-      thumb = reader.result;
-    }),
-    [loading, thumb],
-  );
+      setThumb(reader.result);
+    };
+    reader.readAsDataURL(file);
+  }, [loading, thumb]);
   if (!file) {
     return null;
   }
@@ -21,7 +21,18 @@ const Thumb = ({ file }: ThumbProps) => {
   if (loading) {
     return <p>loading...</p>;
   }
-  return <img src={thumb} alt={file.name} className="img-thumbnail mt-2" height={200} />;
+  return (
+    <img
+      onClick={() => {
+        console.log(thumb);
+        debugger;
+      }}
+      src={thumb}
+      alt={file.name}
+      className="img-thumbnail mt-2"
+      height={200}
+    />
+  );
 };
 
 export default Thumb;

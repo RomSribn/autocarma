@@ -5,7 +5,7 @@ export interface IFormNewAccidentProps {
   setSubmitData: (array: object[]) => void;
   currentMarker: IcurrentMarkerProps;
   markers: IMarkersProps[];
-  user: {
+  userCurrent: {
     id: string;
     name: string;
   };

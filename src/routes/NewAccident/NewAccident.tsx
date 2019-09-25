@@ -8,7 +8,7 @@ const NewAccident = ({
   setCurrentMarker,
   markers,
   currentMarker,
-  user,
+  userCurrent,
 }: IFormNewAccidentProps) => (
   <div className="create-accident-form">
     <Form
@@ -16,7 +16,7 @@ const NewAccident = ({
       markers={markers}
       setCurrentMarker={setCurrentMarker}
       currentMarker={currentMarker}
-      user={user}
+      userCurrent={userCurrent}
     />
   </div>
 );
