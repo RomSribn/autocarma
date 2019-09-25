@@ -14,7 +14,7 @@ const Thumb = ({ file, index, handleRemove }) => {
       setThumb(reader.result);
     };
     reader.readAsDataURL(file);
-  }, [loading, thumb]);
+  }, [handleRemove]);
   if (!file) {
     return null;
   }
