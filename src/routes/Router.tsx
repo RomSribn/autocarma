@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Link } from 'react-router-dom';
 import {
   home,
   accidents,
@@ -11,6 +11,8 @@ import {
   login,
   viewpage,
 } from './variables';
+
+import Home from './Home';
 import Autocarma from './Autocarma';
 import Accidents from './Accidents';
 import NewAccident from './NewAccident';
@@ -37,6 +39,15 @@ const Router = ({ user }: RouterProps) => (
       </>
     ) : (
       <>
+        <Route
+          exact
+          path={home}
+          component={() => (
+            <Link to={login}>
+              <Home />
+            </Link>
+          )}
+        />
         <Route exact path={signup} component={Signup} />
         <Route exact path={login} component={Login} />
       </>
