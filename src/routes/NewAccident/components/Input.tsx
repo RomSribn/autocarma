@@ -120,7 +120,6 @@ export const CustomFileInput = ({
   };
 
   const handleRemove = (index) => {
-    debugger;
     const newImages = images;
     newImages.splice(index, 1);
     setImages(newImages);
