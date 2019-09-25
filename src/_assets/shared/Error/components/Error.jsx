@@ -5,7 +5,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import IconButton from '@material-ui/core/IconButton';
 import Snackbar from '@material-ui/core/Snackbar';
 import SnackbarContent from '@material-ui/core/SnackbarContent';
-import './Error.css';
+import './Error.scss';
 
 function MySnackbarContentWrapper(props) {
   const {
@@ -23,12 +23,7 @@ function MySnackbarContentWrapper(props) {
         </span>
 )}
       action={[
-        <IconButton
-          key="close"
-          aria-label="Close"
-          color="inherit"
-          onClick={onClose}
-        >
+        <IconButton key="close" aria-label="Close" color="inherit" onClick={onClose}>
           <CloseIcon className="MuiSvgIcon-root" />
         </IconButton>,
       ]}
@@ -58,11 +53,7 @@ export default function Error({ message }) {
         autoHideDuration={6000}
         onClose={handleClose}
       >
-        <MySnackbarContentWrapper
-          onClose={handleClose}
-          variant="error"
-          message={message}
-        />
+        <MySnackbarContentWrapper onClose={handleClose} variant="error" message={message} />
       </Snackbar>
     </div>
   );
