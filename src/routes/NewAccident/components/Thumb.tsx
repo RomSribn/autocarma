@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ThumbProps } from '../interface';
 
-const Thumb = ({ file }) => {
+const Thumb = ({ file, index, handleRemove }) => {
   let loading;
   const [thumb, setThumb] = React.useState();
 
@@ -24,8 +24,7 @@ const Thumb = ({ file }) => {
   return (
     <img
       onClick={() => {
-        console.log(thumb);
-        debugger;
+        handleRemove(index);
       }}
       src={thumb}
       alt={file.name}
