@@ -10,7 +10,7 @@ const Home = ({ toggleLoader }) => {
   return (
     <div className="main-content">
       <div className="item button-hand">
-        <button onClick={() => history.push(login)}>
+        <button className="home-button" onClick={() => history.push(login)}>
           Login for start!
           <div className="hands" />
         </button>

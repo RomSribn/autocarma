@@ -7,7 +7,7 @@
   transform: translate(-50%, -50%);
 }
 
-button {
+.home-button {
   background: transparent;
   color: $blue;
   border: 3px solid $blue;
@@ -33,7 +33,7 @@ button {
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
 }
 
-.button-hand button {
+.button-hand .home-button {
   &:before {
     content: "👇";
     position: absolute;
