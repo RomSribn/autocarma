@@ -23,14 +23,14 @@ const Thumb = ({ file, index, handleRemove }) => {
     return <p>loading...</p>;
   }
   return (
-    <figure className="hover-img">
+    <figure className="hover-img-thumb">
       <img
         onClick={() => {
           handleRemove(index);
         }}
         src={thumb}
         alt={file.name}
-        className="img-thumbnail mt-2"
+        className="hover-img"
         height={200}
       />
     </figure>
