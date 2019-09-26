@@ -48,7 +48,7 @@ export const login = values => dispatch => auth()
   })
   .catch(error => dispatch(loginFailed(error.message)));
 
-export const logout = () => dispatch => dispatch(logoutSuccess());
+export const logout = (flag: boolean) => dispatch => dispatch(logoutSuccess(flag));
 
 export const signup = values => dispatch => auth()
   .createUserWithEmailAndPassword(values.email, values.password)

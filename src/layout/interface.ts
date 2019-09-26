@@ -24,4 +24,5 @@ export interface ILayoutProps {
     uid: string;
   };
   isLoading: boolean;
+  isLogout: boolean;
 }

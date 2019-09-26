@@ -18,10 +18,12 @@ interface IState {
   currentId: string;
   users: any;
   isLoading: boolean;
+  isLogout: boolean;
 }
 
 const initialState = {
   error: '',
+  isLogout: false,
   userCurrent: '',
   currentId: '',
   users: [
@@ -72,9 +74,10 @@ const accidents = handleActions(
       ...state,
       error: action.payload,
     }),
-    [LOGOUT_SUCCESS]: (state: any) => ({
+    [LOGOUT_SUCCESS]: (state: any, action: AccidentsActionTypes) => ({
       ...state,
       userCurrent: '',
+      isLogout: action.payload,
     }),
     [SIGNUP_SUCCESS]: (state: IState, action: AccidentsActionTypes) => ({
       ...state,

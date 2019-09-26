@@ -13,6 +13,7 @@ import {
   viewpage,
 } from './variables';
 
+import Logout from './Logout';
 import Home from './Home';
 import Autocarma from './Autocarma';
 import Accidents from './Accidents';
@@ -36,7 +37,7 @@ const Router = ({ user }: RouterProps) => (
         <Route exact path={createAccident} component={NewAccident} />
         <Route exact path={about} component={() => <div />} />
         <Route exact path={profile} component={Profile} />
-        <Route exact path={logout} component={() => <div />} />
+        <Route exact path={logout} component={Logout} />
         <Route exact path={viewpage} component={ViewPage} />
       </>
     ) : (

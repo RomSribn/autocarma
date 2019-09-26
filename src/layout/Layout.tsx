@@ -11,6 +11,7 @@ const Layout: React.FC<ILayoutProps> = ({
   fetchUsers,
   user,
   isLoading,
+  isLogout,
 }: ILayoutProps) => (
   <>
     <Header
@@ -20,6 +21,7 @@ const Layout: React.FC<ILayoutProps> = ({
       fetchAccidents={fetchAccidents}
       user={user}
       isLoading={isLoading}
+      isLogout={isLogout}
     />
     <Main>{children}</Main>
   </>

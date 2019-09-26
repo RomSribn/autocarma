@@ -1,6 +1,6 @@
 import 'firebase/auth';
 import { auth } from 'firebase/app';
-import React from 'react';
+import React, { useCallback } from 'react';
 import Paper from '@material-ui/core/Paper';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
@@ -18,6 +18,7 @@ const CenteredTabs: any = ({
   fetchAccidents,
   fetchUsers,
   isLoading,
+  isLogout,
 }: ICenteredTabsProps) => {
   const routes = user ? routesUser : routesGuest;
   const [value, setValue] = React.useState(0);
@@ -38,13 +39,25 @@ const CenteredTabs: any = ({
     setValue(newValue);
   }
 
-  const onLogout = () => {
-    logout();
-    setValue(routesGuest.indexOf(login));
-    auth()
-      .signOut()
-      .then(() => history.push(login));
-  };
+  const onLogout = useCallback(() => {
+    if (isLogout) {
+      logout();
+      setValue(routesGuest.indexOf(login));
+      auth()
+        .signOut()
+        .then(() => history.push(login));
+    }
+  }, [isLogout, logout]);
+
+  React.useEffect(() => {
+    if (isLogout) {
+      logout();
+      setValue(routesGuest.indexOf(login));
+      auth()
+        .signOut()
+        .then(() => history.push(login));
+    }
+  }, [isLogout, logout, onLogout]);
 
   return (
     <Paper className="tabs-root">
