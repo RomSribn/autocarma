@@ -22,6 +22,11 @@ export interface IMapComponentProps {
 
 export interface ThumbProps {
   file: {
-    name?: string;
+    name: string;
+    size: number;
+    type: any;
+    slice: any;
   };
+  index: string;
+  handleRemove: (index: string) => void;
 }

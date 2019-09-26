@@ -17,7 +17,7 @@ import Home from './Home';
 import Autocarma from './Autocarma';
 import Accidents from './Accidents';
 import NewAccident from './NewAccident';
-import Profile from './Profile/Profile';
+import Profile from './Profile';
 import Signup from './Signup';
 import Login from './Login';
 import ViewPage from './ViewPage';

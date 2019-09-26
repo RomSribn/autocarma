@@ -7,6 +7,7 @@ import {
   SIGNUP_FAILED,
   SIGNUP_SUCCESS,
   TOGGLE_LOADER_SUCCES,
+  UPDATE_PROFILE_FAILED,
 } from './action_types';
 
 import { AccidentsActionTypes } from './actions';
@@ -87,6 +88,10 @@ const accidents = handleActions(
     [TOGGLE_LOADER_SUCCES]: (state: IState, action: AccidentsActionTypes) => ({
       ...state,
       isLoading: action.payload,
+    }),
+    [UPDATE_PROFILE_FAILED]: (state: IState, action: AccidentsActionTypes) => ({
+      ...state,
+      error: action.payload,
     }),
   },
   initialState,
