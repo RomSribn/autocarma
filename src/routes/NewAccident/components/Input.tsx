@@ -112,8 +112,17 @@ export const CustomFileInput = ({
   values,
   form: { touched, errors },
 }: ICustomFileInputProps) => {
+  const [images, setImages] = React.useState();
   const onDrop = (acceptedFiles) => {
+    setImages(values.images.concat(acceptedFiles));
     setFieldValue('images', values.images.concat(acceptedFiles));
+  };
+
+  const handleRemove = (index) => {
+    const newImages = [...images];
+    newImages.splice(index, 1);
+    setImages(newImages);
+    setFieldValue('images', newImages);
   };
   return (
     <>
@@ -126,7 +135,11 @@ export const CustomFileInput = ({
             </div>
             <br />
             <div className="dropzone-images">
-              {values.images.length && values.images.map(file => <Thumb file={file} />)}
+              {images
+                && images.length
+                && images.map((file, index) => (
+                  <Thumb index={index} handleRemove={handleRemove} file={file} />
+                ))}
             </div>
           </>
         )}

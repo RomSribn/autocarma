@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { ThumbProps } from '../interface';
+import './Thumb.scss';
 
-const Thumb = ({ file }) => {
+const Thumb = ({ file, index, handleRemove }) => {
   let loading;
   const [thumb, setThumb] = React.useState();
 
@@ -13,7 +14,7 @@ const Thumb = ({ file }) => {
       setThumb(reader.result);
     };
     reader.readAsDataURL(file);
-  }, [loading, thumb]);
+  }, [handleRemove]);
   if (!file) {
     return null;
   }
@@ -22,16 +23,17 @@ const Thumb = ({ file }) => {
     return <p>loading...</p>;
   }
   return (
-    <img
-      onClick={() => {
-        console.log(thumb);
-        debugger;
-      }}
-      src={thumb}
-      alt={file.name}
-      className="img-thumbnail mt-2"
-      height={200}
-    />
+    <figure className="hover-img-thumb">
+      <img
+        onClick={() => {
+          handleRemove(index);
+        }}
+        src={thumb}
+        alt={file.name}
+        className="hover-img"
+        height={200}
+      />
+    </figure>
   );
 };
 

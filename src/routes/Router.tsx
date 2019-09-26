@@ -2,6 +2,7 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import {
   home,
+  autocarma,
   accidents,
   createAccident,
   about,
@@ -29,6 +30,7 @@ const Router = ({ user }: RouterProps) => (
   <Switch>
     {user ? (
       <>
+        <Route exact path={autocarma} component={Autocarma} />
         <Route exact path={home} component={Autocarma} />
         <Route exact path={accidents} component={Accidents} />
         <Route exact path={createAccident} component={NewAccident} />
