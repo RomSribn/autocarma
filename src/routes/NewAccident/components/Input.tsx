@@ -136,10 +136,10 @@ export const CustomFileInput = ({
             <br />
             <div className="dropzone-images">
               {images
-                ? images.map((file, index) => (
+                && images.length
+                && images.map((file, index) => (
                   <Thumb index={index} handleRemove={handleRemove} file={file} />
-                ))
-                : null}
+                ))}
             </div>
           </>
         )}
