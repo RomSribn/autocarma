@@ -14,7 +14,7 @@ function MySnackbarContentWrapper(props) {
 
   return (
     <SnackbarContent
-      className="error"
+      className="error-msg"
       aria-describedby="client-snackbar"
       message={(
         <span id="client-snackbar" className="message">
