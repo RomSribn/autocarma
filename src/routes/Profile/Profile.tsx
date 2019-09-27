@@ -2,9 +2,9 @@ import React from 'react';
 import Form from './components/Form';
 import './Profile.scss';
 
-const CreateIdea = () => (
+const CreateIdea = ({ updateProfile }) => (
   <div className="profile-form">
-    <Form />
+    <Form updateProfile={updateProfile} />
   </div>
 );
 

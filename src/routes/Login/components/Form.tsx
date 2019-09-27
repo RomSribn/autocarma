@@ -9,7 +9,7 @@ import { toRegisterMsg } from '../variables';
 import Input from './Input';
 import './Form.scss';
 
-const Form = ({ login, error, toggleLoader }: ILoginProps) => (
+const Form = ({ login, error, logout }: ILoginProps) => (
   <div className="form-login">
     {error ? <Error message={error} /> : null}
     <div className="login-title">
@@ -21,7 +21,10 @@ const Form = ({ login, error, toggleLoader }: ILoginProps) => (
         password: '',
       }}
       validationSchema={ValidateLogin}
-      onSubmit={values => login(values)}
+      onSubmit={values => {
+        logout(false);
+        login(values);
+      }}
     >
       {({
         values, handleChange, handleBlur, handleSubmit, setFieldValue,

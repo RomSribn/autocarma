@@ -1,19 +1,16 @@
 import { connect } from 'react-redux';
-import { login, logout, toggleLoader } from 'redux/User/actions';
-import Form from './Login';
+import { logout } from 'redux/User/actions';
+import Alert from './Alert.tsx';
 
 const mapStateToProps = state => ({
-  cards: state.accidents.data,
-  error: state.user.error,
+  isLogout: state.user.isLogout,
 });
 
 const mapDispatchToProps = {
-  login,
   logout,
-  toggleLoader,
 };
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(Form);
+)(Alert);

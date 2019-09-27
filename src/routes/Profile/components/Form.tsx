@@ -4,7 +4,7 @@ import { ValidateProfile } from 'utils/validate/validate';
 import Input from './Input';
 import './Form.scss';
 
-const Form = () => (
+const Form = ({ updateProfile }) => (
   <div className="form">
     <div>
       <span className="profile-title">Personal Information</span>
@@ -18,7 +18,7 @@ const Form = () => (
         confirmPassword: '',
       }}
       validationSchema={ValidateProfile}
-      onSubmit={() => {}}
+      onSubmit={updateProfile}
     >
       {({
         values, handleChange, handleBlur, handleSubmit, setFieldValue,

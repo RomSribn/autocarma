@@ -6,6 +6,7 @@ import Layout from './Layout.tsx';
 const mapStateToProps = state => ({
   userCurrent: state.user.userCurrent,
   isLoading: state.user.isLoading,
+  isLogout: state.user.isLogout,
 });
 
 const mapDispatchToProps = {

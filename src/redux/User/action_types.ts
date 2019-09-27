@@ -11,3 +11,7 @@ export const SIGNUP_FAILED: string = 'SIGNUP_FAILED';
 export const SIGNUP_SUCCESS: string = 'SIGNUP_SUCCESS';
 
 export const TOGGLE_LOADER_SUCCES: string = 'TOGGLE_LOADER_SUCCES';
+
+export const UPDATE_PROFILE_SUCCES: string = 'UPDATE_PROFILE_SUCCES';
+
+export const UPDATE_PROFILE_FAILED: string = 'UPDATE_PROFILE_FAILED';
