@@ -18,9 +18,7 @@ const Form = ({ updateProfile }) => (
         confirmPassword: '',
       }}
       validationSchema={ValidateProfile}
-      onSubmit={(values) => {
-        updateProfile(values);
-      }}
+      onSubmit={updateProfile}
     >
       {({
         values, handleChange, handleBlur, handleSubmit, setFieldValue,

@@ -64,6 +64,7 @@ export const signup = values => dispatch => auth()
 export const updateProfile = values => async (dispatch) => {
   const user = await auth().currentUser;
   const credential = await auth.EmailAuthProvider.credential(values.email, values.oldPassword);
+
   if (user) {
     user
       .reauthenticateWithCredential(credential)
