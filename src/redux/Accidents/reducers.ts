@@ -102,12 +102,16 @@ const accidents = handleActions(
       ...state,
       filteredMarkers: (() => {
         const checkedMarkers = state.userCurrent.id === admin ? state.markers : state.users;
-        return checkedMarkers.filter((marker) => {
-          if (action.payload.type) {
-            return marker[1].type === action.payload.type;
-          }
-          return true;
-        });
+        return (
+          checkedMarkers
+          && checkedMarkers.length
+          && checkedMarkers.filter((marker) => {
+            if (action.payload.type) {
+              return marker[1].type === action.payload.type;
+            }
+            return true;
+          })
+        );
       })(),
     }),
   },
