@@ -20,15 +20,18 @@ const SimpleTable = ({
   isAdmin = false,
 }: ISimpleTableProps) => {
   const [value, setValue] = React.useState(1);
-  const totalItemsCount = markers.length;
+  let totalItemsCount = 1;
   const itemsCountPerPage = 5;
   const end = value * itemsCountPerPage;
   const start = end - itemsCountPerPage;
-  const pgArray = markers.slice(start, end);
+  let pgArray;
   const handleChange = (pageNumber) => {
     setValue(pageNumber);
   };
-
+  if (markers && markers.length) {
+    totalItemsCount = markers.length;
+    pgArray = markers.slice(start, end);
+  }
   return (
     <>
       <span className="accidents-title">
@@ -50,17 +53,19 @@ Accidents via @
               </TableRow>
             </TableHead>
             <TableBody>
-              {pgArray.map(el => (
-                <AccidentRow
-                  gettingId={gettingId}
-                  dumpingAccident={dumpingAccident}
-                  currentId={el[0]}
-                  key={el[0]}
-                  {...el[1]}
-                  id={markers.indexOf(el) + 1}
-                  isAdmin={isAdmin}
-                />
-              ))}
+              {pgArray
+                && pgArray.length
+                && pgArray.map(el => (
+                  <AccidentRow
+                    gettingId={gettingId}
+                    dumpingAccident={dumpingAccident}
+                    currentId={el[0]}
+                    key={el[0]}
+                    {...el[1]}
+                    id={markers.indexOf(el) + 1}
+                    isAdmin={isAdmin}
+                  />
+                ))}
             </TableBody>
           </Table>
         </Paper>

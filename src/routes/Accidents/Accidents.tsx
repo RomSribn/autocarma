@@ -22,7 +22,7 @@ const Accidents = ({
   return (
     <div className="accidents">
       <Table
-        markers={filteredMarkers.length ? filteredMarkers : checkedMarkers}
+        markers={filteredMarkers && filteredMarkers.length ? filteredMarkers : checkedMarkers}
         gettingId={gettingId}
         dumpingAccident={dumpingAccident}
         filtering={filtering}
