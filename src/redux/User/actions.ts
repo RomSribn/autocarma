@@ -1,5 +1,6 @@
 import { createAction } from 'redux-actions';
 import { auth } from 'firebase/app';
+import { get, post } from 'services/Fetch';
 import history from 'utils/history';
 
 import {
@@ -42,6 +43,9 @@ export const loginCheck = user => (dispatch) => {
 export const login = values => dispatch => auth()
   .signInWithEmailAndPassword(values.email, values.password)
   .then((res: { user }) => {
+    post('login', values).then((data) => {
+      debugger;
+    });
     dispatch(loginSuccess(res.user.uid));
     toggleLoader(true);
     history.push('/accidents');

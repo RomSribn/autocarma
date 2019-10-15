@@ -2,6 +2,7 @@
   "name": "accidents",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:8500",
   "dependencies": {
     "@react-firebase/auth": "^0.2.9",
     "@types/jest": "^24.0.18",

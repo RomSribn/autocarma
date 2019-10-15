@@ -1,6 +1,7 @@
 import { createAction } from 'redux-actions';
 
 import { showUserPost, showLastItems, deletePost } from 'services/FirebaseDB';
+import { get, post } from 'services/Fetch';
 import { getAccidentImages } from 'services/FirebaseStorage';
 import {
   FETCH_ACCIDENTS_SUCCESS,
@@ -25,8 +26,10 @@ export const getIdSuccess = createAction(GET_ID_SUCCESS);
 export const loginCheckSuccess = createAction(LOGIN_CHECK);
 
 export const fetchAccidents = () => dispatch => showLastItems().then((response) => {
-  response.on('value', (snap) => {
+  response.on('value', async (snap) => {
     const value = snap.val();
+    const server = await get('accidents');
+    debugger;
     const result = value ? Object.entries(value) : null;
 
     dispatch(fetchAccidentsSuccess(result));
@@ -36,7 +39,6 @@ export const fetchAccidents = () => dispatch => showLastItems().then((response) 
 export const fetchUsers = user => dispatch => showUserPost(user).then((response) => {
   response.on('value', (snap) => {
     const value = snap.val();
-
     const result = value ? Object.entries(value) : null;
 
     dispatch(fetchUsersSuccess(result));

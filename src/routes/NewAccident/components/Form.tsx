@@ -18,6 +18,7 @@ const Form = (
   userCurrent,
 }: IFormNewAccidentProps) => {
   const onSubmit = ( values ) => {
+    debugger;
     const postId = refPostsDB.push(values).key;
     setSubmitData([postId, values]);
     refUsersDB(userCurrent.id, postId).set({ ...values, id: postId });
