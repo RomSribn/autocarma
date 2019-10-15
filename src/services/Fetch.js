@@ -1,5 +1,3 @@
-import Error from '_assets/shared/Error/components/Error';
-
 const server = 'http://localhost:3000';
 
 const customFetch = (url, options = null) => fetch(`${server}/${url}`, {
@@ -12,7 +10,6 @@ const customFetch = (url, options = null) => fetch(`${server}/${url}`, {
     return response.json();
   }
   return null;
-  // throw new Error(response.statusText);
 });
 
 export const get = url => customFetch(url);
