@@ -27,9 +27,7 @@ const FilterMenu = ({ filtering }: IFilterMenuProps) => {
         }}
         onSubmit={onSubmit}
       >
-        {({
-          values, handleChange, handleBlur, handleSubmit,
-        }) => (
+        {({ values, handleChange, handleBlur, handleSubmit }) => (
           <Drawer open={open} onRequestClose={toggle} modalElementClass="modal">
             <form onSubmit={handleSubmit} className="filter-form">
               <ul className="filter-menu">

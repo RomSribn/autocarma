@@ -25,7 +25,9 @@ export const FilterSelectType = ({
         <option value="">All</option>
       </select>
     </label>
-    {touched[field.name] && errors[field.name] && <div className="error">{errors[field.name]}</div>}
+    {touched[field.name] && errors[field.name] && (
+      <div className="error">{errors[field.name]}</div>
+    )}
   </>
 );
 
@@ -54,6 +56,8 @@ export const FilterSelectTime = ({
         <option value="Older">Older</option>
       </select>
     </label>
-    {touched[field.name] && errors[field.name] && <div className="error">{errors[field.name]}</div>}
+    {touched[field.name] && errors[field.name] && (
+      <div className="error">{errors[field.name]}</div>
+    )}
   </>
 );

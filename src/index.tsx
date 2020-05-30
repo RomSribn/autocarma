@@ -6,8 +6,8 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import reduxThunk from 'redux-thunk';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import App from 'App';
-import accidentreducers from 'redux/Accidents/reducers';
-import userReducers from 'redux/User/reducers';
+import accidentreducers from 'redux/Accidents/accidentreducers';
+import userReducers from 'redux/User/userReducers';
 import 'index.scss';
 
 const middleware = applyMiddleware(reduxThunk);
